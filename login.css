@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+@font-face {
+    font-family: trap;
+    src: url(fonts/Trap-Black.otf);
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #21EDC5;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+main{
+    display: flex;
+    padding: 100px;
+}
+
+#login-bg {
+    display: inline-block;
+    box-sizing: border-box;
+    background-color: #ECF4F9;
+    width: 760px;
+    height: 875px;
+    border: 2px solid black;
+    border-radius: 15px 0 0 15px;
+    padding: 50px;
+}
+
+#logo-title{
+    font-family: trap;
+    font-size: 4em;
+    text-align: center;
+    width: 100%;
+}
+
+h1{
+    font-size: 2.5em;
+    font-weight: 600;
+    margin: 0;
+}
+
+h2{
+    font-size: 1.5em;
+    font-weight: lighter;
+    margin: 0;
+}
+
+#login-form{
+    height: 100%;
+}
+
+#login-form form{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+    box-sizing: border-box;
+    align-content: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+label{
+    font-size: 1.5em;
+    width: 100%;
+    margin: 20px 0;
+}
+
+input{
+    width: 100%;
+    height: 75px;
+    background-color: rgba(0,0,0,0);
+    border: 1px solid black;
+    border-radius: 15px;
+    margin: 5px 0;
+    cursor: text;
+    font-size: 1em;
+    padding: 10px;
+    font-weight: lighter;
+}
+
+input:focus{
+    outline: none;
+    border: 2px solid black;
+}
+
+input::placeholder{
+    color: rgba(0,0,0,0.3);
+}
+
+input[type=submit]{
+    background-color: #21EDC5;
+    font-weight: bolder;
+    font-size: 2em;
+    border: 2px solid black;
+    transition: all 150ms ease-out;
+    cursor: pointer;
+}
+
+input[type=submit]:hover{
+    box-shadow: rgba(33, 237, 197, .75) 0px 7px 29px 0px;
+}
+
+.link{
+    color: #21EDC5;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+p{
+    font-size: 1.5em;
+    margin: 0;
+}
+
+#login-sidebg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 875px;
+    background-color: #ffa0da;
+    border-radius: 0 15px 15px 0;
+    border: 2px solid black;
+    border-left: 0;
+    flex: 2;
+    overflow: hidden;
+}
+
+#login-sidebg img {
+    height: 80%;
+    object-fit: cover;
+}
+
+#form-icons{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 50%;
+}
