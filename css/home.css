@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+@font-face {
+    font-family: trap;
+    src: url(../fonts/Trap-Black.otf);
+}
+
+*{
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ecf4f9;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+main{
+    display: flex;
+    padding: 100px;
+}
