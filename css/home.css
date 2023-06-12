@@ -21,3 +21,13 @@ main{
     display: flex;
     padding: 100px;
 }
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header{
+    padding: 1em;
+}

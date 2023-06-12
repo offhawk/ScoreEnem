@@ -40,6 +40,16 @@ main{
     width: 100%;
 }
 
+.logo-title{
+    font-weight: bolder;
+    font-size: 5em;
+}
+
+.logo-title-header{
+    font-family: trap;
+    font-size: 2em;
+}
+
 h1{
     font-size: 2.5em;
     font-weight: 600;
@@ -145,4 +155,62 @@ p{
     justify-content: space-evenly;
     align-items: center;
     width: 50%;
+}
+
+#body-home {
+    background-color: #ecf4f9;
+}
+
+.home-header {
+    background-color: #21EDC5;
+    border-bottom: 3px solid black;
+    max-height: 101px;
+}
+
+#menu-nav {
+    text-align: right;
+}
+
+.link-header {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+div#menu-nav > .link-header {
+    list-style: none;
+    list-style-type: none;
+}
+
+li.link-header > a {
+    font-family: trap;
+    font-size: 1.25em;
+    text-decoration: none;
+    color: black;
+    padding-right: 30px;
+}
+
+#margem {
+    border-right: 3px solid black;
+}
+
+#acesse  {
+    background-color: #21EDC5;
+    font-weight: bolder;
+    font-size: 2em;
+    border: 2px solid black;
+    border-radius: 100px;
+    transition: all 150ms ease-out;
+    cursor: pointer;
+    display: inline-block;
+}
+
+#clipes {
+    object-fit: contain;
+    height: 100%;
+
+}
+
+#img-container{
+    height: 600px;
+    width: 100%;
 }

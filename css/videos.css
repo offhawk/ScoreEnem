@@ -87,9 +87,11 @@ main{
     border: 5px solid black;
     
 }
-.video-title {
-    
+
+#main-container h1{
+    font-family: 'Inter', sans-serif;
 }
+
 #logo-header {
     font-family: trap;
     font-size: 4em;
