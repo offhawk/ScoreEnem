@@ -16,23 +16,89 @@ body{
     font-family: 'Inter', sans-serif;
     font-weight: 400;
 }
-
+header {
+    display: flex;
+}
+#header-container {
+    border-bottom: 5px solid black;
+    border-right: 5px solid black;
+    width: 80%;
+    display: inline;
+}
+#header-right-container {
+    border-bottom: 5px solid black;
+    width: 20%;
+    text-align: right;
+}
+#header-title {
+    padding-top: .5em   ;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 2.5em;
+    font-weight: 400;
+    margin: 0;
+}
 main{
     display: flex;
     padding: 100px;
+    background-color: #ecf4f9;
+    height: 90%;
 }
 
-#login-bg {
-    display: inline-block;
-    box-sizing: border-box;
-    background-color: #ECF4F9;
-    width: 760px;
-    height: 875px;
-    border: 2px solid black;
-    border-radius: 15px 0 0 15px;
-    padding: 50px;
+#main-container {
+    width: 65%;
+    margin-right: 5em;
+}
+.main-title {
+    font-family: trap;
+    font-size: 4em;
+    width: 100%;
+    padding: .3em;
 }
 
+#videos-container {
+    width: 30%;
+}
+#video-box {
+    background-color: #21EDC5;
+    height: 90%;
+    border-radius: 1em;
+    border: 5px solid black;
+}
+#videos-list {
+    display: flex;
+    flex-direction: column;
+    background-color: #21EDC5;
+    width: 100%;
+    height: 100%;
+    border-radius: 1em;
+    border: 5px solid black;
+}
+#video-line {
+    height: 10em;
+    border-bottom: 5px solid black;
+}
+.video {
+    background-color: #ecf4f9;
+    margin: 1em;
+    height: 8em;
+    width: 40%;
+    border-radius: 1em;
+    border: 5px solid black;
+    
+}
+
+#main-container h1{
+    font-family: 'Inter', sans-serif;
+}
+
+#logo-header {
+    font-family: trap;
+    font-size: 4em;
+    padding-top: .3em;
+    padding-left: 1.3em;
+    width: 100%;
+}
 #logo-title{
     font-family: trap;
     font-size: 4em;
@@ -40,20 +106,11 @@ main{
     width: 100%;
 }
 
-.logo-title{
-    font-weight: bolder;
-    font-size: 5em;
-}
-
-.logo-title-header{
-    font-family: trap;
-    font-size: 2em;
-}
-
 h1{
     font-size: 2.5em;
     font-weight: 600;
     margin: 0;
+    padding: .3em;
 }
 
 h2{
@@ -106,17 +163,16 @@ input::placeholder{
     color: rgba(0,0,0,0.3);
 }
 
-#input-login{
+input[type=submit]{
     background-color: #21EDC5;
     font-weight: bolder;
     font-size: 2em;
     border: 2px solid black;
     transition: all 150ms ease-out;
     cursor: pointer;
-    text-align: center;
 }
 
-#input-login:hover{
+input[type=submit]:hover{
     box-shadow: rgba(33, 237, 197, .75) 0px 7px 29px 0px;
 }
 
@@ -155,62 +211,4 @@ p{
     justify-content: space-evenly;
     align-items: center;
     width: 50%;
-}
-
-#body-home {
-    background-color: #ecf4f9;
-}
-
-.home-header {
-    background-color: #21EDC5;
-    border-bottom: 3px solid black;
-    max-height: 101px;
-}
-
-#menu-nav {
-    text-align: right;
-}
-
-.link-header {
-    display: inline-block;
-    margin-left: 20px;
-}
-
-div#menu-nav > .link-header {
-    list-style: none;
-    list-style-type: none;
-}
-
-li.link-header > a {
-    font-family: trap;
-    font-size: 1.25em;
-    text-decoration: none;
-    color: black;
-    padding-right: 30px;
-}
-
-#margem {
-    border-right: 3px solid black;
-}
-
-#acesse  {
-    background-color: #21EDC5;
-    font-weight: bolder;
-    font-size: 2em;
-    border: 2px solid black;
-    border-radius: 100px;
-    transition: all 150ms ease-out;
-    cursor: pointer;
-    display: inline-block;
-}
-
-#clipes {
-    object-fit: contain;
-    height: 100%;
-
-}
-
-#img-container{
-    height: 600px;
-    width: 100%;
 }
