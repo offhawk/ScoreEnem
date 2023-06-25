@@ -27,6 +27,34 @@
                             <span class="link">Esqueceu a senha?</span>
                         </label>
                     </div>
+                    <div id="cadastro-bg">
+                        <div id="modal-cadastro">
+                            <h1 id="titulo-cadastro">Cadastre-se</h1>
+                            <div id="label-cadastro">
+                                <label>
+                                    Nome
+                                    <input name="nome" id="nome" placeholder="Nome Sobrenome">
+                                </label>
+                                <label>
+                                    Telefone
+                                    <input type="tel" name="telefone" id="telefone" placeholder="+55 31 9 1234 5678">
+                                </label>
+                                <label>
+                                    E-mail
+                                    <input type="email" name="email" id="email" placeholder="seuemail@gmail.com">
+                                </label>
+                                <label>
+                                    Senha
+                                    <input type="password" name="password" id="password" placeholder="********">
+                                </label>
+                                <label>
+                                    Confirmar Senha
+                                    <input type="password" name="confirmpassword" id="confirmpassword" placeholder="********">
+                                </label>
+                                <input id="input-cadastro" value="CADASTRAR" onclick="cadastro()">
+                            </div>
+                        </div>
+                    </div>
                     <input id="input-login" value="LOGIN" onclick="login()">
                     <p>Ou</p>
                     <div id="form-icons">
