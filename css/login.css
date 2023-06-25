@@ -107,12 +107,12 @@ input::placeholder{
 }
 
 #input-login{
-    background-color: #21EDC5;
-    font-weight: bolder;
-    font-size: 2em;
-    border: 2px solid black;
-    transition: all 150ms ease-out;
-    cursor: pointer;
+    background-color: #21EDC5;     
+    font-weight: bolder;     
+    font-size: 2em;     
+    border: 2px solid black;     
+    transition: all 150ms ease-out;     
+    cursor: pointer;     
     text-align: center;
 }
 
@@ -213,4 +213,48 @@ li.link-header > a {
 #img-container{
     height: 600px;
     width: 100%;
+}
+
+#input-cadastro{
+    background-color: #21EDC5;
+    font-weight: bolder;
+    font-size: 2em;
+    border: 2px solid black;
+    transition: all 150ms ease-out;
+    cursor: pointer;
+    text-align: center;
+}
+
+#input-cadastro:hover{
+    box-shadow: rgba(33, 237, 197, .75) 0px 7px 29px 0px;
+}
+
+#cadastro-bg{
+    box-sizing: border-box;
+    background-color: #ECF4F9;
+    width: 760px;
+    height: 875px;
+    border: 2px solid black;
+    border-radius: 15px;
+    padding: 50px;
+    padding-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    position: absolute;
+    display: none;
+}
+
+#titulo-cadastro{
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+#label-cadastro {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+#label-cadastro label{
+    margin: 0!important;
 }
