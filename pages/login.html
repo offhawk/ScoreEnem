@@ -12,18 +12,18 @@
     <main>
         <div id="login-bg">
             <div id="login-form">
-                <form action="POST">
+                <form>
                     <h1 id="logo-title">ScoreEnem</h1>
                     <h1>Fazer Login</h1>
                     <h2>Novo no ScoreEnem? <span class="link">Crie uma conta</span></h2>
                     <div>
                         <label>
                             Usuário ou e-mail
-                            <input type="text" name="" id="" placeholder="seuemail@gmail.com">
+                            <input type="email" name="email" id="email" placeholder="seuemail@gmail.com">
                         </label>
                         <label>
                             Senha
-                            <input type="password" name="" id="" placeholder="********">
+                            <input type="password" name="password" id="password" placeholder="********">
                             <span class="link">Esqueceu a senha?</span>
                         </label>
                     </div>
@@ -70,5 +70,9 @@
         </div>
     </main>
     <footer></footer>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script src="../js/firebase.js"></script>
+    <script src="../js/login.js"></script>
 </body>
 </html>
