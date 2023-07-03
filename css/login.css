@@ -46,6 +46,8 @@ main{
 }
 
 .logo-title-header{
+    color: black;
+    text-decoration: none;
     font-family: trap;
     font-size: 2em;
 }

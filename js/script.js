@@ -3,10 +3,7 @@ let usuario = [];
 
 firebase.auth().onAuthStateChanged(function(user){
     if(user) {
-
         salvaUsuario(user);
-        
-        
     }
     else{
         namesEl[0].innerHTML = 'Login';
