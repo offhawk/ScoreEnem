@@ -220,8 +220,6 @@ div#menu-nav > .link-header {
     height: 650px;
     width: 100%;
     display: flex;
-    margin-right: 320px;
-    margin-bottom: 40px;
 }
 
 #img-container{
@@ -344,7 +342,8 @@ div#menu-nav > .link-header {
 
 .div-mae {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    height: 100vh;
 }
 
 #img-redacao {
