@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="../css/videos.css">
+    <link rel="stylesheet" href="../css/lite-yt-embed.css">
     <title>Vídeos - ScoreEnem</title>
 </head>
 <body>
@@ -25,9 +26,9 @@
     <main>
         <div id="flex-container">
             <div id="main-container">
-                <h1 class="main-title"></h1>
+                <h1 class="main-title">Progressão Aritmética</h1>
                 <div id="video-box">
-                    <iframe width="772" height="434" src="https://www.youtube.com/embed/jY5G67TWKr8" title="ENEM: preparação nota 1000 ✅ Progressão aritmética" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    <lite-youtube width="772" height="434" videoid="jY5G67TWKr8"></lite-youtube>
                 </div>
             </div>
             <div id="videos-container">
@@ -47,7 +48,9 @@
     <script src="../js/script.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
     <script src="../js/jquery.fitvids.js"></script>
+    <script src="../js/lite-yt-embed.js"></script>
     <script src="../js/videos.js"></script>
+    <script src="../js/auth-guard.js"></script>
     <script>
          $('iframe[src*="youtube"]').parent().fitVids();
          $('.video').fitVids();

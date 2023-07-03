@@ -81,11 +81,13 @@ main{
 .video-line {
     display: flex;
     height: 124px;
-    border-bottom: 2px solid black;
     padding: 15px 0;
     justify-content: space-between;
     font-weight: 600;
     cursor: pointer;
+    border-radius: 15px;
+    padding: 15px;
+    transition: all 300ms;
 }
 
 .video {
@@ -244,3 +246,7 @@ p{
     overflow: hidden;
 }
 
+.play-select{
+    background-color: #21EDC5;
+    border-bottom: 2px solid black;
+}

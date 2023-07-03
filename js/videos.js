@@ -8,7 +8,10 @@ let videosEl = firebase.firestore().collection('video').orderBy("order").get().t
 const videosDivEl = document.querySelector("#videos-list");
 
 let mainTitle = document.querySelector(".main-title");
-let mainVideo = document.querySelector("iframe");
+let mainVideo = document.querySelector("lite-youtube");
+let mainVideoBox = document.querySelector("#video-box");
+
+let videosPlaylistEl = [];
 
 function preenchePlaylist(videos) {
 
@@ -48,7 +51,7 @@ function preenchePlaylist(videos) {
 
     });
 
-    let videosPlaylistEl = document.querySelectorAll('.video-line');
+    videosPlaylistEl = document.querySelectorAll('.video-line');
 
     videosPlaylistEl.forEach(video => {
         video.addEventListener('click', alteraVideo)
@@ -60,7 +63,26 @@ function preenchePlaylist(videos) {
 function alteraVideo(e) {
 
     let clicado = e.currentTarget;
+
+    mainVideoBox.firstElementChild.remove()
+    let liteEmbedEl = document.createElement("lite-youtube");
+    liteEmbedEl.setAttribute("videoid", clicado.dataset.id); 
+    mainVideo.style = "background-image: " + "url('https://i.ytimg.com/vi/" + clicado.dataset.id + "/maxresdefault.jpg')"
+    mainVideoBox.appendChild(liteEmbedEl);
+
     mainTitle.innerHTML = clicado.dataset.titulo;
-    mainVideo.src = "https://www.youtube.com/embed/" + clicado.dataset.id;
+
+    atualizaPlaylist(e.currentTarget);
+
+
+}
+
+function atualizaPlaylist(elemento) {
+
+    videosPlaylistEl.forEach(video => {
+        video.classList.remove('play-select');
+    });
+    
+    elemento.classList.toggle('play-select');
 
 }
