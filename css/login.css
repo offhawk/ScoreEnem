@@ -211,15 +211,15 @@ div#menu-nav > .link-header {
 #clipes {
     object-fit: contain;
     height: 100%;
-
 }
 
-#img-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 600px;
+#img-container {
+    justify-content: right;
+    height: 650px;
     width: 100%;
+    display: flex;
+    margin-right: 320px;
+    margin-bottom: 40px;
 }
 
 #input-cadastro{
@@ -310,4 +310,46 @@ div#menu-nav > .link-header {
     text-align: right;
     color: red;
     opacity: 50%;
+}
+
+#redacao  {
+    background-color: #ffa0da;
+    font-weight: bolder;
+    font-size: 1em;
+    border: 2px solid black;
+    border-radius: 20px;
+    transition: all 150ms ease-out;
+    display: inline-block;
+    margin-bottom: 50px;
+}
+
+.div-mae {
+    display: flex;
+    align-items: flex-end;
+}
+
+#img-redacao {
+    object-fit: contain;
+    height: 100%;
+}
+
+.logo-title-redacao {
+    font-weight: bolder;
+    font-size: 4em;
+    margin-bottom: 15px;
+}
+
+.logo-subtitle-redacao {
+    margin-top: 50px;
+    margin-bottom: 80px;
+    font-size: 2.5em;
+}
+
+.texto-redacao {
+    margin-left: 100px;
+}
+
+.curso-txt {
+    display: inline-block;
+    margin: 40px;
 }
