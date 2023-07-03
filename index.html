@@ -10,19 +10,17 @@
 </head>
 <body id="body-home">
     <header class="home-header">
-            <div class="container">
-                <!-- Início Cabeçalho -->
-                <div>
-                    <h1 class="logo-title-header">ScoreEnem</h1>
+            <!-- Início Cabeçalho -->
+            <div>
+                <h1 class="logo-title-header">ScoreEnem</h1>
+            </div>
+            <!-- Links das outras páginas html, login, e o cadastre-se -->
+            <div id="menu-nav">
+                <div class="link-header">
+                    <a class="header-name" href="pages/login.html">Login</a>
+                    <a class="header-name" href="pages/login.html">Cadastre-se</a>
                 </div>
-                <!-- Links das outras páginas html, login, e o cadastre-se -->
-                <div id="menu-nav">
-                    <ul class="link-header">
-                        <li class="link-header"><a id="margem" href="pages/login.html">Login</a></li>
-                        <li class="link-header"><a href="pages/login.html">Cadastre-se</a></li>
-                    </ul>
-                </div>
-        </nav>
+            </div>
     </header>
     <main>
         <div>
@@ -39,10 +37,40 @@
             <img id="clipes" src="imgs/clip.png" alt="" srcset="">
         </div>
     </main>
+    <div class="div-video">
+        <div id="img-container2">
+            <img id="img-video" src="imgs/video.png">
+        </div>
+        <div>
+            <div class="texto-video">
+                    <h1 class="logo-title-video">Tenha acesso a centenas de videoaulas</h1>
+                    <h2 class="logo-subtitle-video">Veja conteúdos diversos dos melhores professores, totalmente GRATUITO</h2>
+            </div>
+        </div>
+    </div>
+    <div class="div-mae">
+        <div>
+            <div class="texto-redacao">
+                    <h1 class="logo-title-redacao">Alcance nota 1000 na Redação</h1>
+                    <h2 class="logo-subtitle-redacao">Veja modelos, exemplos e correções de redações nota 1000 no ENEM!</h2>
+                    <div id="redacao">
+                        <li class="curso-txt">
+                            <h1 style="margin-bottom: 20px;">Curso Completo</h1>
+                            <h2>Tenha acesso a um curso completo de redação do básico ao avançado.</h2>
+                        </li>
+                    </div>
+            </div>
+        </div>
+        <div id="img-container">
+            <img id="img-redacao" src="imgs/redacao.png" alt="" srcset="">
+        </div>
+    </div>
     <footer></footer>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
     <script src="js/firebase.js"></script>
     <script src="js/login.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
