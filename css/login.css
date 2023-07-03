@@ -46,6 +46,8 @@ main{
 }
 
 .logo-title-header{
+    color: black;
+    text-decoration: none;
     font-family: trap;
     font-size: 2em;
 }
@@ -220,6 +222,13 @@ div#menu-nav > .link-header {
     display: flex;
     margin-right: 320px;
     margin-bottom: 40px;
+}
+
+#img-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 600px;
 }
 
 #img-container2 {
