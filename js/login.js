@@ -4,6 +4,21 @@ let emailInvalido = document.getElementById('email-invalido');
 let senhaInvalido = document.getElementById('senha-invalido');
 let loginErro = document.getElementById('login-error');
 
+let query = location.search.slice(1);
+let partes = query.split('&');
+let data = {};
+partes.forEach(function (parte) {
+    let chaveValor = parte.split('=');
+    let chave = chaveValor[0];
+    let valor = chaveValor[1];
+    data[chave] = valor;
+});
+
+if(data.logado == 0){
+    loginErro.classList.toggle('hidden');
+    loginErro.innerHTML = "Faça Login para acessar a página"
+}
+
 function validateFields() {
 
     const emailValid = isEmailValid();
@@ -24,7 +39,6 @@ function isEmailValid() {
         emailInvalido.innerHTML = "Email Inválido";
         return false;
     }
-
 }
 
 function isPasswordValid() {
@@ -52,10 +66,13 @@ function validatePassword(password) {
 function login() {
     
     firebase.auth().signInWithEmailAndPassword(email.value, password.value).then(response => {
-        window.location.href = "../index.html";
         console.log('success', response);
+        let uid = response.user.uid;
+        localStorage.setItem("userId",uid);
+        window.location.href = "../index.html";
     }).catch(error => {
         loginErro.classList.toggle('hidden');
+        loginErro.innerHTML = "Usuário ou senha incorretos.";
     });
 }
 

@@ -46,6 +46,8 @@ main{
 }
 
 .logo-title-header{
+    color: black;
+    text-decoration: none;
     font-family: trap;
     font-size: 2em;
 }
@@ -218,6 +220,20 @@ div#menu-nav > .link-header {
     height: 650px;
     width: 100%;
     display: flex;
+}
+
+#img-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 600px;
+}
+
+#img-container2 {
+    justify-content: left;
+    height: 650px;
+    width: 100%;
+    display: flex;
     margin-right: 320px;
     margin-bottom: 40px;
 }
@@ -321,11 +337,13 @@ div#menu-nav > .link-header {
     transition: all 150ms ease-out;
     display: inline-block;
     margin-bottom: 50px;
+    margin-right: -100px;
 }
 
 .div-mae {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
+    height: 100vh;
 }
 
 #img-redacao {
@@ -337,12 +355,14 @@ div#menu-nav > .link-header {
     font-weight: bolder;
     font-size: 4em;
     margin-bottom: 15px;
+    margin-right: -200px;
 }
 
 .logo-subtitle-redacao {
     margin-top: 50px;
     margin-bottom: 80px;
-    font-size: 2.5em;
+    margin-right: -350px;
+    font-size: 2em;
 }
 
 .texto-redacao {
@@ -352,4 +372,37 @@ div#menu-nav > .link-header {
 .curso-txt {
     display: inline-block;
     margin: 40px;
+}
+
+#img-video {
+    object-fit: contain;
+    height: 100%;
+    margin-left: 250px;
+}
+
+.logo-title-video {
+    font-weight: bolder;
+    font-size: 4em;
+    margin-bottom: 15px;
+    text-align: end;
+}
+
+.logo-subtitle-video {
+    margin-top: 50px;
+    margin-bottom: 80px;
+    margin-left: -100px;
+    font-size: 2em;
+    text-align: end;
+}
+
+.texto-video {
+    margin-top: -600px;
+    margin-right: 100px;
+}
+
+.div-video {
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 10em;
+    margin-top: 3em;
 }

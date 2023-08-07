@@ -9,7 +9,7 @@ function validateFieldsReg(e) {
     const passwordValid = isPasswordValid();
     const telValid = isTelValid();
     const nameValid = isNameValid();
-    document.getElementById('input-cadastro').disabled = !emailValid || !passwordValid || !telValid || !nameValid;
+    //document.getElementById('input-cadastro').disabled = !emailValid || !passwordValid || !telValid || !nameValid;
 
 }
 
@@ -29,7 +29,7 @@ function isNameValid(e) {
 }
 
 
-function cadastro(e) {
+function cadastro() {
     firebase.auth().createUserWithEmailAndPassword(remail.value, rpassword.value).then(response => {
 
         // Registra as informações do usuário no banco de dados
@@ -38,7 +38,8 @@ function cadastro(e) {
        }
 
     }).catch(error => {
-        alert('error 2', error);
+        alert(error);
+        console.log(error);
     });
 }
 

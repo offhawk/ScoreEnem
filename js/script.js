@@ -3,10 +3,7 @@ let usuario = [];
 
 firebase.auth().onAuthStateChanged(function(user){
     if(user) {
-
         salvaUsuario(user);
-        
-        
     }
     else{
         namesEl[0].innerHTML = 'Login';
@@ -27,6 +24,11 @@ function preencheHeader(usuario) {
     namesEl[0].innerHTML = usuario[0].nome;
     namesEl[1].innerHTML = 'Log Out';
     namesEl[1].addEventListener('click', logOut);
+    namesEl[0].href= "../pages/profile.html";
+    namesEl[0].addEventListener('click', irParaMeuPerfil);
+}
 
+function irParaMeuPerfil() {
+    window.location.href = "../pages/profile.html";
 }
 
