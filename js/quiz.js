@@ -22,6 +22,42 @@ let addUser = [
     {
         marcado: 0,
         acerto: true
+    }, 
+    {
+        marcado: 0,
+        acerto: true
+    }, 
+    {
+        marcado: 0,
+        acerto: true
+    }, 
+    {
+        marcado: 0,
+        acerto: true
+    }, 
+    {
+        marcado: 0,
+        acerto: true
+    }, 
+    {
+        marcado: 0,
+        acerto: true
+    }, 
+    {
+        marcado: 0,
+        acerto: true
+    }, 
+    {
+        marcado: 0,
+        acerto: true
+    }, 
+    {
+        marcado: 0,
+        acerto: true
+    }, 
+    {
+        marcado: 0,
+        acerto: true
     }
 ];
 
@@ -136,7 +172,7 @@ nextBtn.addEventListener(
             scoreContainer.classList.remove("hide");
             //user score
             userScore.innerHTML =
-                "Your score is " + scoreCount + " out of " + questionCount;
+                "Você acertou " + scoreCount + " de " + questionCount + " questões.";
             atualizaUser();
         } else {
             //display questionCount

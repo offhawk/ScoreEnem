@@ -26,6 +26,14 @@ let videosPlaylistEl = [];
 
 function preenchePlaylist(videos) {
 
+    mainVideoBox.firstElementChild.remove()
+    let liteEmbedEl = document.createElement("lite-youtube");
+    liteEmbedEl.setAttribute("videoid", videos[0].id); 
+    mainVideo.style = "background-image: " + "url('https://i.ytimg.com/vi/" + videos[0].id + "/maxresdefault.jpg')"
+    mainVideoBox.appendChild(liteEmbedEl);
+
+    mainTitle.innerHTML = videos[0].titulo;
+
     videos.forEach(video => {
         
         let videoLine = document.createElement("div");
@@ -70,7 +78,6 @@ function preenchePlaylist(videos) {
 
 }
 
-
 function alteraVideo(e) {
 
     let clicado = e.currentTarget;
@@ -84,7 +91,6 @@ function alteraVideo(e) {
     mainTitle.innerHTML = clicado.dataset.titulo;
 
     atualizaPlaylist(e.currentTarget);
-
 
 }
 
