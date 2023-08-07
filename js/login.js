@@ -39,6 +39,7 @@ function isEmailValid() {
         emailInvalido.innerHTML = "Email Inválido";
         return false;
     }
+
 }
 
 function isPasswordValid() {
@@ -66,13 +67,11 @@ function validatePassword(password) {
 function login() {
     
     firebase.auth().signInWithEmailAndPassword(email.value, password.value).then(response => {
-        console.log('success', response);
-        let uid = response.user.uid;
-        localStorage.setItem("userId",uid);
         window.location.href = "../index.html";
+        console.log('success', response);
     }).catch(error => {
         loginErro.classList.toggle('hidden');
-        loginErro.innerHTML = "Usuário ou senha incorretos.";
+        loginErro.innerHTML = "Usuário ou senha incorretos."
     });
 }
 
