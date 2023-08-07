@@ -10,7 +10,6 @@ partes.forEach(function (parte) {
     data[chave] = valor;
 });
 
-console.log(data.mat)
 
 let videosEl = firebase.firestore().collection('video').where("mat", "==", data.mat).orderBy("order").get().then(snapshot => {
     videos = snapshot.docs.map(doc => doc.data());
