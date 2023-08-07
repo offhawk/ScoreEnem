@@ -1,6 +1,17 @@
 let videos = [];
 
-let videosEl = firebase.firestore().collection('video').orderBy("order").get().then(snapshot => {
+query = location.search.slice(1);
+partes = query.split('&');
+data = {};
+partes.forEach(function (parte) {
+    let chaveValor = parte.split('=');
+    let chave = chaveValor[0];
+    let valor = chaveValor[1];
+    data[chave] = valor;
+});
+
+
+let videosEl = firebase.firestore().collection('video').where("mat", "==", data.mat).orderBy("order").get().then(snapshot => {
     videos = snapshot.docs.map(doc => doc.data());
     preenchePlaylist(videos);
 })   
@@ -14,6 +25,14 @@ let mainVideoBox = document.querySelector("#video-box");
 let videosPlaylistEl = [];
 
 function preenchePlaylist(videos) {
+
+    mainVideoBox.firstElementChild.remove()
+    let liteEmbedEl = document.createElement("lite-youtube");
+    liteEmbedEl.setAttribute("videoid", videos[0].id); 
+    mainVideo.style = "background-image: " + "url('https://i.ytimg.com/vi/" + videos[0].id + "/maxresdefault.jpg')"
+    mainVideoBox.appendChild(liteEmbedEl);
+
+    mainTitle.innerHTML = videos[0].titulo;
 
     videos.forEach(video => {
         
@@ -59,7 +78,6 @@ function preenchePlaylist(videos) {
 
 }
 
-
 function alteraVideo(e) {
 
     let clicado = e.currentTarget;
@@ -73,7 +91,6 @@ function alteraVideo(e) {
     mainTitle.innerHTML = clicado.dataset.titulo;
 
     atualizaPlaylist(e.currentTarget);
-
 
 }
 
