@@ -159,6 +159,19 @@ restart.addEventListener("click", () => {
     scoreContainer.classList.add("hide");
 });
 
+let responderBtn = document.querySelector('#responder-button')
+
+responderBtn.addEventListener('click', checaOpcao)
+
+function checaOpcao() {
+    if (opcaoMarcada) {
+        checker(opcaoMarcada)
+        console.log("1")
+    }
+}
+
+
+
 //Next Button
 nextBtn.addEventListener(
     "click",
@@ -182,6 +195,7 @@ nextBtn.addEventListener(
             quizDisplay(questionCount);
             // count = 90;
             clearInterval(countdown);
+            nextBtn.toggleAttribute('disabled');
             // timerDisplay();
         }
     })
@@ -229,18 +243,30 @@ function quizCreator() {
         div.appendChild(question_DIV);
         //options
         div.innerHTML += `
-    <button class="option-div" onclick="checker(this)">${i.alternativas[0]}</button>
-     <button class="option-div" onclick="checker(this)">${i.alternativas[1]}</button>
-      <button class="option-div" onclick="checker(this)">${i.alternativas[2]}</button>
-       <button class="option-div" onclick="checker(this)">${i.alternativas[3]}</button>
-       <button class="option-div" onclick="checker(this)">${i.alternativas[4]}</button>
-    `;
+        <button class="option-div" onclick="marcado(this)">${i.alternativas[0]}</button>
+        <button class="option-div" onclick="marcado(this)">${i.alternativas[1]}</button>
+        <button class="option-div" onclick="marcado(this)">${i.alternativas[2]}</button>
+        <button class="option-div" onclick="marcado(this)">${i.alternativas[3]}</button>
+        <button class="option-div" onclick="marcado(this)">${i.alternativas[4]}</button>
+        `;
         quizContainer.appendChild(div);
     }
 
     questoes = quizArray;
 
 }
+
+let opcaoMarcada;
+
+function marcado(opcao) {
+    let options = document.querySelectorAll(".option-div");
+    options.forEach((opc) => {
+        opc.classList.remove("marcado");
+    })
+    opcao.classList.add("marcado");
+    opcaoMarcada = opcao;
+}
+
 //Checker Function to check if option is correct or not
 function checker(userOption) {
     let userSolution = userOption.innerText;
@@ -263,6 +289,7 @@ function checker(userOption) {
             }
         });
     }
+    nextBtn.toggleAttribute('disabled');
     //clear interval(stop timer)
     clearInterval(countdown);
     //disable all options
@@ -281,6 +308,7 @@ function initial() {
     // timerDisplay();
     quizCreator();
     quizDisplay(questionCount);
+    nextBtn.setAttribute('disabled', "");
 }
 //when user click on start button
 startButton.addEventListener("click", () => {
