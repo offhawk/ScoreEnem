@@ -1,6 +1,7 @@
 let namesEl = document.querySelectorAll('.header-name');
 let usuario = [];
 
+
 firebase.auth().onAuthStateChanged(function(user){
     if(user) {
         salvaUsuario(user);
@@ -18,9 +19,8 @@ function salvaUsuario(user) {
     })   
 }
 
-
 function preencheHeader(usuario) {
-    
+
     namesEl[0].innerHTML = usuario[0].nome;
     namesEl[1].innerHTML = 'Log Out';
     namesEl[1].addEventListener('click', logOut);
