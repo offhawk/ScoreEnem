@@ -8,9 +8,12 @@ firebase.auth().onAuthStateChanged(function(user){
         salvaUsuario(user);
     }
     else{
-        namesEl[0].innerHTML = 'Login';
-        namesEl[1].innerHTML = 'Cadastre-se';
-        hideLoading()
+        if(namesEl.length > 0){
+            namesEl[0].innerHTML = 'Login';
+            namesEl[1].innerHTML = 'Cadastre-se';
+            hideLoading()
+        }
+        else hideLoading()
     }
 })
 

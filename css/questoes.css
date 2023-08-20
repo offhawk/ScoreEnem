@@ -4,7 +4,10 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: 'Inter', sans-serif!important;
+  }
+  h1{
+    font-weight: 600;
   }
   body {
     height: 100vh;
@@ -39,7 +42,7 @@
   #display-container {
     width: 80%;
     max-width: 37.5em;
-    margin: 0 auto;
+    margin: 2em auto;
     border-radius: 15px;
   }
   .header {
@@ -164,6 +167,7 @@
     border-color: black;
   }
   .container-mid{
+    position: relative;
     margin: 3em 0;
     padding: 1em 1.8em 3.1em;
     background-color: #fff;
@@ -202,4 +206,71 @@
   }
   main{
     display: flex;
+  }
+  .correct-answer{
+    padding: -20px;
+    position: absolute;
+    right: 50px;
+    top: 20%;
+    transform: rotate(-30deg);
+    background: rgba(33, 237, 197, .7);
+    box-shadow: 0 8px 32px 0 rgba(10, 255, 202, 0.7);
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 15px;
+    animation: appear normal 500ms ease-in-out, resultado 2000ms alternate infinite ease-in-out 500ms;
+    transition: top 300ms ease-in-out, padding 150ms ease-in-out;
+  }
+  .correct-answer svg{
+    color: #21EDC5;
+    fill: #21EDC5;
+    stroke: #21EDC5;
+    height: 100px;
+    width: auto;
+    animation: resultado 1700ms alternate-reverse infinite ease-in-out;
+  }
+  .wrong-answer svg{
+    fill: #fff;
+    width: 100px;
+    height: auto;
+    padding: 20%;
+    animation: resultado 1700ms alternate infinite ease-in-out;
+  }
+  .correct-answer path{
+    fill: #ffffff;
+    stroke: rgba( 255, 255, 255, 0.18 );
+
+  }
+
+  @keyframes resultado {
+    0%{ -webkit-transform: rotate(0deg); transform: rotate(0deg);}
+    100%{ -webkit-transform: rotate(30deg); transform: rotate(30deg);}
+  }
+  @keyframes appear {
+    0%{ -webkit-transform: scale(0%); transform: scale(0%);}
+    100%{ -webkit-transform: scale(100%); transform: scale(100%);}
+  }
+  .correct-answer:hover, 
+  .wrong-answer:hover{
+    top: 15%;
+    padding: 15px;
+    cursor: pointer;
+  }
+
+  .wrong-answer{
+    padding: -20px;
+    position: absolute;
+    left: 50px;
+    top: 20%;
+    transform: rotate(30deg);
+    background: rgba(237, 33, 33, 0.7);
+    box-shadow: 0 8px 32px 0 rgba(255, 10, 10, 0.7);
+    backdrop-filter: blur( 4px );
+    -webkit-backdrop-filter: blur( 4px );
+    border-radius: 15px;
+    animation: appear normal 500ms ease-in-out, resultado 2000ms alternate infinite ease-in-out 500ms;
+    transition: top 300ms, padding 150ms ease-in-out;
+  }
+  .display-none{
+    display: none!important;
   }
