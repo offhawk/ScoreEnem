@@ -71,6 +71,7 @@
   .question {
     margin-bottom: 1.25em;
     font-weight: 600;
+    text-align: justify;
   }
   .option-div {
     font-size: 0.9em;

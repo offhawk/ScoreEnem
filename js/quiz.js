@@ -170,8 +170,6 @@ function checaOpcao() {
     }
 }
 
-
-
 //Next Button
 nextBtn.addEventListener(
     "click",
