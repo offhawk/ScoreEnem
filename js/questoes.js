@@ -13,10 +13,11 @@ let countdown;
 //Questions and Options array
 let quizArray = []
 let paginas = 1;
+let btnFiltro = document.querySelector('#btn-filtro');
 
 showLoading();
 
-firebase.firestore().collection('questoes').orderBy('ano').limit().get().then((snapshot => {
+firebase.firestore().collection('questoes').orderBy('ano').limit(10).get().then((snapshot => {
     snapshot.forEach((doc) => {
         quizArray.push(doc.data());
     })
@@ -27,9 +28,9 @@ firebase.firestore().collection('questoes').orderBy('ano').limit().get().then((s
     // Construct a new query starting at this document,
     // get the next 25 cities.
     next = firebase.firestore().collection("questoes")
-          .orderBy("ano")
-          .startAfter(lastVisible)
-          .limit(10);
+            .orderBy("ano")
+            .startAfter(lastVisible)
+            .limit(10);
 
     next.get().then((document => {
         document.forEach((doc) => {
@@ -44,9 +45,12 @@ firebase.firestore().collection('questoes').orderBy('ano').limit().get().then((s
     }
 }));
 
+
+
+
 function preenchePaginas() {
     if(quizArray.length > 10){
-        paginas = Math.Round(quizArray / 10)
+        paginas = Math.round(quizArray / 10)
     }
 }
 
@@ -116,6 +120,7 @@ function quizCreator() {
         div.innerHTML += `<button class="responder-button" onclick="checaOpcao(this, `+ "'" + i.questao + "'" +`)">Responder</button>`
         quizContainer.appendChild(div);
     }
+    hideLoading()
 }
 
 let responderBtn = document.querySelectorAll('.responder-button')
@@ -181,3 +186,30 @@ function initial() {
 }
 //when user click on start button
 //hide quiz and display start screen
+
+btnFiltro.addEventListener('click', filtrarQuestoes);
+
+function filtrarQuestoes() {
+    showLoading()
+
+    let materiaVal = document.querySelector('#sel-mat').value;
+
+    quizArray = []
+    
+    if(materiaVal == 'Qualquer'){
+        firebase.firestore().collection('questoes').orderBy('ano').limit().get().then((snapshot => {
+            snapshot.forEach((doc) => {
+                quizArray.push(doc.data());
+            })
+            initial()
+        }))
+    } else {
+        firebase.firestore().collection('questoes').orderBy('ano').where('mat', '==', materiaVal).limit().get().then((snapshot => {
+            snapshot.forEach((doc) => {
+                quizArray.push(doc.data());
+            })
+            initial()
+        }))
+    }
+    
+}
