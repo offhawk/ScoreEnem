@@ -13,6 +13,8 @@ let countdown;
 //Questions and Options array
 let quizArray = []
 
+showLoading();
+
 firebase.firestore().collection('questoes').orderBy('ano').get().then((snapshot => {
     snapshot.forEach((doc) => {
         quizArray.push(doc.data());

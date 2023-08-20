@@ -1,3 +1,5 @@
+showLoading();
+
 let videos = [];
 
 query = location.search.slice(1);
@@ -14,6 +16,7 @@ partes.forEach(function (parte) {
 let videosEl = firebase.firestore().collection('video').where("mat", "==", data.mat).orderBy("order").get().then(snapshot => {
     videos = snapshot.docs.map(doc => doc.data());
     preenchePlaylist(videos);
+    hideLoading();
 })   
 
 const videosDivEl = document.querySelector("#videos-list");

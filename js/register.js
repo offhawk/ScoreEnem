@@ -30,13 +30,15 @@ function isNameValid(e) {
 
 
 function cadastro(e) {
+    showLoading()
     firebase.auth().createUserWithEmailAndPassword(remail.value, rpassword.value).then(response => {
 
         // Registra as informações do usuário no banco de dados
        if(salvaUsuario()){
+            hideLoading()
             window.location.href = "../index.html";
        }
-
+       hideLoading()
     }).catch(error => {
         alert('error 2', error);
     });

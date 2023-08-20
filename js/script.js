@@ -1,6 +1,7 @@
 let namesEl = document.querySelectorAll('.header-name');
 let usuario = [];
 
+showLoading();
 
 firebase.auth().onAuthStateChanged(function(user){
     if(user) {
@@ -9,6 +10,7 @@ firebase.auth().onAuthStateChanged(function(user){
     else{
         namesEl[0].innerHTML = 'Login';
         namesEl[1].innerHTML = 'Cadastre-se';
+        hideLoading()
     }
 })
 
@@ -22,8 +24,11 @@ function salvaUsuario(user) {
 function preencheHeader(usuario) {
 
     namesEl[0].innerHTML = usuario[0].nome;
+    namesEl[0].setAttribute('href', 'profile.html')
     namesEl[1].innerHTML = 'Log Out';
     namesEl[1].addEventListener('click', logOut);
+
+    hideLoading()
 
 }
 
