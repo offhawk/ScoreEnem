@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="../css/videos.css">
     <link rel="stylesheet" href="../css/lite-yt-embed.css">
-    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/scrollbar.css">
     <link rel="shortcut icon" href="../imgs/clip.ico" type="image/x-icon">
-    <title>Vídeos - ScoreEnem</title>
+    <title>Perfil - ScoreEnem</title>
 </head>
 <body>
     <header class="home-header">
@@ -26,18 +26,10 @@
         </div>
 </header>
     <main>
-        <div id="flex-container">
-            <div id="main-container">
-                <h1 class="main-title">Progressão Aritmética</h1>
-                <div id="video-box">
-                    <lite-youtube width="772" height="434" videoid="jY5G67TWKr8"></lite-youtube>
-                </div>
+        <h1 class="main-title">Sua foto de perfil</h1>
             </div>
-            <div id="videos-container">
-                <h1>Veja mais</h1>
-                <div id="videos-list">
-                
-                </div>
+            <div>
+                <h1>Saiba mais sobre mim</h1>
             </div>
         </div>
     </main>
@@ -45,19 +37,8 @@
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
-    <script src="../js/loading.js"></script>
     <script src="../js/firebase.js"></script>
     <script src="../js/login.js"></script>
-    <script src="../js/script.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
-    <script src="../js/jquery.fitvids.js"></script>
-    <script src="../js/lite-yt-embed.js"></script>
-    <script src="../js/videos.js"></script>
-    <script src="../js/auth-guard.js"></script>
-    <script>
-         $('iframe[src*="youtube"]').parent().fitVids();
-         $('.video').fitVids();
-    </script>
-
+    <script src="../js/modal.js"></script>
 </body>
 </html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../css/videos.css">
+    <link rel="stylesheet" href="../css/lite-yt-embed.css">
+    <link rel="stylesheet" href="../css/profile.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="shortcut icon" href="../imgs/clip.ico" type="image/x-icon">
+    <title>Perfil - ScoreEnem</title>
+</head>
+<body>
+    <header class="home-header">
+        <!-- Início Cabeçalho -->
+        <div>
+            <a class="logo-title-header" href="../index.html">ScoreEnem</a>
+        </div>
+        <!-- Links das outras páginas html, login, e o cadastre-se -->
+        <div id="menu-nav">
+            <div class="link-header">
+                <a class="header-name" href="login.html">Login</a>
+                <a class="header-name" href="login.html">Cadastre-se</a>
+            </div>
+        </div>
+</header>
+<main>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">Foto de Perfil</div>
+                <div class="card-body">
+                    <!-- Botão para adicionar uma nova imagem -->
+                    <label class="picture" for="picture__input" tabIndex="0">
+                        <span class="picture__image"></span>
+                      </label>
+                      <input type="file" name="picture__input" id="picture__input">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">Detalhes da sua conta</div>
+                <div class="card-body">
+                    <form>
+                        <!-- Grupo de Formulário (nome de usuário) -->
+                            <label class="small mb-1" for="inputNome">Nome de Usuário (como seu nome aparecerá para outros usuários no site)</label>
+                            <input class="form-control" id="inputNome" type="text" placeholder="Digite seu nome de usuário" value="Nome do usuário">
+                        <!-- Linha de Formulário -->
+                            <!-- Grupo de Formulário (primeiro nome) -->
+                            <div class="col-md-6">
+                                <label  class="small mb-1" for="inputEmail">E-mail</label>
+                                <input disabled class="form-control" id="inputEmail" type="e-mail" placeholder="teste@exemplo.com.br">
+                            </div>
+                            <!-- Grupo de Formulário (último nome) -->
+                                <label  class="small mb-1" for="inputIdade">Idade</label>
+                                <input disabled class="form-control" id="inputIdade" type="text" placeholder="Coloque sua idade">
+                        </div>
+                            <!-- Grupo de Formulário (localização) -->
+                            <div class="col-md-6">
+                                <label  class="small mb-1" for="inputTelefone">Telefone</label>
+                                <input disabled class="form-control" id="inputTelefone" type="text" placeholder="Digite seu Telefone" >
+                            </div>
+                        </div>
+                        <!-- Grupo de Formulário (endereço de e-mail) -->
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputLoc">Localização</label>
+                            <input disabled class="form-control" id="inputLoc" type="text" placeholder="Coloque sua localização">
+                        </div>
+                        <!-- Botão para salvar as alterações -->
+                        <button class="btn btn-primary" type="button">Salvar alterações</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+    <footer></footer>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+    <script src="../js/loading.js"></script>
+    <script src="../js/firebase.js"></script>
+    <script src="../js/login.js"></script>
+    <script src="../js/modal.js"></script>
+    <script src="../js/upload.js"></script>
+    <script src="../js/profile.js"></script>
+    <script src="../js/script.js"></script>
+</body>
+</html>
