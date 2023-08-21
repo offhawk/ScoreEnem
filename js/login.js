@@ -77,7 +77,8 @@ function login() {
 
 function logOut() {
     firebase.auth().signOut().then(() => {
-        window.location.href = "index.html"
+        hideLoading()
+        window.location.href = "../index.html"
     }).catch(() => {
         alert("Erro ao fazer logout");
     })
