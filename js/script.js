@@ -3,7 +3,7 @@ let usuario = [];
 
 firebase.auth().onAuthStateChanged(function(user){
     if(user) {
-        salvaUsuario(user);
+        salvaUsuario(user.uid);
     }
     else{
         namesEl[0].innerHTML = 'Login';
@@ -12,7 +12,7 @@ firebase.auth().onAuthStateChanged(function(user){
 })
 
 function salvaUsuario(user) {
-    let userTest = firebase.firestore().collection('usuario').where('uid', '==', user.uid).get().then(snapshot => {
+    let userTest = firebase.firestore().collection('usuario').where('uid', '==', user).get().then(snapshot => {
         usuario = snapshot.docs.map(doc => doc.data());
         preencheHeader(usuario);
     })   

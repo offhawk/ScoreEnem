@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 let user = null;
 function verificaUsuario() {
   user = localStorage.getItem("userId");
@@ -110,4 +111,107 @@ window.addEventListener("load", function () {
     verificaUsuario();
 });
 
+=======
+let userUid
+
+firebase.auth().onAuthStateChanged(function(user){
+    if(user) {
+        userUid = user.uid;
+    }
+})
+
+function salvaNome() {
+    mostraCarregamento();
+
+    const transaction = novaMudança();
+
+    firebase.firestore()
+        .collection('usuario')
+        .add()
+        .then(() => {
+            hideLoading();
+            window.location.href = "../home/home.html";
+        })
+        .catch(() => {
+            hideLoading();
+            alert('Erro ao salvar alteração');
+        })
+}
+
+function novaMudança() {
+    return {
+        type: form.typeExpense().checked ? "expense" : "income",
+        date: form.date().value,
+        money: {
+            currency: form.currency().value,
+            value: parseFloat(form.value().value)
+        },
+        transactionType: form.transactionType().value,
+        description: form.description().value,
+        user: {
+            uid: firebase.auth().currentUser.uid
+        }
+    };
+}
+
+function atualizaNome() {
+
+    showLoading();
+
+    let nomeUsuario = document.querySelector("#inputNome").value;
+    var washingtonRef = firebase.firestore().collection("usuario").where("uid", "==", userUid).get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            doc.ref.update ({
+                nome: nomeUsuario
+            })
+            
+            .then(() => {
+                console.log("O seu nome foi alterado com sucesso!");
+                salvaUsuario(userUid);
+            })
+            .catch((error) => {
+                // The document probably doesn't exist.
+                console.error("Erro ao atualizar o nome ", error);
+                });
+        });
+    })
+    .catch((error) => {
+        console.log("Error getting documents: ", error);
+    });
+}
+
+//--------------------------------------------------------------
+//TERMINAR
+
+function findTransactions() {
+    showLoading();
+
+    console.log("AAAAAAA");
+
+    let emailUsuario= document.querySelector("#inputEmail").value;
+    let idadeUsuario = document.querySelector("#inputIdade").value;
+    let telUsuario = document.querySelector("#inputTelefone").value;
+    let locUsuario = document.querySelector("#inputLoc").value;
+    let videosUsuario = document.querySelector("#inputVid").value;
+    let jogosUsuario = document.querySelector("#inputJog").value;
+
+    console.log("AAAA");
+
+    firebase.firestore()
+        .collection('usuario')
+        .where('uid', '==', userUid)
+        .get()
+        .then(snapshot => {
+            hideLoading();
+            const transactions = snapshot.docs.map(doc => doc.data());
+            addTransactionsToScreen(transactions);
+        })
+        
+        .catch(error => {
+            hideLoading();
+            console.log(error);
+            alert('Erro ao achar dados');
+        })
+}
+>>>>>>> Stashed changes
 
