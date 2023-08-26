@@ -35,7 +35,7 @@ body::-webkit-scrollbar-thumb {
     top: 50%;
 }
 .loading svg{
-    filter: drop-shadow(0px 0px 10px#21EDC5 ) drop-shadow(0px 0px 25px #21EDC5);
+    filter: drop-shadow(0px 0px 10px #21EDC5) drop-shadow(0px 0px 25px #21EDC5);
     animation: loading 1.5s linear infinite
 }
 

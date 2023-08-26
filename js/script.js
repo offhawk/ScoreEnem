@@ -1,10 +1,9 @@
 let namesEl = document.querySelectorAll('.header-name');
 let usuario = [];
 
-
 firebase.auth().onAuthStateChanged(function(user){
     if(user) {
-        salvaUsuario(user);
+        salvaUsuario(user.uid);
     }
     else{
         namesEl[0].innerHTML = 'Login';
@@ -13,13 +12,15 @@ firebase.auth().onAuthStateChanged(function(user){
 })
 
 function salvaUsuario(user) {
-    let userTest = firebase.firestore().collection('usuario').where('uid', '==', user.uid).get().then(snapshot => {
+    showLoading()
+    let userTest = firebase.firestore().collection('usuario').where('uid', '==', user).get().then(snapshot => {
         usuario = snapshot.docs.map(doc => doc.data());
         preencheHeader(usuario);
+        hideLoading()
+
     })   
 }
 
-function preencheHeader(usuario) {
 
     if(namesEl.length == 1){
         namesEl[0].innerHTML = usuario[0].nome;
@@ -33,3 +34,6 @@ function preencheHeader(usuario) {
 
 }
 
+function irParaMeuPerfil() {
+    window.location.href = "../pages/profile.html";
+}

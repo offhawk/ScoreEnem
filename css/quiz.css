@@ -71,6 +71,7 @@
   .question {
     margin-bottom: 1.25em;
     font-weight: 600;
+    text-align: justify;
   }
   .option-div {
     font-size: 0.9em;
@@ -100,7 +101,29 @@
     box-shadow: rgba(33, 237, 197, 0) 0px 7px 29px 0px;
     transition: box-shadow 200ms ease;
   }
-  #next-button:hover{
+  #next-button:disabled{
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  #responder-button{
+    border: 1px solid black;
+    font-size: 1em;
+    margin-top: 1.5em;
+    font-weight: bold;
+    background-color: #21EDC5;
+    color: #000;
+    padding: 0.7em 1.8em;
+    border-radius: 0.3em;
+    float: left;
+    box-shadow: rgba(33, 237, 197, 0) 0px 7px 29px 0px;
+    transition: box-shadow 200ms ease;
+  }
+  #next-button:disabled{
+    box-shadow: none!important;
+    cursor: not-allowed;
+  }
+
+  #next-button:hover,
+  #responder-button:hover{
     box-shadow: rgba(33, 237, 197, .75) 0px 7px 29px 0px;
   }
   .hide {
@@ -119,4 +142,7 @@
   #user-score {
     font-size: 1.5em;
     color: #ffffff;
+  }
+  .marcado{
+    border-color: black;
   }
