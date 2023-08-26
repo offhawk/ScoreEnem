@@ -21,17 +21,20 @@ function salvaUsuario(user) {
     })   
 }
 
+function preencheHeader(usuario) {
 
-    if(namesEl.length == 1){
-        namesEl[0].innerHTML = usuario[0].nome;
-        namesEl[0].setAttribute('href', 'pages/profile.html')
-    } else {
-        namesEl[0].innerHTML = usuario[0].nome;
-        namesEl[0].setAttribute('href', 'pages/profile.html')
-        namesEl[1].innerHTML = 'Log Out';
-        namesEl[1].addEventListener('click', logOut);
+    if(namesEl.length > 0){
+        if(namesEl.length == 1){
+            namesEl[0].innerHTML = usuario[0].nome;
+            namesEl[0].setAttribute('href', 'pages/profile.html')
+        } else {
+            namesEl[0].innerHTML = usuario[0].nome;
+            namesEl[0].setAttribute('href', 'pages/profile.html')
+            namesEl[1].innerHTML = 'Log Out';
+            namesEl[1].addEventListener('click', logOut);
+        }
     }
-
+   
 }
 
 function irParaMeuPerfil() {
