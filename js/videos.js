@@ -1,3 +1,5 @@
+showLoading();
+
 let videos = [];
 
 query = location.search.slice(1);
@@ -10,11 +12,11 @@ partes.forEach(function (parte) {
     data[chave] = valor;
 });
 
-console.log(data.mat)
 
 let videosEl = firebase.firestore().collection('video').where("mat", "==", data.mat).orderBy("order").get().then(snapshot => {
     videos = snapshot.docs.map(doc => doc.data());
     preenchePlaylist(videos);
+    hideLoading();
 })   
 
 const videosDivEl = document.querySelector("#videos-list");
@@ -26,6 +28,14 @@ let mainVideoBox = document.querySelector("#video-box");
 let videosPlaylistEl = [];
 
 function preenchePlaylist(videos) {
+
+    mainVideoBox.firstElementChild.remove()
+    let liteEmbedEl = document.createElement("lite-youtube");
+    liteEmbedEl.setAttribute("videoid", videos[0].id); 
+    mainVideo.style = "background-image: " + "url('https://i.ytimg.com/vi/" + videos[0].id + "/maxresdefault.jpg')"
+    mainVideoBox.appendChild(liteEmbedEl);
+
+    mainTitle.innerHTML = videos[0].titulo;
 
     videos.forEach(video => {
         
@@ -71,7 +81,6 @@ function preenchePlaylist(videos) {
 
 }
 
-
 function alteraVideo(e) {
 
     let clicado = e.currentTarget;
@@ -85,7 +94,6 @@ function alteraVideo(e) {
     mainTitle.innerHTML = clicado.dataset.titulo;
 
     atualizaPlaylist(e.currentTarget);
-
 
 }
 

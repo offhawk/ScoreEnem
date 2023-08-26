@@ -1,13 +1,19 @@
 let namesEl = document.querySelectorAll('.header-name');
 let usuario = [];
 
+showLoading();
+
 firebase.auth().onAuthStateChanged(function(user){
     if(user) {
         salvaUsuario(user.uid);
     }
     else{
-        namesEl[0].innerHTML = 'Login';
-        namesEl[1].innerHTML = 'Cadastre-se';
+        if(namesEl.length > 0){
+            namesEl[0].innerHTML = 'Login';
+            namesEl[1].innerHTML = 'Cadastre-se';
+            hideLoading()
+        }
+        else hideLoading()
     }
 })
 
@@ -18,17 +24,19 @@ function salvaUsuario(user) {
     })   
 }
 
-
 function preencheHeader(usuario) {
-    
+
     namesEl[0].innerHTML = usuario[0].nome;
+    namesEl[0].setAttribute('href', 'profile.html')
     namesEl[1].innerHTML = 'Log Out';
     namesEl[1].addEventListener('click', logOut);
     namesEl[0].href= "../pages/profile.html";
     namesEl[0].addEventListener('click', irParaMeuPerfil);
 }
 
+
 function irParaMeuPerfil() {
     window.location.href = "../pages/profile.html";
+    hideLoading()
 }
 
