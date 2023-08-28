@@ -54,7 +54,7 @@ function preenchePlaylist(videos) {
 
         img.classList.add('thumbnail-video');
     
-        img.src = "https://i3.ytimg.com/vi/" + video.id + "/maxresdefault.jpg";
+        img.src = "https://i.ytimg.com/vi/" + video.id + "/hqdefault.jpg";
     
         imgContainer.appendChild(img);
     
@@ -88,7 +88,7 @@ function alteraVideo(e) {
     mainVideoBox.firstElementChild.remove()
     let liteEmbedEl = document.createElement("lite-youtube");
     liteEmbedEl.setAttribute("videoid", clicado.dataset.id); 
-    mainVideo.style = "background-image: " + "url('https://i.ytimg.com/vi/" + clicado.dataset.id + "/maxresdefault.jpg')"
+    mainVideo.style = "background-image: " + "url('https://i.ytimg.com/vi/" + clicado.dataset.id + "/hqdefault.jpg')"
     mainVideoBox.appendChild(liteEmbedEl);
 
     mainTitle.innerHTML = clicado.dataset.titulo;
