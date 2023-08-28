@@ -117,7 +117,7 @@ function quizCreator() {
         <button class="option-div" onclick="marcado(this)">${i.alternativas[4]}</button>
     `;
         
-        div.innerHTML += `<button class="responder-button" onclick="checaOpcao(this, `+ "'" + i.questao + "'" +`)">Responder</button>`
+        div.innerHTML += `<button class="responder-button" onclick="checaOpcao(this, ` + `'` + i.questao.replaceAll('"', "").replaceAll("(", "").replaceAll(")", "").replaceAll("'", "") + `'` +`)">Responder</button>`
         quizContainer.appendChild(div);
     }
     hideLoading()
@@ -134,6 +134,7 @@ function marcado(opcao) {
     })
     opcao.classList.add("marcado");
     opcaoMarcada = opcao;
+    console.log(opcaoMarcada)
 }
 
 
@@ -141,7 +142,7 @@ function checaOpcao(btn, id) {
 
     let div = btn.parentNode
     opcaoMarcada = div.querySelector(".marcado")
-
+    console.log("checa opção = " + opcaoMarcada)
     if (opcaoMarcada) {
         checker(opcaoMarcada, div, id)
     }
@@ -152,7 +153,9 @@ function checaOpcao(btn, id) {
 function checker(userOption, question, questionCount) {
     let userSolution = userOption.innerText;
     let options = question.querySelectorAll(".option-div");
-    let quiz = quizArray.find((quizz) => quizz.questao == questionCount)
+    let quiz = quizArray.find((quizz) => quizz.questao.replaceAll('"', "").replaceAll("(", "").replaceAll(")", "").replaceAll("'", "") == questionCount)
+    console.log("Marcado = " + userSolution)
+    console.log("Correta = " + quiz.correta)
     //if user clicked answer == correct option stored in object
     if (userSolution === quiz.correta) {
         userOption.classList.add("correct");
