@@ -146,7 +146,7 @@ const quizArray = [
 
 let quizArray = []
 
-firebase.firestore().collection('questoes').orderBy('ano').get().then((snapshot => {
+firebase.firestore().collection('questoes').orderBy('ano').limit(10).get().then((snapshot => {
     snapshot.forEach((doc) => {
         quizArray.push(doc.data());
     })
