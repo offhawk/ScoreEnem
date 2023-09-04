@@ -66,19 +66,26 @@ function validatePassword(password) {
 
 function login() {
     
+    showLoading()
+
     firebase.auth().signInWithEmailAndPassword(email.value, password.value).then(response => {
         window.location.href = "../index.html";
+        hideLoading()
         console.log('success', response);
     }).catch(error => {
+        hideLoading()
         loginErro.classList.toggle('hidden');
         loginErro.innerHTML = "Usuário ou senha incorretos."
     });
 }
 
 function logOut() {
+    showLoading()
     firebase.auth().signOut().then(() => {
-        window.location.href = "index.html"
+        hideLoading()
+        window.location.href = "../index.html"
     }).catch(() => {
+        hideLoading()
         alert("Erro ao fazer logout");
     })
 }

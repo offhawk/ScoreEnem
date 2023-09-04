@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap-select.css" />
+    <link rel="stylesheet" href="../css/questoes.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <title>ScoreEnem - Quiz</title>
+</head>
+<body>
+    <main>
+        <div id="nav-container">
+            <nav id="sidenav"></nav>
+        </div>
+        <div id="display-container">
+            <div>
+                <h1>Questões</h1>
+                <p>Teste seu conhecimento!</p>
+            </div>
+            <div class="border rounded p-4">
+                <h4 class="mb-3">Filtre as questões</h4>
+                    <form>
+                <!-- columns -->
+                <div class="form-group">
+                <div class="form-row align-items-center">
+                    <div class="col-md-5 mb-3">
+                        <div class="form-group">
+                            <label for="select_id_2">Matéria</label>
+                            <select class="selectpicker form-control" data-live-search="true" name="select_id_2" id="sel-mat">
+                                <option data-tokens="all tudo todas qualquer todo">Qualquer</option>
+                                <option data-tokens="biologia">Biologia</option>
+                                <option data-tokens="filosofia">Filosofia</option>
+                                <option data-tokens="fisica">Física</option>
+                                <option data-tokens="geografia">Geografia</option>
+                                <option data-tokens="historia">História</option>
+                                <option data-tokens="matematica">Matemática</option>
+                            </select>       
+                        </div>               
+                    </div>
+                    <div class="col-md-7 mb-3">
+                        <div class="form-group">
+                            <label for="select_id_2">Assunto</label>
+                            <select class="selectpicker form-control" data-live-search="true" name="select_id_3">
+                                <option data-tokens="qualquer all tudo todas todo todos">Qualquer</option>
+                                <option data-tokens="ciencias das naturezas">Ciências das Naturezas</option>
+                                <option data-tokens="ciencias humanas">Ciências Humanas</option>
+                                <option data-tokens="linguagens">Linguagens</option>
+                                <option data-tokens="matematica">Matemática</option>
+                            </select>       
+                        </div>   
+                    </div>
+                </div>
+                </div>
+                <div class="form-group">
+                <div class="form-row align-items-center">
+                    <div class="col-md-4 mb-3">
+                        <div class="form-group">
+                            <label for="select_id_2">Instituição</label>
+                            <select class="selectpicker form-control" data-live-search="true" name="select_id_4">
+                                <option data-tokens="all tudo todas todo">Todas</option>
+                                <option data-tokens="enem">ENEM</option>
+                                <option data-tokens="cefet">CEFET</option>
+                            </select>       
+                        </div>
+                    </div>   
+                    <div class="col-md-4 mb-3">
+                        <div class="form-group">
+                            <label for="select_id_2">Ano</label>
+                            <select class="selectpicker form-control" data-live-search="true" name="select_id_5">
+                                <option data-tokens="all todos tudo">Todos</option>
+                                <option data-tokens="2023">2023</option>
+                                <option data-tokens="2022">2022</option>
+                                <option data-tokens="2021">2021</option>
+                            </select>       
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div>
+                            <button type="button" class="btn btn-primary form-control" name="button_id_2" id="btn-filtro">Filtrar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                </div>
+                
+                </form>
+            </div>
+            <div class="p-4">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1">Anterior</a>
+                        </li>
+                        <li class="page-item"><a class="page-link" onclick="alteraPagina(this)">1</a></li>
+                        <li class="page-item"><a class="page-link" onclick="alteraPagina(this)">2</a></li>
+                        <li class="page-item">
+                        <a class="page-link" href="#">Próxima</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div id="container"></div>
+            <nav aria-label="Page navigation example">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1" onclick="alteraPagina(this)">Anterior</a>
+                  </li>
+                  <li class="page-item"><a class="page-link" onclick="alteraPagina(this)">1</a></li>
+                  <li class="page-item"><a class="page-link" onclick="alteraPagina(this)">2</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">Próxima</a>
+                  </li>
+                </ul>
+            </nav>
+        </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
+    <script src="../js/bootstrap-select.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+    <script src="../js/loading.js"></script>
+    <script src="../js/firebase.js"></script>
+    <script src="../js/login.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/questoes.js"></script>
+    <script>
+        $.fn.selectpicker.Constructor.BootstrapVersion = '4';
+    </script>
+</body>
+</html>

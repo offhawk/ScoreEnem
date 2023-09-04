@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/lite-yt-embed.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="shortcut icon" href="../imgs/clip.ico" type="image/x-icon">
+    <title>Dashboard - ScoreEnem</title>
+</head>
+<body>
+    <div class="d-flex" id="wrapper">
+        <div class="border-end bg-white" id="sidebar-wrapper">
+            <div class="sidebar-heading border-bottom bs-light" id="perfil-infos">
+                <img src="https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg" id="profile-pic">
+                <p class="header-name" id="profile-name"></p>
+            </div>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item items-dashboard" href="../index.html"> 
+                    <img class="menu-images" src="https://cdn1.iconfinder.com/data/icons/jumpicon-basic-ui-line-1/32/-_Home-House--512.png" width="35px" height="35px"/> 
+                    <p class="menu-items">Home</p>
+                </a>
+                <a class="list-group-item items-dashboard" href="selecconteudos.html"> 
+                    <img class="menu-images" src="https://cdn0.iconfinder.com/data/icons/ecommerce-online-shopping-1/20/outline_ecommerce-video-512.png" width="35px" height="35px"/> 
+                    <p class="menu-items">Vídeos</p>
+                </a>
+                <a class="list-group-item items-dashboard" href="questoes.html"> 
+                    <img class="menu-images" src="https://cdn4.iconfinder.com/data/icons/education-and-school-10/800/exam-512.png" width="35px" height="35px"/> 
+                    <p class="menu-items">Questões</p>
+                </a>
+                <a class="list-group-item items-dashboard" href="quiz.html"> 
+                    <img class="menu-images" src="https://cdn0.iconfinder.com/data/icons/online-learning-142/64/online_test_-512.png" width="35px" height="35px"/> 
+                    <p class="menu-items">Quiz</p>
+                </a>
+                <a class="list-group-item items-dashboard" href="../index.html"> 
+                    <img class="menu-images" src="https://cdn0.iconfinder.com/data/icons/retail-shopping-5/20/outline_retail-performance-512.png" width="35px" height="35px"/>
+                    <p class="menu-items">Desempenho</p>
+                </a>
+                <a class="list-group-item items-dashboard" onclick="logOut()" id="sair"> 
+                    <img class="menu-images" src="https://cdn4.iconfinder.com/data/icons/basic-user-interface-elements/700/exit-enter-leave-in-door-256.png" width="35px" height="35px"/>
+                    <p class="menu-items">Sair</p>
+                </a>
+            </div>
+        </div>
+        <div class="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="container px-4 text-center">
+                    <div class="row gx-5 p-3">
+                        <h1>Vídeos</h1>
+                        <div class="col">
+                            <a class="p-3" href="videos.html?mat=cienat">
+                                <div>Ciências da Natureza</div>
+                            </a>
+                        </div>  
+                        <div class="col">
+                            <a class="p-3" href="videos.html?mat=ciehum">
+                                <div>Ciências Humanas</div>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a class="p-3" href="videos.html?mat=ling">
+                                <div>Linguagens</div>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="videos.html?mat=mat" class="p-3">
+                                <div>Matemática</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="buttons-dashboard text-center p-3 row">
+                    <div>
+                        <h1>Questões</h1>
+                        <div class="col">
+                            <a href="questoes.html" class="p-3">
+                                <div>Acesse</div>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <h1>Quiz</h1>
+                        <div class="col">
+                            <a href="quiz.html" class="p-3">
+                                <div>Acesse</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+    <script src="../js/loading.js"></script>
+    <script src="../js/firebase.js"></script>
+    <script src="../js/login.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/auth-guard.js"></script>
+</body>
+</html>

@@ -1,8 +1,22 @@
+showLoading();
+
 let videos = [];
 
-let videosEl = firebase.firestore().collection('video').orderBy("order").get().then(snapshot => {
+query = location.search.slice(1);
+partes = query.split('&');
+data = {};
+partes.forEach(function (parte) {
+    let chaveValor = parte.split('=');
+    let chave = chaveValor[0];
+    let valor = chaveValor[1];
+    data[chave] = valor;
+});
+
+
+let videosEl = firebase.firestore().collection('video').where("mat", "==", data.mat).orderBy("order").get().then(snapshot => {
     videos = snapshot.docs.map(doc => doc.data());
     preenchePlaylist(videos);
+    hideLoading();
 })   
 
 const videosDivEl = document.querySelector("#videos-list");
@@ -14,6 +28,14 @@ let mainVideoBox = document.querySelector("#video-box");
 let videosPlaylistEl = [];
 
 function preenchePlaylist(videos) {
+
+    mainVideoBox.firstElementChild.remove()
+    let liteEmbedEl = document.createElement("lite-youtube");
+    liteEmbedEl.setAttribute("videoid", videos[0].id); 
+    mainVideo.style = "background-image: " + "url('https://i.ytimg.com/vi/" + videos[0].id + "/maxresdefault.jpg')"
+    mainVideoBox.appendChild(liteEmbedEl);
+
+    mainTitle.innerHTML = videos[0].titulo;
 
     videos.forEach(video => {
         
@@ -32,7 +54,7 @@ function preenchePlaylist(videos) {
 
         img.classList.add('thumbnail-video');
     
-        img.src = "https://i3.ytimg.com/vi/" + video.id + "/maxresdefault.jpg";
+        img.src = "https://i.ytimg.com/vi/" + video.id + "/hqdefault.jpg";
     
         imgContainer.appendChild(img);
     
@@ -59,7 +81,6 @@ function preenchePlaylist(videos) {
 
 }
 
-
 function alteraVideo(e) {
 
     let clicado = e.currentTarget;
@@ -67,13 +88,12 @@ function alteraVideo(e) {
     mainVideoBox.firstElementChild.remove()
     let liteEmbedEl = document.createElement("lite-youtube");
     liteEmbedEl.setAttribute("videoid", clicado.dataset.id); 
-    mainVideo.style = "background-image: " + "url('https://i.ytimg.com/vi/" + clicado.dataset.id + "/maxresdefault.jpg')"
+    mainVideo.style = "background-image: " + "url('https://i.ytimg.com/vi/" + clicado.dataset.id + "/hqdefault.jpg')"
     mainVideoBox.appendChild(liteEmbedEl);
 
     mainTitle.innerHTML = clicado.dataset.titulo;
 
     atualizaPlaylist(e.currentTarget);
-
 
 }
 
@@ -85,4 +105,54 @@ function atualizaPlaylist(elemento) {
     
     elemento.classList.toggle('play-select');
 
+}
+
+function addComment() {
+
+
+    let liteEmbedEl = document.querySelector("lite-youtube");
+    console.log(liteEmbedEl.getAttribute('videoid'))
+
+    let comment = document.querySelector('#input-comment').value
+
+    console.log(comment)
+
+    const videosRef = firebase.firestore().collection("videos");
+    const q = firebase.firestore().collection('video').where('id', '==', liteEmbedEl.getAttribute('videoid')).get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            doc.ref.update({
+                comments: firebase.firestore.FieldValue.arrayUnion(comment)
+            });
+            atualizaComentario(doc.ref)
+        });
+    })
+    .catch((error) => {
+        console.log("Error getting documents: ", error);
+    });
+
+
+}
+
+function atualizaComentario(docRef) {
+    // Pegue o documento do vídeo no banco de dados
+  
+    let comments = []
+
+    // Retorne os comentários do vídeo
+    docRef.get().then(document => {
+      //return document.data().comments;
+      comments.push(document.data().comments)
+    });
+
+    console.log(comments)
+
+  //Obtém os comentários do documento
+  //Percorre os comentários e os adiciona à lista
+  comments.forEach((comment) => {
+    const li = document.createElement("li");
+    li.innerText = comment.author + " - " + comment.content;
+    document.querySelector(".comments").appendChild(li);
+  });
 }
