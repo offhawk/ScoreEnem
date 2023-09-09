@@ -771,6 +771,7 @@ footer {
   }
 .responder-button:hover{
     box-shadow: rgba(33, 237, 197, .75) 0px 7px 29px 0px;
+    cursor: pointer;
   }
 
 #profile-pic {
