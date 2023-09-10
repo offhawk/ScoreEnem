@@ -51,27 +51,32 @@
             <div id="cadastro-bg">
                 <div id="modal-cadastro">
                     <h1 id="titulo-cadastro">Cadastre-se</h1>
-                    <span onclick="alteraModal()">x</span>
+                    <span id="closeModal" onclick="alteraModal()">x</span>
                     <div id="label-cadastro">
                         <label>
                             Nome
-                            <input name="nome" id="nome" placeholder="Nome Sobrenome">
+                            <input class="inputs required" name="nome" id="nome" placeholder="Nome Sobrenome" oninput="nameValidate()">
+                            <span class="span-required">Mínimo 3 caracteres</span>
                         </label>
                         <label>
                             Telefone
-                            <input type="tel" name="telefone" id="telefone" pattern="(\([0-9]{2}\))\s([9]{1})?([0-9]{4})-([0-9]{4})" placeholder="+55 31 9 1234 5678">
+                            <input class="inputs required" type="tel" name="telefone" id="telefone" pattern="(\([0-9]{2}\))\s([9]{1})?([0-9]{4})-([0-9]{4})" placeholder="(xx)xxxx-xxxx" oninput="telValidate()">
+                            <span class="span-required">Telefone inválido</span>
                         </label>
                         <label>
                             E-mail
-                            <input type="email" name="r-email" id="r-email" placeholder="seuemail@gmail.com" onchange="validateFields('input-cadastro')">
+                            <input class="inputs required" type="email" name="r-email" id="r-email" placeholder="seuemail@gmail.com" onchange="validateFields('input-cadastro')" oninput="emailValidate()">
+                            <span class="span-required">Email inválido</span>
                         </label>
                         <label>
                             Senha
-                            <input type="password" name="r-password" id="r-password" placeholder="********" onchange="validateFields('input-cadastro')">
+                            <input class="inputs required" type="password" name="r-password" id="r-password" placeholder="********" onchange="validateFields('input-cadastro')" oninput="mainPasswordValidate()">
+                            <span class="span-required">Mínimo 6 caracteres</span>
                         </label>
                         <label>
                             Confirmar Senha
-                            <input type="password" name="confirmpassword" id="confirmpassword" placeholder="********" onchange="validateFields('input-cadastro')">
+                            <input class="inputs required" type="password" name="confirmpassword" id="confirmpassword" placeholder="********" onchange="validateFields('input-cadastro')"  oninput="comparePassword()">
+                            <span class="span-required">Senhas devem ser compatíveis</span>
                         </label>
                         <button type="button" id="input-cadastro" value="CADASTRAR" onclick="cadastro()" disabled>CADASTRAR</button>
                     </div>
@@ -87,5 +92,6 @@
     <script src="../js/firebase.js"></script>
     <script src="../js/login.js"></script>
     <script src="../js/modal.js"></script>
+    <script src="../js/cadastro.js"></script>
 </body>
 </html>

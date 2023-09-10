@@ -9,7 +9,7 @@ function validateFieldsReg(e) {
     const passwordValid = isPasswordValid();
     const telValid = isTelValid();
     const nameValid = isNameValid();
-    document.getElementById('input-cadastro').disabled = !emailValid || !passwordValid || !telValid || !nameValid;
+    //document.getElementById('input-cadastro').disabled = !emailValid || !passwordValid || !telValid || !nameValid;
 
 }
 
@@ -40,7 +40,8 @@ function cadastro(e) {
        }
        hideLoading()
     }).catch(error => {
-        alert('error 2', error);
+        alert(error);
+        console.log(error);
     });
 }
 
