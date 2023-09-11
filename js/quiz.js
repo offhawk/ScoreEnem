@@ -21,6 +21,7 @@ let userWrong = 0;
 firebase.auth().onAuthStateChanged(function(user){
     if(user) {
         preencheUser(user);
+        preencheClassificacao('#table-class')
     }
     else{
         window.location.href = 'login.html?logado=0'
@@ -150,8 +151,14 @@ nextBtn.addEventListener(
                    doc.ref.update({
                         correto: firebase.firestore.FieldValue.increment(userCorrect),
                         incorreto: firebase.firestore.FieldValue.increment(userWrong),
-                        jogado: firebase.firestore.FieldValue.increment(userPlayed)
+                        jogado: firebase.firestore.FieldValue.increment(userPlayed),
                    })
+
+                   let a = doc.data();
+
+                    doc.ref.update({
+                        rating: Math.round((a.correto * 100) / a.jogado)
+                    })
                 })
             }));
 
@@ -323,22 +330,14 @@ window.onload = () => {
 
 function atualizaUser() {
 
-    /* let addUser2 = [{...addUser, quizArray}]
-
-    userRef.update({
-        historico: firebase.firestore.FieldValue.arrayUnion(...addUser2)
-    }); 
-
-    */
+    preencheClassificacao('#table-class-2')
 
 }
 
-preencheClassificacao()
-
-function preencheClassificacao() {
+function preencheClassificacao(table) {
     
     let classArray = []
-    let tableEl = document.querySelector('#table-class');
+    let tableEl = document.querySelector(table);
     firebase.firestore().collection('classificacao').orderBy('rating').get().then((snapshot => {
         let index = 0;
 
@@ -351,12 +350,10 @@ function preencheClassificacao() {
                                         <td>${user.jogado}</td>
                                         <td>${user.incorreto}</td>
                                         <td>${user.correto}</td>
-                                        <td>${Math.round((user.correto * 100) / user.jogado)}</td>
+                                        <td>${user.rating}</td>
                                     </tr>`
         })
     }));
-
-
 
 
 }

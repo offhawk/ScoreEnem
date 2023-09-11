@@ -26,9 +26,18 @@
     align-items: center;
     justify-content: center;
   }
-  .start-screen{
+  .score-container{
+    flex-direction: row;
+    gap: 20px;
+  }
+  .start-screen,
+  .score-container{
     padding: 100px;
     display: block;
+  }
+  .score-container-wrapper{
+    display: flex;
+    gap: 20px;
   }
   button {
     border: none;
@@ -254,6 +263,16 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+  }
+
+  #score-result-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #result-class{
+    width: 100%;
   }
 
   .table th, .table td{
