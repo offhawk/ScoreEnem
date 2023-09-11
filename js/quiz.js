@@ -9,57 +9,14 @@ let restart = document.getElementById("restart");
 let userScore = document.getElementById("user-score");
 let startScreen = document.querySelector(".start-screen");
 let startButton = document.getElementById("start-button");
+let imgResult = document.querySelector('#img-result');
 let questionCount;
 let scoreCount = 0;
-let count = 11;
+let count = 20;
 let countdown;
-let addUser = [
-    {
-        marcado: 0,
-        acerto: true
-
-    }, 
-    {
-        marcado: 0,
-        acerto: true
-    }, 
-    {
-        marcado: 0,
-        acerto: true
-    }, 
-    {
-        marcado: 0,
-        acerto: true
-    }, 
-    {
-        marcado: 0,
-        acerto: true
-    }, 
-    {
-        marcado: 0,
-        acerto: true
-    }, 
-    {
-        marcado: 0,
-        acerto: true
-    }, 
-    {
-        marcado: 0,
-        acerto: true
-    }, 
-    {
-        marcado: 0,
-        acerto: true
-    }, 
-    {
-        marcado: 0,
-        acerto: true
-    }, 
-    {
-        marcado: 0,
-        acerto: true
-    }
-];
+let userPlayed = 0;
+let userCorrect = 0;
+let userWrong = 0;
 
 firebase.auth().onAuthStateChanged(function(user){
     if(user) {
@@ -146,17 +103,13 @@ const quizArray = [
 
 let quizArray = []
 
-firebase.firestore().collection('questoes').orderBy('ano').limit(10).get().then((snapshot => {
-    snapshot.forEach((doc) => {
-        quizArray.push(doc.data());
-    })
-}));
-
 //Restart Quiz
 restart.addEventListener("click", () => {
-    initial();
-    displayContainer.classList.remove("hide");
-    scoreContainer.classList.add("hide");
+    startScreen.classList.remove("hide");
+    displayContainer.classList.add("hide");
+    scoreContainer.classList.add("hide")
+
+    quizArray = []
 });
 
 let responderBtn = document.querySelector('#responder-button')
@@ -166,7 +119,6 @@ responderBtn.addEventListener('click', checaOpcao)
 function checaOpcao() {
     if (opcaoMarcada) {
         checker(opcaoMarcada)
-        console.log("1")
     }
 }
 
@@ -182,6 +134,27 @@ nextBtn.addEventListener(
             displayContainer.classList.add("hide");
             scoreContainer.classList.remove("hide");
             //user score
+            let media = (scoreCount * 100) / questionCount;
+            if(media >= 60 && scoreCount > 0){
+                imgResult.src = '../imgs/Correto.png';
+                document.querySelector('#score-result').classList.add('correct')
+                
+            } else{
+                imgResult.src = '../imgs/Errado.png';
+                document.querySelector('#score-result').classList.add('incorrect')
+            }
+
+            firebase.firestore().collection('classificacao').where('usuario.id', '==', user.uid).get().then((snapshot => {
+        
+                snapshot.forEach((doc) => {
+                   doc.ref.update({
+                        correto: firebase.firestore.FieldValue.increment(userCorrect),
+                        incorreto: firebase.firestore.FieldValue.increment(userWrong),
+                        jogado: firebase.firestore.FieldValue.increment(userPlayed)
+                   })
+                })
+            }));
+
             userScore.innerHTML =
                 "Você acertou " + scoreCount + " de " + questionCount + " questões.";
             atualizaUser();
@@ -223,6 +196,7 @@ const quizDisplay = (questionCount) => {
 
 //Quiz Creation
 function quizCreator() {
+
     //randomly sort questions
     quizArray.sort(() => Math.random() - 0.5);
     //generate quiz
@@ -268,24 +242,23 @@ function marcado(opcao) {
 //Checker Function to check if option is correct or not
 function checker(userOption) {
     let userSolution = userOption.innerText;
-    let question =
-        document.getElementsByClassName("container-mid")[questionCount];
+    let question = document.getElementsByClassName("container-mid")[questionCount];
     let options = question.querySelectorAll(".option-div");
-    addUser[questionCount].marcado = userSolution;
+    userPlayed++;
     //if user clicked answer == correct option stored in object
     if (userSolution === quizArray[questionCount].correta) {
         userOption.classList.add("correct");
         scoreCount++;
-        addUser[questionCount].acerto = true;
+        userCorrect++;
     } else {
         userOption.classList.add("incorrect");
-        addUser[questionCount].acerto = false;
         //For marking the correct option
         options.forEach((element) => {
             if (element.innerText == quizArray[questionCount].correta) {
                 element.classList.add("correct");
             }
         });
+        userWrong++
     }
     nextBtn.toggleAttribute('disabled');
     //clear interval(stop timer)
@@ -298,6 +271,11 @@ function checker(userOption) {
 }
 //initial setup
 function initial() {
+
+    userPlayed = 0;
+    userCorrect = 0;
+    userWrong = 0;
+
     quizContainer.innerHTML = "";
     questionCount = 0;
     scoreCount = 0;
@@ -310,9 +288,32 @@ function initial() {
 }
 //when user click on start button
 startButton.addEventListener("click", () => {
-    startScreen.classList.add("hide");
-    displayContainer.classList.remove("hide");
-    initial();
+
+    let materiaVal = document.querySelector('#sel-mat').value;
+    let qtdeVal = document.querySelector('#sel-qtde').value;
+
+    console.log(materiaVal + " " + qtdeVal)
+
+    if(materiaVal == "Qualquer"){
+        firebase.firestore().collection('questoes').orderBy('ano').limit(qtdeVal).get().then((snapshot => {
+            snapshot.forEach((doc) => {
+                quizArray.push(doc.data());
+            })
+            startScreen.classList.add("hide");
+            displayContainer.classList.remove("hide");
+            initial();
+        }));
+    } else {
+        firebase.firestore().collection('questoes').orderBy('ano').where('mat', '==', materiaVal).limit(qtdeVal).get().then((snapshot => {
+            snapshot.forEach((doc) => {
+                quizArray.push(doc.data());
+            })
+            startScreen.classList.add("hide");
+            displayContainer.classList.remove("hide");
+            initial();
+        }));
+    }
+
 });
 //hide quiz and display start screen
 window.onload = () => {
@@ -322,10 +323,40 @@ window.onload = () => {
 
 function atualizaUser() {
 
-    let addUser2 = [{...addUser, quizArray}]
+    /* let addUser2 = [{...addUser, quizArray}]
 
     userRef.update({
         historico: firebase.firestore.FieldValue.arrayUnion(...addUser2)
     }); 
+
+    */
+
+}
+
+preencheClassificacao()
+
+function preencheClassificacao() {
+    
+    let classArray = []
+    let tableEl = document.querySelector('#table-class');
+    firebase.firestore().collection('classificacao').orderBy('rating').get().then((snapshot => {
+        let index = 0;
+
+        snapshot.forEach((doc) => {
+            let user = doc.data();
+            index++;
+            tableEl.innerHTML +=    `<tr>
+                                        <th scope="row">${index}</th>
+                                        <td>${user.usuario.nome.split(' ')[0]}</td>
+                                        <td>${user.jogado}</td>
+                                        <td>${user.incorreto}</td>
+                                        <td>${user.correto}</td>
+                                        <td>${Math.round((user.correto * 100) / user.jogado)}</td>
+                                    </tr>`
+        })
+    }));
+
+
+
 
 }
