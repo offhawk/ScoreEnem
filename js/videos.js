@@ -146,7 +146,7 @@ function atualizaComentario(docRef) {
   
     let comments = []
     let ul = document.getElementById("ul-comments");
-
+    ul.innerHTML = ' '
     // Retorne os comentários do vídeo
     docRef.get().then(document => {
       //return document.data().comments;
@@ -163,8 +163,11 @@ function atualizaComentario(docRef) {
 function addLike() {
     const likeRef = firebase.firestore().collection("videos");
     const h1 = document.createElement("h1");
-    h1.innerText = ('Curtir') + increment(1);
+    h1.innerText = increment(1) + ('Curtir') ;
     document.querySelector(--).appendChild(h1);
-    console.log(a);
+    docRef.get().then(document => {
+      
+      })
+    });
 }
 */
