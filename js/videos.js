@@ -94,6 +94,13 @@ function alteraVideo(e) {
     mainTitle.innerHTML = clicado.dataset.titulo;
 
     atualizaPlaylist(e.currentTarget);
+    const q = firebase.firestore().collection('video').where('id', '==', liteEmbedEl.getAttribute('videoid')).get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            atualizaComentario(doc.ref)
+        });
+    })
 
 }
 
@@ -117,7 +124,6 @@ function addComment() {
 
     console.log(comment)
 
-    const videosRef = firebase.firestore().collection("videos");
     const q = firebase.firestore().collection('video').where('id', '==', liteEmbedEl.getAttribute('videoid')).get()
     .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
@@ -139,20 +145,29 @@ function atualizaComentario(docRef) {
     // Pegue o documento do vídeo no banco de dados
   
     let comments = []
-
+    let ul = document.getElementById("ul-comments");
+    ul.innerHTML = ' '
     // Retorne os comentários do vídeo
     docRef.get().then(document => {
       //return document.data().comments;
-      comments.push(document.data().comments)
+      let data = document.data().comments
+      data.forEach((c) => {
+        ul.innerHTML += '<li>' + c + '</li>';
+      })
     });
 
-    console.log(comments)
-
-  //Obtém os comentários do documento
-  //Percorre os comentários e os adiciona à lista
-  comments.forEach((comment) => {
-    const li = document.createElement("li");
-    li.innerText = comment.author + " - " + comment.content;
-    document.querySelector(".comments").appendChild(li);
-  });
 }
+//like
+
+/*
+function addLike() {
+    const likeRef = firebase.firestore().collection("videos");
+    const h1 = document.createElement("h1");
+    h1.innerText = increment(1) + ('Curtir') ;
+    document.querySelector(--).appendChild(h1);
+    docRef.get().then(document => {
+      
+      })
+    });
+}
+*/

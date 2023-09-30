@@ -28,8 +28,9 @@ function isNameValid(e) {
     return true;
 }
 
+document.getElementById('input-cadastro').addEventListener('click', cadastro)
 
-function cadastro(e) {
+function cadastro() {
     showLoading()
     firebase.auth().createUserWithEmailAndPassword(remail.value, rpassword.value).then(response => {
 
