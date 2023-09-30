@@ -32,6 +32,12 @@
                 <div id="video-box">
                     <lite-youtube width="772" height="434" videoid="jY5G67TWKr8"></lite-youtube>
                 </div>
+                <div id="like" onclick="addLike()">
+                    <div>
+                    <div id="heart"></div>
+                </div>
+                    <h1>Curtir</h1>
+                </div>
             </div>
             <div id="videos-container">
                 <h1>Veja mais</h1>
@@ -41,7 +47,7 @@
             </div>
         </div>
         <div class="comments-box">
-            <ul class="comments">
+            <ul class="comments" id="ul-comments">
             </ul>
             <div class="comment-form">
               <input type="text" placeholder="Adicione um comentário..." id="input-comment">

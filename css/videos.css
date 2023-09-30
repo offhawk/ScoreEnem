@@ -252,3 +252,46 @@ p{
     background-color: #21EDC5;
     border-bottom: 2px solid black;
 }
+#like {
+    display: flex;
+    width: 20%;
+    height: 10%;
+}
+#heart { 
+    margin: 10px;
+    position: relative; 
+    width: 100px; 
+    height: 90px; 
+} 
+
+#heart:before, #heart:after { 
+    position: absolute; 
+    content: ""; 
+    left: 50px; 
+    top: 0; 
+    width: 50px; 
+    height: 80px; 
+    background: red; 
+    border-radius: 50px 50px 0 0; 
+    transform: rotate(-45deg); 
+    transform-origin: 0 100%; 
+} 
+
+#heart:after { 
+    left: 0; 
+    transform: rotate(45deg); 
+    transform-origin :100% 100%; 
+}
+ul {
+    border: 1px solid black;
+    border-radius: 15px;
+    padding-left:0;
+    padding-top:0 ;
+    padding-bottom: .1em;
+}
+li {
+    padding: .5em;
+    margin: 0;
+    list-style: none;
+    border-bottom: solid 1px rgb(117, 117, 117);
+}

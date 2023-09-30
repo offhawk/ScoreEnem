@@ -32,11 +32,13 @@ let user = {}
 let userRef
 
 function preencheUser(u) {
-    firebase.firestore().collection('usuario').doc(u.uid).get().then((snapshot => {
-        user = snapshot.data();
+    firebase.firestore().collection('usuario').where('uid', '==', u.uid).get().then((snapshot => {
+        snapshot.forEach((doc) => {
+            user = doc.data();
+        })
     }));
 
-    userRef = firebase.firestore().collection('usuario').doc(u.uid);
+    userRef = firebase.firestore().collection('usuario').where('uid', '==', u.uid).get();
 }
 
 /* Questions and Options array
@@ -147,19 +149,48 @@ nextBtn.addEventListener(
 
             firebase.firestore().collection('classificacao').where('usuario.id', '==', user.uid).get().then((snapshot => {
         
-                snapshot.forEach((doc) => {
-                   doc.ref.update({
-                        correto: firebase.firestore.FieldValue.increment(userCorrect),
-                        incorreto: firebase.firestore.FieldValue.increment(userWrong),
-                        jogado: firebase.firestore.FieldValue.increment(userPlayed),
-                   })
+                if(snapshot.empty){
+                    console.log('vazio')
 
-                   let a = doc.data();
-
-                    doc.ref.update({
-                        rating: Math.round((a.correto * 100) / a.jogado)
+                    firebase.firestore().collection("classificacao").add({
+                        correto: userCorrect,
+                        incorreto: userWrong,
+                        jogado: userPlayed,
+                        rating: 0,
+                        usuario: { id: user.uid, nome: user.nome}
                     })
-                })
+                    .then((docRef) => {
+    
+    
+                        docRef.get().then((shot => {
+                            let b = shot.data();
+    
+                            
+                            docRef.update({
+                                rating: Math.round((b.correto * 100) / b.jogado)
+                            })
+                        }))
+    
+                    })
+                    .catch((error) => {
+                        console.error("Error adding document: ", error);
+                    });
+                } else {
+                    snapshot.forEach((doc) => {
+                        doc.ref.update({
+                             correto: firebase.firestore.FieldValue.increment(userCorrect),
+                             incorreto: firebase.firestore.FieldValue.increment(userWrong),
+                             jogado: firebase.firestore.FieldValue.increment(userPlayed),
+                        })
+     
+                        let a = doc.data();
+     
+                         doc.ref.update({
+                             rating: Math.round((a.correto * 100) / a.jogado)
+                         })
+                     })
+                }
+
             }));
 
             userScore.innerHTML =
@@ -338,7 +369,7 @@ function preencheClassificacao(table) {
     
     let classArray = []
     let tableEl = document.querySelector(table);
-    firebase.firestore().collection('classificacao').orderBy('rating').get().then((snapshot => {
+    firebase.firestore().collection('classificacao').orderBy('rating', 'desc').get().then((snapshot => {
         let index = 0;
 
         snapshot.forEach((doc) => {
