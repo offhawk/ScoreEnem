@@ -55,7 +55,8 @@ function salvaUsuario() {
         uid: firebase.auth().currentUser.uid
     }
 
-    firebase.firestore().collection('usuario').add(usuario).then(() => {
+    firebase.firestore().collection('usuario').doc(firebase.auth().currentUser.uid).set(usuario).then(() => {
+        window.location.href = "../index.html";
         return true;
     }).catch(() => {
         return false;
