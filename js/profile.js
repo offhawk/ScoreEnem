@@ -45,6 +45,7 @@ function fetchUserData() {
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         var userData = doc.data();
+        document.getElementById("profile-pic").src = userData.imgURL;
         inputNome.value = userData.nome;
         console.log(userData.nome);
         inputEmail.value = userData.email;
@@ -178,6 +179,62 @@ function atualizaNome() {
     .catch((error) => {
         console.log("Error getting documents: ", error);
     });
+}
+
+// Define um ouvinte de evento para o campo de entrada de imagem
+document.getElementById("picture__input").addEventListener("change", function (event) {
+  const file = event.target.files[0];
+  if (file) {
+    uploadProfilePicture(file);
+  }
+});
+
+// Função para fazer o upload da imagem de perfil
+function uploadProfilePicture(file) {
+  showLoading();
+
+  const storageRef = firebase.storage().ref();
+  const user = firebase.auth().currentUser;
+
+  if (user) {
+    const profilePictureRef = storageRef.child(`profilePictures/${user.uid}`);
+    profilePictureRef
+      .put(file)
+      .then((snapshot) => {
+        hideLoading();
+        // Atualize a imagem de perfil na página
+        snapshot.ref.getDownloadURL().then((url) => {
+          document.getElementById("profile-pic").src = url;
+          firebase.firestore().collection("usuario").doc(user.uid).update({
+            imgURL: url
+        })
+        .then(() => {
+            console.log("Document successfully written!");
+        })
+        });
+        
+      })
+      .catch((error) => {
+        // Ocorreu um erro durante o upload
+        hideLoading();
+        console.error("Erro ao carregar a imagem de perfil:", error);
+        alert("Erro ao carregar a imagem de perfil. Tente novamente mais tarde.");
+      });
+  }
+}
+
+function validarNome() {
+  const inputNome = document.getElementById("inputNome");
+  const nomeUsuario = inputNome.value.trim();
+
+  if (nomeUsuario === "") {
+    // Nome de usuário está vazio, exiba uma mensagem de erro
+    alert("Por favor, preencha o campo de nome de usuário.");
+    return false; // Impede que a função `atualizaNome()` seja chamada
+  }
+
+  // Nome de usuário não está vazio, pode chamar a função `atualizaNome()`
+  atualizaNome();
 }
 
 //--------------------------------------------------------------
