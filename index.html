@@ -6,11 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="css/common.css">
     <link rel="shortcut icon" href="imgs/clip.ico" type="image/x-icon">
+    <script src="https://unpkg.com/scrollreveal"></script>
     <title>Home - ScoreEnem</title>
 </head>
-<body id="body-home">
+<body id="body-home" data-scroll-container>
     <header class="home-header">
             <!-- Início Cabeçalho -->
             <div>
@@ -26,36 +27,36 @@
     </header>
     <main>
         <div>
-            <div style="width: 600px;">
+            <div style="width: 600px;" class="reveal">
                 <form action="POST">
-                    <h1 class="logo-title">ESTUDE PARA O ENEM</h1>
-                    <div id="acesse">
-                        <li class="link-header"><a href="pages/selecconteudos.html">Acesse</a></li>
+                    <h1 class="logo-title reveal">ESTUDE PARA O ENEM</h1>
+                    <div id="acesse" class="reveal">
+                        <li class="link-header" ><a href="pages/dashboard.html">Acesse</a></li>
                     </div>
                 </form>
             </div>
         </div>
-        <div id="img-container">
+        <div id="img-container" class="reveal">
             <img id="clipes" src="imgs/clip.png" alt="" srcset="">
         </div>
     </main>
     <div class="div-video">
-        <div id="img-container2">
+        <div id="img-container2" class="reveal">
             <img id="img-video" src="imgs/video.png">
         </div>
         <div>
             <div class="texto-video">
-                    <h1 class="logo-title-video">Tenha acesso a centenas de videoaulas</h1>
-                    <h2 class="logo-subtitle-video">Veja conteúdos diversos dos melhores professores, totalmente GRATUITO</h2>
+                    <h1 class="logo-title-video reveal">Tenha acesso a centenas de videoaulas</h1>
+                    <h2 class="logo-subtitle-video reveal">Veja conteúdos diversos dos melhores professores, totalmente GRATUITO</h2>
             </div>
         </div>
     </div>
     <div class="div-mae">
         <div>
             <div class="texto-redacao">
-                    <h1 class="logo-title-redacao">Alcance nota 1000 na Redação</h1>
-                    <h2 class="logo-subtitle-redacao">Veja modelos, exemplos e correções de redações nota 1000 no ENEM!</h2>
-                    <div id="redacao">
+                    <h1 class="logo-title-redacao reveal">Alcance nota 1000 na Redação</h1>
+                    <h2 class="logo-subtitle-redacao reveal">Veja modelos, exemplos e correções de redações nota 1000 no ENEM!</h2>
+                    <div id="redacao" class="reveal">
                         <li class="curso-txt">
                             <h1 style="margin-bottom: 20px;">Curso Completo</h1>
                             <h2>Tenha acesso a um curso completo de redação do básico ao avançado.</h2>
@@ -64,7 +65,7 @@
             </div>
         </div>
         <div id="img-container">
-            <img id="img-redacao" src="imgs/redacao.png" alt="" srcset="">
+            <img id="img-redacao" class="reveal" src="imgs/redacao.png" alt="" srcset="">
         </div>
     </div>
     <footer></footer>
@@ -75,5 +76,9 @@
     <script src="js/loading.js"></script>
     <script src="js/login.js"></script>
     <script src="js/script.js"></script>
+    <script>
+
+        ScrollReveal().reveal('.reveal', {viewFactor: 0.5, origin: 'bottom', duration: 1800, distance: '100px', ease: 'ease-in'});
+    </script>
 </body>
 </html>

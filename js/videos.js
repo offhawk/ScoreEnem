@@ -54,7 +54,7 @@ function preenchePlaylist(videos) {
 
         img.classList.add('thumbnail-video');
     
-        img.src = "https://i3.ytimg.com/vi/" + video.id + "/maxresdefault.jpg";
+        img.src = "https://i.ytimg.com/vi/" + video.id + "/hqdefault.jpg";
     
         imgContainer.appendChild(img);
     
@@ -88,12 +88,19 @@ function alteraVideo(e) {
     mainVideoBox.firstElementChild.remove()
     let liteEmbedEl = document.createElement("lite-youtube");
     liteEmbedEl.setAttribute("videoid", clicado.dataset.id); 
-    mainVideo.style = "background-image: " + "url('https://i.ytimg.com/vi/" + clicado.dataset.id + "/maxresdefault.jpg')"
+    mainVideo.style = "background-image: " + "url('https://i.ytimg.com/vi/" + clicado.dataset.id + "/hqdefault.jpg')"
     mainVideoBox.appendChild(liteEmbedEl);
 
     mainTitle.innerHTML = clicado.dataset.titulo;
 
     atualizaPlaylist(e.currentTarget);
+    const q = firebase.firestore().collection('video').where('id', '==', liteEmbedEl.getAttribute('videoid')).get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            atualizaComentario(doc.ref)
+        });
+    })
 
 }
 
@@ -106,3 +113,61 @@ function atualizaPlaylist(elemento) {
     elemento.classList.toggle('play-select');
 
 }
+
+function addComment() {
+
+
+    let liteEmbedEl = document.querySelector("lite-youtube");
+    console.log(liteEmbedEl.getAttribute('videoid'))
+
+    let comment = document.querySelector('#input-comment').value
+
+    console.log(comment)
+
+    const q = firebase.firestore().collection('video').where('id', '==', liteEmbedEl.getAttribute('videoid')).get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            doc.ref.update({
+                comments: firebase.firestore.FieldValue.arrayUnion(comment)
+            });
+            atualizaComentario(doc.ref)
+        });
+    })
+    .catch((error) => {
+        console.log("Error getting documents: ", error);
+    });
+
+
+}
+
+function atualizaComentario(docRef) {
+    // Pegue o documento do vídeo no banco de dados
+  
+    let comments = []
+    let ul = document.getElementById("ul-comments");
+    ul.innerHTML = ' '
+    // Retorne os comentários do vídeo
+    docRef.get().then(document => {
+      //return document.data().comments;
+      let data = document.data().comments
+      data.forEach((c) => {
+        ul.innerHTML += '<li>' + c + '</li>';
+      })
+    });
+
+}
+//like
+
+/*
+function addLike() {
+    const likeRef = firebase.firestore().collection("videos");
+    const h1 = document.createElement("h1");
+    h1.innerText = increment(1) + ('Curtir') ;
+    document.querySelector(--).appendChild(h1);
+    docRef.get().then(document => {
+      
+      })
+    });
+}
+*/

@@ -6,42 +6,44 @@ let countOfQuestion = document.querySelector(".desc");
 let displayContainer = document.getElementById("display-container");
 let scoreContainer = document.querySelector(".score-container");
 let userScore = document.getElementById("user-score");
+let paginationEl = document.querySelectorAll('.pagination')
+console.log(paginationEl)
 let questionCount;
 let scoreCount = 0;
 let count = 11;
 let countdown;
 //Questions and Options array
 let quizArray = []
-let paginas = 1;
+let quizArrayChunk = []
+let paginas = 0;
+let pagina = 0;
 let btnFiltro = document.querySelector('#btn-filtro');
-
+let quizChunk = []
+let splitSize = 10
 showLoading();
 
-firebase.firestore().collection('questoes').orderBy('ano').limit(10).get().then((snapshot => {
+const splitArray = (array, size) => {
+    let result = [];
+    paginas = 0;
+    // make a copy to avoid mutating original array
+    let copy = [...array]; 
+  
+    while (copy.length > 0) {
+      let chunk = copy.splice(0, size);
+      result.push(chunk);
+      paginas++;
+    }
+    return result;
+}
+
+firebase.firestore().collection('questoes').orderBy('ano').get().then((snapshot => {
     snapshot.forEach((doc) => {
         quizArray.push(doc.data());
     })
 
-    lastVisible = snapshot.docs[snapshot.docs.length-1];
-    console.log("last", lastVisible);
-
-    // Construct a new query starting at this document,
-    // get the next 25 cities.
-    next = firebase.firestore().collection("questoes")
-            .orderBy("ano")
-            .startAfter(lastVisible)
-            .limit(10);
-
-    next.get().then((document => {
-        document.forEach((doc) => {
-            quizArray.push(doc.data());
-        })
-    }))
-
     if(quizArray){
+        quizArrayChunk = quizArray;
         preenchePaginas()
-        hideLoading()
-        initial()
     }
 }));
 
@@ -49,9 +51,38 @@ firebase.firestore().collection('questoes').orderBy('ano').limit(10).get().then(
 
 
 function preenchePaginas() {
-    if(quizArray.length > 10){
-        paginas = Math.round(quizArray / 10)
+
+
+    quizChunk = splitArray(quizArrayChunk, splitSize)
+
+    for (let i = 0; i < paginas; i++) {
+        paginationEl.forEach((p) => {
+            if(i == 0){
+                p.innerHTML = `<li class="page-item backNav">
+                            <a class="page-link" href="#" tabindex="-1" onclick="alteraPagina(this)">Anterior</a>
+                            </li> <li class="page-item"><a class="page-link" onclick="alteraPagina(this)" href="#">1</a></li>`
+            } else if(i > 0 && i != paginas - 1) {
+                let li = document.createElement("li")
+                li.classList.add('page-item')
+                li.innerHTML = `<a class="page-link" onclick="alteraPagina(this)" href="#">${i+1}</a>`
+                p.appendChild(li)
+            } else if(i == paginas - 1){
+                let li = document.createElement("li")
+                li.classList.add('page-item')
+                li.innerHTML = `<a class="page-link" onclick="alteraPagina(this)" href="#">${i+1}</a>`
+                p.appendChild(li)
+                let li2 = document.createElement("li")
+                li2.classList.add('page-item', 'nextNav')
+                li2.innerHTML = `<a class="page-link" href="#" onclick="alteraPagina(this)">Próxima</a>`
+                p.appendChild(li2)
+            }
+        })
     }
+    
+
+    quizArray = quizChunk[pagina];
+    console.log(quizArray)
+    initial()
 }
 
 //Next Button
@@ -69,7 +100,7 @@ const quizDisplay = (questionCount) => {
 //Quiz Creation
 function quizCreator() {
     //randomly sort questions
-    quizArray.sort(() => Math.random() - 0.5);
+
     //generate quiz
     let id = 0;
     for (let i of quizArray) {
@@ -117,7 +148,7 @@ function quizCreator() {
         <button class="option-div" onclick="marcado(this)">${i.alternativas[4]}</button>
     `;
         
-        div.innerHTML += `<button class="responder-button" onclick="checaOpcao(this, `+ "'" + i.questao + "'" +`)">Responder</button>`
+        div.innerHTML += `<button class="responder-button" onclick="checaOpcao(this, ` + `'` + i.questao.replaceAll('"', "").replaceAll("(", "").replaceAll(")", "").replaceAll("'", "") + `'` +`)">Responder</button>`
         quizContainer.appendChild(div);
     }
     hideLoading()
@@ -134,6 +165,7 @@ function marcado(opcao) {
     })
     opcao.classList.add("marcado");
     opcaoMarcada = opcao;
+    console.log(opcaoMarcada)
 }
 
 
@@ -141,7 +173,7 @@ function checaOpcao(btn, id) {
 
     let div = btn.parentNode
     opcaoMarcada = div.querySelector(".marcado")
-
+    console.log("checa opção = " + opcaoMarcada)
     if (opcaoMarcada) {
         checker(opcaoMarcada, div, id)
     }
@@ -152,7 +184,9 @@ function checaOpcao(btn, id) {
 function checker(userOption, question, questionCount) {
     let userSolution = userOption.innerText;
     let options = question.querySelectorAll(".option-div");
-    let quiz = quizArray.find((quizz) => quizz.questao == questionCount)
+    let quiz = quizArray.find((quizz) => quizz.questao.replaceAll('"', "").replaceAll("(", "").replaceAll(")", "").replaceAll("'", "") == questionCount)
+    console.log("Marcado = " + userSolution)
+    console.log("Correta = " + quiz.correta)
     //if user clicked answer == correct option stored in object
     if (userSolution === quiz.correta) {
         userOption.classList.add("correct");
@@ -183,6 +217,7 @@ function initial() {
     clearInterval(countdown);
     quizCreator();
     quizDisplay(questionCount);
+    hideLoading()
 }
 //when user click on start button
 //hide quiz and display start screen
@@ -201,15 +236,53 @@ function filtrarQuestoes() {
             snapshot.forEach((doc) => {
                 quizArray.push(doc.data());
             })
-            initial()
+            quizArrayChunk = quizArray;
+            preenchePaginas()
         }))
     } else {
         firebase.firestore().collection('questoes').orderBy('ano').where('mat', '==', materiaVal).limit().get().then((snapshot => {
             snapshot.forEach((doc) => {
                 quizArray.push(doc.data());
             })
-            initial()
+            quizArrayChunk = quizArray;
+            preenchePaginas()
         }))
     }
     
+}
+
+function alteraPagina(cl) {
+    console.log(paginas)
+    let nextNavEl = document.querySelectorAll('.nextNav')
+    let backNavEl = document.querySelectorAll('.backNav')
+    switch (cl.textContent) {
+        case "Próxima":
+            pagina++;
+            break;
+        case "Anterior":
+            pagina--;
+            break;
+        default:
+            pagina = cl.textContent - 1
+            break;
+    }
+    console.log(pagina)
+    if(pagina == paginas - 1){
+        nextNavEl.forEach((n) => {
+            n.classList.add('disabled')
+        })
+        backNavEl.forEach((b) => {
+            b.classList.remove('disabled')
+        })
+    } else if(pagina == 0){
+        nextNavEl.forEach((n) => {
+            n.classList.remove('disabled')
+        })
+        backNavEl.forEach((b) => {
+            b.classList.add('disabled')
+        })
+    } 
+
+    preenchePaginas()
+    console.log(cl.textContent)
 }

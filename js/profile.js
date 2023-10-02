@@ -1,25 +1,14 @@
-<<<<<<< Updated upstream
-let user = null;
-function verificaUsuario() {
-  user = localStorage.getItem("userId");
-  if (user == null || user == "") {
-    alert("Você não está logado!");
-    window.location.href = "../pages/login.html";
-  } else {
-    user = localStorage.getItem("user");
-    fetchUserData();
-  }
-}
+showLoading()
 
-/*firebase.auth().onAuthStateChanged(function(user){
+firebase.auth().onAuthStateChanged(function(user){
     if (user == null || user == "") {
+        hideLoading()
         alert("Você não está logado!");
         window.location.href = "../pages/login.html";
       } else {
-        user = localStorage.getItem("user");
-        fetchUserData();
+        fetchUserData(user);
     }
-})*/
+})
 
 // Configurar o Firebase
 
@@ -33,14 +22,13 @@ var inputLoc = document.getElementById("inputLoc");
 var btnSaveChanges = document.querySelector(".btn-primary");
 
 // Função para buscar informações do usuário no banco de dados
-function fetchUserData() {
+function fetchUserData(user) {
   var userId = user; // Substitua pelo ID do usuário no banco de dados
   console.log("chegou aq");
-  console.log(localStorage.getItem("userId"));
-  firebase
-    .firestore()
+  console.log(user.uid);
+  firebase.firestore()
     .collection("usuario")
-    .where("uid", "==", localStorage.getItem("userId"))
+    .where("uid", "==", user.uid)
     .get()
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
@@ -52,10 +40,13 @@ function fetchUserData() {
         //inputIdade.value = userData.idade;
         inputTelefone.value = userData.telefone;
         //inputLoc.value = userData.loc;
+        hideLoading()
       });
     })
     .catch(function (error) {
       console.log("Erro ao buscar informações do usuário:", error);
+      hideLoading()
+
     });
 }
 /*
@@ -108,11 +99,6 @@ btnSaveChanges.addEventListener("click", function () {
 // Buscar as informações do usuário ao carregar a página
 */
 
-window.addEventListener("load", function () {
-    verificaUsuario();
-});
-
-=======
 let userUid
 
 firebase.auth().onAuthStateChanged(function(user){
@@ -122,7 +108,7 @@ firebase.auth().onAuthStateChanged(function(user){
 })
 
 function salvaNome() {
-    mostraCarregamento();
+    showLoading();
 
     const transaction = novaMudança();
 
@@ -169,15 +155,18 @@ function atualizaNome() {
             .then(() => {
                 console.log("O seu nome foi alterado com sucesso!");
                 salvaUsuario(userUid);
+                hideLoading()
             })
             .catch((error) => {
                 // The document probably doesn't exist.
                 console.error("Erro ao atualizar o nome ", error);
+                hideLoading()
                 });
         });
     })
     .catch((error) => {
         console.log("Error getting documents: ", error);
+        hideLoading()
     });
 }
 
@@ -259,9 +248,9 @@ function findTransactions() {
         .where('uid', '==', userUid)
         .get()
         .then(snapshot => {
-            hideLoading();
             const transactions = snapshot.docs.map(doc => doc.data());
             addTransactionsToScreen(transactions);
+            hideLoading();
         })
         
         .catch(error => {
@@ -270,5 +259,3 @@ function findTransactions() {
             alert('Erro ao achar dados');
         })
 }
->>>>>>> Stashed changes
-
