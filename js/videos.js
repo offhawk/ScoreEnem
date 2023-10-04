@@ -145,7 +145,6 @@ function atualizaComentario(docRef) {
     // Pegue o documento do vídeo no banco de dados
   
     let comments = []
-
     let ul = document.getElementById("ul-comments");
     ul.innerHTML = ' '
     // Retorne os comentários do vídeo
@@ -172,20 +171,3 @@ function addLike() {
     });
 }
 */
-
-    // Retorne os comentários do vídeo
-    docRef.get().then(document => {
-      //return document.data().comments;
-      comments.push(document.data().comments)
-    });
-
-    console.log(comments)
-
-  //Obtém os comentários do documento
-  //Percorre os comentários e os adiciona à lista
-  comments.forEach((comment) => {
-    const li = document.createElement("li");
-    li.innerText = comment.author + " - " + comment.content;
-    document.querySelector(".comments").appendChild(li);
-  });
-}
