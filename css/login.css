@@ -86,7 +86,7 @@ label{
     margin: 20px 0;
 }
 
-input, button{
+input, .botao{
     width: 100%;
     height: 75px;
     background-color: rgba(0,0,0,0);
@@ -97,6 +97,15 @@ input, button{
     font-size: 1em;
     padding: 10px;
     font-weight: lighter;
+}
+.botao {
+    margin-top: 30px;
+}
+#esqueceu {
+    font-size: 1em;
+    height: 75px;
+    background-color: rgba(0,0,0,0);
+    border: 0;
 }
 
 input:focus{
@@ -411,7 +420,7 @@ div#menu-nav > .link-header {
     text-align: center;
     color: red;
     opacity: 50%;
-    margin-top: 78px;
+    margin-top: 83px;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
     position: absolute;
