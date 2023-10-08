@@ -52,7 +52,8 @@ function salvaUsuario() {
         nome: rnome.value,
         email: remail.value,
         telefone: rtelefone.value,
-        uid: firebase.auth().currentUser.uid
+        uid: firebase.auth().currentUser.uid,
+        nomeSearch: rnome.value.toUpperCase()
     }
 
     firebase.firestore().collection('usuario').doc(firebase.auth().currentUser.uid).set(usuario).then(() => {
