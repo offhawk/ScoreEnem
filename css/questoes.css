@@ -6,6 +6,9 @@
     box-sizing: border-box;
     font-family: 'Inter', sans-serif!important;
   }
+  label {
+    font-family: 'Inter', sans-serif!important;
+  }
   h1{
     font-weight: 600;
   }
@@ -273,4 +276,28 @@
   }
   .display-none{
     display: none!important;
+  }
+  #filtro {
+    display: flex;
+    justify-content: center;
+  }
+  .page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: #000000;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+  }
+  .page-link:hover {
+    color: #21EDC5;
+  }
+  .dropdown-item.active {
+    color: #000;
+    background-color: #21EDC5;
+  }
+  .dropdown-item:active {
+    background-color: #c0bfd2;
   }
