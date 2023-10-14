@@ -15,6 +15,7 @@ h1, p{
 
 #wrapper{
     gap: 20px;
+    width: 100%;
     overflow-x: hidden;
 }
 
@@ -266,6 +267,10 @@ a:hover {
     border: 1px solid #21EDC5;
 }
 
+#friends-search input:focus ~ svg{
+    fill: #21EDC5;
+}
+
 .friends-icon{
     height: 100%;
     width: 10%;
@@ -283,7 +288,9 @@ a:hover {
 
 .friends-icon:hover, 
 .friends-icon:hover svg,
-.svg-wrapper:hover svg{
+.svg-wrapper:hover,
+.svg-wrapper:hover  svg,
+#friends-search svg:hover{
     cursor: pointer;
     fill: #999fa3;
 }
@@ -303,12 +310,26 @@ a:hover {
 }
 
 .friends-box img{
+    height: 100%;
     width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
 .friends-box svg{
-    width: 38px;
-    height: 38px;
+    width: 24px;
+}
+
+#friends-search{
+    position: relative;
+}
+
+#friends-search svg{
+    position: absolute;
+    padding: 5px;
+    width: 35px;
+    height: 35px;
+    right: 5px;
 }
 
 .svg-wrapper{
