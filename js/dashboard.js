@@ -79,11 +79,14 @@ function pesquisaAmigo() {
         let user;
 
         firebase.firestore().collection('usuario').orderBy('nome').startAt(pesquisa).endAt(pesquisa+"\uf8ff").get().then((snapshot => {
+            if(!snapshot.empty){
+                searchListEl.innerHTML = "";
+            } else searchListEl.innerHTML = "Nenhum usuário encontrado.";
             snapshot.forEach((doc) => {
                 user = doc.data()
                 console.log(user)
 
-                searchListEl.innerHTML = `<li>
+                searchListEl.innerHTML += `<li>
                                                 <div class="friends-box" id="search-box">
                                                     <div class="img-wrapper">
                                                         <img src="${user.imgURL}">
@@ -99,9 +102,5 @@ function pesquisaAmigo() {
                                             </li>`
             })
         }));
-
-        setTimeout(() => {
-            searchListEl.innerHTML = user == null?"Nenhum usuário encontrado.":searchListEl.innerHTML;
-        }, 700);
     }
 }
