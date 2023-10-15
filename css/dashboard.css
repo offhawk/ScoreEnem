@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+*{
+    box-sizing: border-box;
+    color: #212529;
+}
+
 .d-flex {
     display: flex !important;
 }
@@ -8,13 +15,12 @@ h1, p{
 
 #wrapper{
     gap: 20px;
-    width: 100%;
     overflow-x: hidden;
 }
 
 body{
     display: block;
-    background-color: var(--background);
+    background-color: #ecf4f9;
     margin: 0px;
     font-family: 'Inter', sans-serif;
     font-weight: bold;
@@ -22,12 +28,13 @@ body{
 
 #sidebar-wrapper {
     min-height: 100vh;
+    border: black 2px solid;
     border-radius: 0px 20px 20px 0px;
     position: relative;
 }
 
 .bg-white {
-    background-color: var(--primary);
+    background-color: #21EDC5;
 }
 
 #sidebar-wrapper .list-group {
@@ -48,7 +55,7 @@ body{
 
 #profile-pic {
     border-radius: 50%;
-    border-color: #22262a;
+    border-color: black;
     border: 1px solid;
     width: 100px;
     height: 100px;
@@ -97,6 +104,7 @@ body{
 }
 
 a {
+    color: black;
     text-decoration: none;
 }
 
@@ -136,9 +144,9 @@ a {
 }
 
 .col {
-    background-color: var(--background);
+    background-color: #ecf4f9;
     border-radius: 8px;
-    border: 1px solid var(--secondary);
+    border: 1px solid rgb(0, 0, 0, .1);
     margin: 10px;
     flex: 1 0 0%;
     transition: background-color 200ms;
@@ -186,8 +194,7 @@ a:hover {
 }
 
 .container-fluid {
-    background-color: var(--secondary);
-    border: 1px solid var(--secondary);
+    background-color: #ffffff;
     border-radius: 15px;
     padding: 20px;
     width: 100%;
@@ -200,25 +207,47 @@ a:hover {
 
 .col:hover{
     cursor: pointer;
-    color: var(--background);
-    background-color: var(--primary);
-}
-
-.col:hover p{
-    color: var(--background);
+    color: #000000;
+    border-color: #21EDC5;
+    background-color: rgba(33, 237, 197, .1);
 }
 
 .col svg{
     transition: all 200ms;
-    fill: var(--text);
 }
 
 .col:hover svg{
-    fill: var(--background);
+    fill: #21EDC5;
     transform: translateY(-7px);
     filter: drop-shadow(rgba(0, 0, 0, .45) 0px 25px 20px);
 }
 
 .hidden{
     display: none;
+}
+
+#theme-changer svg{
+    fill: #22262a;
+    margin-left: 7px;
+    margin-top: 10px;
+}
+
+.dark-theme {
+    position: relative;
+    display: block;
+    white-space: nowrap;
+    font-weight: bolder;
+    font-size: 20px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.bg-white #theme-changer {
+    position: relative;
+    display: flex;
+    text-decoration: none;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }

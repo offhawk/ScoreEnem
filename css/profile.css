@@ -10,11 +10,12 @@
 }
 
 body{
-    background-color: #21EDC5;
-    height: 100vh;
-    margin: 0;
+    display: block;
+    background-color: var(--background);
+    margin: 0px;
     font-family: 'Inter', sans-serif;
-    font-weight: 400;
+    font-weight: bold;
+    height: 100vh;
 }
 
 header {
@@ -47,6 +48,10 @@ main{
     width: 100%;
     height: 100%;
     background-color: #ecf4f9;
+    background-color: var(--background);
+    border: 1px solid var(--secondary);
+    flex: 1 0 0%;
+    transition: background-color 200ms;
 }
 
 #main-container {
@@ -698,26 +703,12 @@ header {
     font-size: 16px;
 }
 
-/* Estilos do Conteúdo Principal */
-main {
-    padding: 20px;
-}
 .row {
     display: flex;
     gap: 20px;
     margin-bottom: 20px;
 }
-.card {
-    border: 1px solid #ccc;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    width: 900px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+
 .card-header {
     font-size: 20px;
     font-weight: bold;
@@ -788,10 +779,34 @@ footer {
     padding: 20px;
     background-color: #fff;
     border-radius: 8px;
-    width: 900px;
+    width: 850px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
+    background-color: var(--background);
+    border-radius: 8px;
+    border: 1px solid var(--secondary);
+    margin: 10px;
+    flex: 1 0 0%;
+    transition: background-color 200ms;
+}
+
+.card {
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    width: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--background);
+    border-radius: 8px;
+    border: 1px solid var(--secondary);
+    margin: 10px;
+    flex: 1 0 0%;
+    transition: background-color 200ms;
 }
