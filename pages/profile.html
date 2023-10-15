@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="../css/common.css">
     <title>Perfil - ScoreEnem</title>
 </head>
-<body>
+<body data-theme="light">
     <header class="home-header">
         <div>
             <a class="logo-title-header" href="../index.html">ScoreEnem</a>
@@ -76,10 +76,13 @@
             </div>
         </div>
     </main>
-    <footer>
-        <p>
-        </p>
-    </footer>
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
