@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/bootstrap-select.css" />
     <link rel="stylesheet" href="../css/quiz.css">
-    <link rel="stylesheet" href="../css/common.css">
     <title>ScoreEnem - Quiz</title>
 </head>
-<body>
+<body data-theme="light">
     <div class="start-screen hide">
         <div>
             <h1>Quiz</h1>
@@ -19,7 +19,7 @@
             <div class="form-hed">
                 <!-- columns -->
                 <div>
-                    <div class="border rounded p-4 ">
+                    <div class="rounded p-4 ">
                         <div class="form-row align-items-center">
                             <div class="col-md-8 mb-3">
                                 <div class="form-group">
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="border rounded p-4 classificacao">
+                <div class="rounded p-4 classificacao">
                     <div>
                         <h1>Classificação</h1>
                         <p>Resolva questões e seja o melhor!</p>
@@ -135,18 +135,26 @@
             </div>
         </div>
     </div>
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
     <script src="../js/bootstrap-select.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+    <script src="../js/script.js"></script>
     <script src="../js/loading.js"></script>
     <script src="../js/firebase.js"></script>
     <script src="../js/login.js"></script>
-    <script src="../js/script.js"></script>
     <script src="../js/quiz.js"></script>
     <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
         $.fn.selectpicker.Constructor.BootstrapVersion = '4';
     </script>
 </body>

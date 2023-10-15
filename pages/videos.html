@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/login.css">
     <link rel="stylesheet" href="../css/videos.css">
     <link rel="stylesheet" href="../css/lite-yt-embed.css">
-    <link rel="stylesheet" href="../css/common.css">
     <link rel="shortcut icon" href="../imgs/clip.ico" type="image/x-icon">
     <title>Vídeos - ScoreEnem</title>
 </head>
-<body>
+<body data-theme="light">
     <header class="home-header">
         <!-- Início Cabeçalho -->
         <div>
-            <a class="logo-title-header" href="../index.html">ScoreEnem</a>
+            <a href="../index.html" style="text-decoration: none;"><h1 class="logo-title-header">ScoreEnem</h1></a>
         </div>
         <!-- Links das outras páginas html, login, e o cadastre-se -->
         <div id="menu-nav">
@@ -23,8 +23,11 @@
                 <a class="header-name" href="login.html">Login</a>
                 <a class="header-name" href="login.html">Cadastre-se</a>
             </div>
+            <div id="theme-changer">
+                <?xml version="1.0" ?><svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12 20V4C16.4183 4 20 7.58172 20 12C20 16.4183 16.4183 20 12 20Z"/></svg>
+            </div>
         </div>
-</header>
+    </header>
     <main>
         <div id="flex-container">
             <div id="main-container">
@@ -56,6 +59,13 @@
         </div>
     </main>
     <footer></footer>
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
@@ -69,6 +79,7 @@
     <script src="../js/videos.js"></script>
     <script src="../js/auth-guard.js"></script>
     <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
          $('iframe[src*="youtube"]').parent().fitVids();
          $('.video').fitVids();
     </script>

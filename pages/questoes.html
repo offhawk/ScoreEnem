@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/common.css">
     <link rel="stylesheet" href="../css/bootstrap-select.css" />
     <link rel="stylesheet" href="../css/questoes.css">
-    <link rel="stylesheet" href="../css/common.css">
     <title>ScoreEnem - Quiz</title>
 </head>
-<body>
+<body data-theme="light">
     <main>
         <div id="nav-container">
             <nav id="sidenav"></nav>
@@ -19,7 +19,7 @@
                 <h1>Questões</h1>
                 <p>Teste seu conhecimento!</p>
             </div>
-            <div class="border rounded p-4">
+            <div class="rounded p-4 filtro-container">
                 <h4 class="mb-3">Filtre as questões</h4>
                     <form>
                 <!-- columns -->
@@ -116,6 +116,13 @@
             </nav>
         </div>
     </main>
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
     <script src="../js/bootstrap-select.js"></script>
@@ -128,6 +135,7 @@
     <script src="../js/script.js"></script>
     <script src="../js/questoes.js"></script>
     <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
         $.fn.selectpicker.Constructor.BootstrapVersion = '4';
     </script>
 </body>

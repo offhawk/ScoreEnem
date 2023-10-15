@@ -8,7 +8,7 @@
   }
   body {
     height: 100vh;
-    background: #ecf4f9;
+    background: var(--background);
   }
   .start-screen h1,
   .start-screen p{
@@ -51,9 +51,10 @@
   #restart,
   #challenge {
     padding: 5px 25px;
-    background-color: #21EDC5;        
+    background-color: var(--primary);        
     font-size: 1.5em;     
-    border: 2px solid black;     
+    border: 2px solid var(--background);   
+    color: #22262a;  
     transition: all 300ms ease-out;     
     cursor: pointer;     
     text-align: center;
@@ -67,7 +68,7 @@
     padding: 30px;
     border-radius: 30px;
     text-align: center;
-    border: 2px solid black;
+    border: 2px solid var(--placeholder);
   }
   .wrong-result{
     background-color: rgb(128, 0, 0);
@@ -92,7 +93,7 @@
     transform: translateY(-10px);
   }
   #display-container {
-    background-color: #fff;
+    background-color: var(--secondary);
     padding: 3.1em 1.8em;
     width: 80%;
     max-width: 37.5em;
@@ -104,13 +105,17 @@
     border-radius: 0.6em;
     border: 1px solid black;
   }
+  .p-4{
+    background-color: var(--secondary);
+    border: none;
+  }
   .header {
     margin-bottom: 1.8em;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 0.6em;
-    border-bottom: 0.1em solid #c0bfd2;
+    border-bottom: 0.1em solid var(--placeholder);
   }
   .timer-div {
     background-color: #e1f5fe;
@@ -136,7 +141,7 @@
     text-align: left;
     outline: none;
     background: transparent;
-    border: 1px solid #c0bfd2;
+    border: 1px solid var(--placeholder);
     border-radius: 0.3em;
   }
 
@@ -149,7 +154,7 @@
     font-size: 1em;
     margin-top: 1.5em;
     font-weight: bold;
-    background-color: #21EDC5;
+    background-color: var(--primary);
     color: #000;
     padding: 0.7em 1.8em;
     border-radius: 0.3em;
@@ -161,11 +166,10 @@
     background-color: rgba(0, 0, 0, 0.1);
   }
   #responder-button{
-    border: 1px solid black;
     font-size: 1em;
     margin-top: 1.5em;
     font-weight: bold;
-    background-color: #21EDC5;
+    background-color: var(--primary);
     color: #000;
     padding: 0.7em 1.8em;
     border-radius: 0.3em;
@@ -340,4 +344,37 @@
   @keyframes appear {
     0%{ -webkit-transform: scale(0%); transform: scale(0%);}
     100%{ -webkit-transform: scale(100%); transform: scale(100%);}
+  }
+  .dropdown-item.active {
+    color: #22262a;
+    background-color: var(--secondary);
+  }
+  .dropdown-item:active {
+    background-color: red;
+  }
+  .btn-light{
+    background-color: var(--background);
+    color: var(--text);
+    border-color: var(--placeholder);
+  }
+  .btn-light:hover{
+    background-color: var(--secondary);
+  }
+  .dropdown-menu{
+    background-color: var(--background);
+  }
+  .show>.btn-light.dropdown-toggle{
+    background-color: var(--secondary);
+  }
+  .dropdown-item:hover{
+    background-color: var(--secondary);
+  }
+  tr:hover{
+    background-color: var(--background);
+  }
+  th svg{
+    fill: var(--text);
+  }
+  th, tr, tbody, .table tbody+tbody, td{
+    border-color: var(--background)!important;
   }

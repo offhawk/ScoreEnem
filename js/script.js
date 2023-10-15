@@ -1,6 +1,31 @@
 let namesEl = document.querySelectorAll('.header-name');
 let usuario = [];
 
+let themeChangerEl = document.querySelector('#theme-changer');
+
+let theme = "";
+
+window.onload = function() {
+    if(localStorage.getItem("theme") == null){
+        localStorage.setItem("theme", "light");
+    } else {
+        theme = localStorage.getItem("theme");
+        document.querySelector('body').setAttribute('data-theme', theme);
+    }
+}
+
+themeChangerEl.addEventListener('click', function() {
+    if(theme == "light"){
+        localStorage.setItem("theme", "dark");
+        theme = "dark";
+        document.querySelector('body').setAttribute('data-theme', "dark");
+    } else {
+        localStorage.setItem("theme", "light");
+        theme = "light";
+        document.querySelector('body').setAttribute('data-theme', "light");
+    }
+})
+
 firebase.auth().onAuthStateChanged(function(user){
     if(user) {
         salvaUsuario(user.uid);
