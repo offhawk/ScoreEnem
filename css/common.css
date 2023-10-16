@@ -35,9 +35,21 @@ body[data-theme="dark"] {
     --primary: #14EBB1;
     --disabled: #70b8a5;
     --secondary: #10222d;
-    --accent: #ff9eda;
+    --accent: #8f4f76;
     --accent2: #B687FF;
     --accent3: #0E9EE1;
+}
+
+body[data-theme="contrast"] {
+    --text: #fff;
+    --placeholder: #7a7a7a;
+    --background: #000;
+    --primary: #14EBB1;
+    --disabled: #7a7a7a;
+    --secondary: #000;
+    --accent: #2F57C6;
+    --accent2: #2F57C6;
+    --accent3: #2F57C6;
 }
 
 body::-webkit-scrollbar {
@@ -160,6 +172,11 @@ body::-webkit-scrollbar-thumb {
     padding: 0;
     border-bottom: 1px solid rgba(0, 0, 0, .1);
     list-style-type: none;
+}
+
+.enabled{
+    position: absolute;
+    top:  40%;
 }
 
 .friends-list li{

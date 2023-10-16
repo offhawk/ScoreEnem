@@ -327,7 +327,7 @@
 
   .fixed-button-container {
     position: fixed;
-    top: 60%;
+    top: 70%;
     right: 10px;
     transform: translateY(-50%);
     z-index: 999; 

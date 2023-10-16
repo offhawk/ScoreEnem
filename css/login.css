@@ -379,7 +379,7 @@ body[data-theme="dark"] #img-container3::before{
 }
 
 #redacao *{
-    color: #22262a;
+    color: var(--text);
 }
 
 .div-mae {
@@ -514,7 +514,7 @@ body[data-theme="dark"] #img-container3::before{
 
 .fixed-button-container {
     position: fixed;
-    top: 60%;
+    top: 70%;
     right: 10px;
     transform: translateY(-50%);
     z-index: 999; 

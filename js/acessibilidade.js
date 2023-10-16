@@ -60,3 +60,15 @@ const botaoFalar = document.getElementById('botaofalar');
                 elementosTexto[i].style.fontSize = novoTamanho;
             }
         });
+
+        document.getElementById("botaocontraste").addEventListener("click", function () {
+            
+            if(localStorage.getItem("theme") != "contrast"){
+                localStorage.setItem("theme", "contrast");
+                document.querySelector('body').setAttribute('data-theme', "contrast");
+            } else {
+                localStorage.setItem("theme", "light");
+                document.querySelector('body').setAttribute('data-theme', "light");
+            }
+           
+        });
