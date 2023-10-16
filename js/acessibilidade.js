@@ -36,3 +36,27 @@ const botaoFalar = document.getElementById('botaofalar');
 
         // Ouvinte de evento para ativar/desativar a leitura ao clicar no botão
         botaoFalar.addEventListener('click', ativarLeitura);
+
+        document.getElementById("botaoaumentar").addEventListener("click", function () {
+            // Selecione todos os elementos com a classe 'texto'
+            var elementosTexto = document.getElementsByClassName("readable");
+
+            // Aumente o tamanho de fonte em 20% para cada elemento de texto
+            for (var i = 0; i < elementosTexto.length; i++) {
+                var tamanhoAtual = window.getComputedStyle(elementosTexto[i]).fontSize;
+                var novoTamanho = (parseFloat(tamanhoAtual) * 1.2) + "px";
+                elementosTexto[i].style.fontSize = novoTamanho;
+            }
+        });
+
+        document.getElementById("botaodiminuir").addEventListener("click", function () {
+            // Selecione todos os elementos com a classe 'texto'
+            var elementosTexto = document.getElementsByClassName("readable");
+
+            // Diminua o tamanho de fonte em 20% para cada elemento de texto
+            for (var i = 0; i < elementosTexto.length; i++) {
+                var tamanhoAtual = window.getComputedStyle(elementosTexto[i]).fontSize;
+                var novoTamanho = (parseFloat(tamanhoAtual) * 0.8) + "px";
+                elementosTexto[i].style.fontSize = novoTamanho;
+            }
+        });
