@@ -47,6 +47,10 @@ main{
     width: 100%;
     height: 100%;
     display: block!important;
+    background-color: var(--background);
+    border: 1px solid var(--secondary);
+    flex: 1 0 0%;
+    transition: background-color 200ms;
 }
 
 #main-container {

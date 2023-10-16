@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
+@font-face {
+    font-family: trap;
+    src: url(../fonts/Trap-Black.otf);
+}
+
 *{
     box-sizing: border-box;
     color: var(--text);

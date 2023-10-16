@@ -1,12 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
 @font-face {
+    box-sizing: border-box;
+
     font-family: trap;
     src: url(../fonts/Trap-Black.otf);
 }
 
 *{
     box-sizing: border-box;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
 }
 
 body{
@@ -457,6 +462,7 @@ div#menu-nav > .link-header {
 }
 
 .link-header > a {
+    font-family: inter;
     font-size: 1.25em;
     text-decoration: none;
     color: black;
