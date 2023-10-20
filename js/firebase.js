@@ -21,25 +21,10 @@
     
 })();
 
-function resetPassword() {
-    // Obtenha o endereço de e-mail do usuário.
-    const email = document.querySelector("input[name='email']").value;
-  
-    // Use o SDK do Firebase para enviar um e-mail de redefinição de senha.
-    firebase.auth().sendPasswordResetEmail(email);
-  
-    // Exiba uma mensagem de confirmação.
-    document.querySelector("#mensagem-redefinicao-senha").innerHTML =
-        "Um e-mail de redefinição de senha foi enviado para você.";
-  }
 
-  function googleLogin() {
-    // Inicie o processo de login com o Google.
-    //const provider = new GoogleAuthProvider();
-    const auth = getAuth();
-    signInWithRedirect(auth, provider);
-  }
-  function addQuestao(){
+
+
+  /*function addQuestao(){
     const db = firebase.firestore();
 
     // Dados da questão
@@ -50,7 +35,7 @@ function resetPassword() {
         descricao: "Álgebra, Problemas",
         teste: "teste",
         prova: "ENEM",
-        questao: "Um lava-rápido oferece dois tipos de lavagem de veículos: lavagem simples, ao preço de R$ 20,00, e lavagem completa, ao preço de R$ 35,00. Para cobrir as despesas com produtos e funcionários, e não ter prejuízos, o lava-rápido deve ter uma receita diária de, pelo menos, R$ 300,00. Para não ter prejuízo, o menor número de lavagens diárias que o lava-rápido deve efetuar é",
+        questao: "Um lava-rápido oferece",
     };
 
     // Referência à coleção "questões"
@@ -65,4 +50,4 @@ function resetPassword() {
             console.error("Erro ao adicionar a questão:", error);
         });
   }
-  addQuestao();
+  addQuestao();*/

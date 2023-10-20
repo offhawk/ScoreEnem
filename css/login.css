@@ -117,10 +117,17 @@ input::placeholder{
     color: rgba(0,0,0,0.3);
 }
 
-#input-login{
+#input-login {
     background-color: #21EDC5;     
     font-weight: bolder;     
-    font-size: 2em;     
+    font-size: 2em; 
+    border: 2px solid black;
+    color: black;
+}
+#input-login:hover{
+    background-color: #21EDC5;     
+    font-weight: bolder;     
+    font-size: 2.2em;     
     border: 2px solid black;     
     transition: all 300ms ease-out;     
     cursor: pointer;     
@@ -298,6 +305,9 @@ div#menu-nav > .link-header {
     display: none!important;
 }
 
+#closeModal {
+    font-size: 2em;
+}
 #modal-full{
     display: none;
     justify-content: center;
@@ -325,7 +335,7 @@ div#menu-nav > .link-header {
     right: 30px;
     top: 10px;
     padding: 20px;
-    font-size: 25px;
+    font-size: 1em;
     font-weight: bolder;
     cursor: pointer;
 }
