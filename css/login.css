@@ -119,6 +119,12 @@ input::placeholder{
     color: var(--placeholder);
 }
 
+#input-login:hover{
+    background-color: #21EDC5;     
+    font-weight: bolder;     
+    font-size: 2.2em;     
+    border: 2px solid black;     
+}
 #input-login{
     background-color: var(--primary);     
     font-weight: bolder;     
@@ -328,6 +334,9 @@ body[data-theme="dark"] #img-container3::before{
     display: none!important;
 }
 
+#closeModal {
+    font-size: 2em;
+}
 #modal-full{
     display: none;
     justify-content: center;
@@ -355,7 +364,7 @@ body[data-theme="dark"] #img-container3::before{
     right: 30px;
     top: 10px;
     padding: 20px;
-    font-size: 25px;
+    font-size: 1em;
     font-weight: bolder;
     cursor: pointer;
 }
