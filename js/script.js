@@ -2,6 +2,7 @@ let namesEl = document.querySelectorAll('.header-name');
 let usuario = [];
 
 let themeChangerEl = document.querySelector('#theme-changer');
+let navigationEl = document.querySelector('.navigation');
 
 let theme = "";
 
@@ -65,3 +66,7 @@ function preencheHeader(usuario) {
 function irParaMeuPerfil() {
     window.location.href = "../pages/profile.html";
 }
+
+navigationEl.addEventListener('click', () => {
+    window.history.back();
+})

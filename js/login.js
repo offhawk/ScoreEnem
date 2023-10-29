@@ -1,4 +1,3 @@
-import { getAuth, initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-auth.js";
 
 let password = document.getElementById('password');
 let email = document.getElementById('email');
