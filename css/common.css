@@ -35,21 +35,9 @@ body[data-theme="dark"] {
     --primary: #14EBB1;
     --disabled: #70b8a5;
     --secondary: #10222d;
-    --accent: #8f4f76;
+    --accent: #ff9eda;
     --accent2: #B687FF;
     --accent3: #0E9EE1;
-}
-
-body[data-theme="contrast"] {
-    --text: #fff;
-    --placeholder: #7a7a7a;
-    --background: #000;
-    --primary: #14EBB1;
-    --disabled: #7a7a7a;
-    --secondary: #000;
-    --accent: #2F57C6;
-    --accent2: #2F57C6;
-    --accent3: #2F57C6;
 }
 
 body::-webkit-scrollbar {
@@ -174,11 +162,6 @@ body::-webkit-scrollbar-thumb {
     list-style-type: none;
 }
 
-.enabled{
-    position: absolute;
-    top:  40%;
-}
-
 .friends-list li{
     margin: 10px 0;
     padding: 10px;
@@ -276,6 +259,7 @@ body::-webkit-scrollbar-thumb {
     color: #22262a;
     display: flex;
     text-align: right;
+    align-items: center;
 }
 
 #menu-nav svg{
@@ -302,30 +286,5 @@ div#menu-nav > .link-header {
     color: black;
     font-weight: 700;
     padding-right: 30px;
-}
-
-.navigation{
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.navigation svg{
-    width: 28px;
-    fill: var(--text);
-    transition: all 200ms;
-}
-
-.navigation p{
-    font-weight: 500;
-    font-size: 1.2rem;
-}
-
-.navigation:hover svg{
-    transform: translateX(-10px);
-}
-
-.navigation:hover{
-    cursor: pointer;
+    display: inline;
 }
