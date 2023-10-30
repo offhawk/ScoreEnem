@@ -1,8 +1,8 @@
 let namesEl = document.querySelectorAll('.header-name');
 let usuario = [];
+let username = document.querySelector('.user-name')
 
 let themeChangerEl = document.querySelector('#theme-changer');
-let navigationEl = document.querySelector('.navigation');
 
 let theme = "";
 
@@ -59,14 +59,12 @@ function preencheHeader(usuario) {
             namesEl[1].innerHTML = 'Log Out';
             namesEl[1].addEventListener('click', logOut);
         }
+        if (username) {
+            username.innerHTML = usuario[0].nome;
+        }
     }
-   
 }
 
 function irParaMeuPerfil() {
     window.location.href = "../pages/profile.html";
 }
-
-navigationEl.addEventListener('click', () => {
-    window.history.back();
-})
