@@ -288,3 +288,29 @@ div#menu-nav > .link-header {
     padding-right: 30px;
     display: inline;
 }
+
+.navigation{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.navigation svg{
+    width: 28px;
+    fill: var(--text);
+    transition: all 200ms;
+}
+
+.navigation p{
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.navigation:hover svg{
+    transform: translateX(-10px);
+}
+
+.navigation:hover{
+    cursor: pointer;
+}
