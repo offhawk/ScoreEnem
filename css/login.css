@@ -118,7 +118,10 @@ input:focus{
 input::placeholder{
     color: var(--placeholder);
 }
-
+#input-login:disabled:hover{
+    cursor:not-allowed;
+    font-size: 2em;
+}
 #input-login:hover{
     background-color: #21EDC5;     
     font-weight: bolder;     
@@ -142,7 +145,6 @@ input::placeholder{
     box-shadow: none;
     cursor: default;
 }
-
 #input-cadastro:disabled{
     background-color: var(--disabled);
     box-shadow: none;
@@ -387,8 +389,12 @@ body[data-theme="dark"] #img-container3::before{
     margin-right: -100px;
 }
 
-#redacao *{
+body[data-theme="light"] #redacao *{
     color: var(--text);
+}
+
+body[data-theme="dark"] #redacao *{
+    color: var(--background);
 }
 
 .div-mae {
@@ -551,4 +557,8 @@ body[data-theme="dark"] #img-container3::before{
 
 #botaofalar.mudarCor {
     background-color: #ff9eda; /* Nova cor de fundo */
+}
+
+form > div{
+    width: 100%;
 }

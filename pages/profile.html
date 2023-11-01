@@ -1,89 +1,174 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/videos.css">
-    <link rel="stylesheet" href="../css/lite-yt-embed.css">
-    <link rel="stylesheet" href="../css/profile.css">
     <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/lite-yt-embed.css">
+    <link rel="stylesheet" href="../css/menu-lateral.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/profile.css">
     <link rel="shortcut icon" href="../imgs/clip.ico" type="image/x-icon">
-    <title>Perfil - ScoreEnem</title>
+    <title>Dashboard - ScoreEnem</title>
 </head>
-<body>
+
+<body data-theme="light">
     <header class="home-header">
+        <!-- Início Cabeçalho -->
         <div>
-            <a class="logo-title-header readable" href="../index.html">ScoreEnem</a>
+            <h1 class="logo-title-header readable">ScoreEnem</h1>
         </div>
-        <div id="menu-nav" class="link-header">
-            <a class="header-name readable" href="login.html">Login</a>
-            <a class="header-name readable" href="cadastro.html">Cadastre-se</a>
+        <!-- Links das outras páginas html, login, e o cadastre-se -->
+        <div id="menu-nav">
+            <div class="link-header">
+                <a class="header-name readable" href="pages/login.html">Login</a>
+                <a class="header-name readable" href="pages/login.html">Cadastre-se</a>
+            </div>
             <div id="theme-changer">
                 <?xml version="1.0" ?><svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12 20V4C16.4183 4 20 7.58172 20 12C20 16.4183 16.4183 20 12 20Z"/></svg>
             </div>
         </div>
     </header>
-    <main>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="sexo">
-                    <div class="card-header readable">Foto de Perfil</div>
-                    <img src="https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg" id="profile-pic">
-                    <div class="card-body">
-                        <label class="picture" for="picture__input" tabIndex="0">
-                            <span class="picture__image"></span>
-                        </label>
-                        <input type="file" name="picture__input" id="picture__input">
+    <div class="d-flex" id="wrapper">
+        <div class="page-content-wrapper">
+            <h1 class="readable">Seu Perfil</h1>
+            <p class="readable">Atualize o seu perfil por aqui!</p>
+            <div class="container-fluid">
+                <div class="container px-4 text-center">
+                    <div class="row gx-5">
+                        <div class="col">
+                            <div class="background">
+                                <div class="nome-imagem">
+                                    <img src="https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg" class="avatar" id="profile-pic">
+                                    <span class="user-name">Nome</span>
+                                </div>
+                                <div>
+                                    <span class="user-description">Sua descrição</span>
+                                </div>
+                                <div>
+                                    <label class="picture" for="picture__input" tabIndex="0">
+                                        <span class="picture__image"></span>
+                                    </label>
+                                    <input type="file" name="picture__input" id="picture__input">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header readable">Detalhes da sua conta</div>
-                    <div class="card-body">
-                            <div class="mb-3">
-                                <label id="nomeUsuario" for="inputNome"></label>
-                                <input class="form-control" id="inputNome" type="text" placeholder="Digite seu nome de usuário">
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="inputEmail" class="readable">E-mail</label>
-                                    <input disabled class="form-control" id="inputEmail" type="e-mail" placeholder="teste@exemplo.com.br">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="inputIdade" class="readable">Idade</label>
-                                    <input disabled class="form-control" id="inputIdade" type="text" placeholder="Coloque sua idade">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="inputTelefone" class="readable">Telefone</label>
-                                    <input disabled class="form-control" id="inputTelefone" type="text" placeholder="Digite seu Telefone">
-                                </div>
-                                <div class="col-md-6 mb-3">
-                                    <label for="inputLoc" class="readable">Localização</label>
-                                    <input disabled class="form-control" id="inputLoc" type="text" placeholder="Coloque sua localização">
-                                </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="inputVid" class="readable">Vídeos assistidos</label>
-                                <input disabled class="form-control" id="inputVid" type="image">
-                            </div>
-                            <div class="mb-3">
-                                <label for="inputJog" class="readable">Histórico de Jogos</label>
-                                <input disabled class="form-control" id="inputJog" type="text">
-                            </div>
-                            <button onclick="validarNome()" class="responder-button readable">Salvar Alterações</button>
+            <h1 class="readable">Histórico de Jogos</h1>
+            <p class="readable">Suas Atividades Recentes!</p>
+            <div class="container-fluid">
+                <div class="container px-4 text-center">
+                    <div class="column gx-5">
+                        <div class="col">
+                            <a class="p-3" href="videos.html?mat=cienat">
+                                <?xml version="1.0" ?><svg height="42px" id="Layer_1" version="1.1"
+                                    viewBox="0 0 500 500" width="42px" xml:space="preserve"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                                    <path clip-rule="evenodd"
+                                        d="M186.401,207.936L39.033,410.088  c-4.449,6.087-7.083,13.538-7.083,21.623c0,20.078,16.264,36.34,36.34,36.34h363.421c20.078,0,36.34-16.262,36.34-36.34  c0-8.085-2.632-15.536-7.079-21.623L313.599,207.936V77.375h4.543c12.537,0,22.711-10.177,22.711-22.713  c0-12.536-10.174-22.713-22.711-22.713H181.858c-12.536,0-22.713,10.177-22.713,22.713c0,12.537,10.177,22.713,22.713,22.713h4.543  V207.936z M231.83,77.375h36.342v136.282l63.6,90.855H168.231l63.599-90.855V77.375z"
+                                        fill-rule="evenodd" />
+                                </svg>
+                                <p class="readable">Ciências da Natureza</p>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a class="p-3" href="videos.html?mat=ciehum">
+                                <?xml version="1.0" ?><svg width="42px" height="42px" viewBox="0 0 32 32"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <title />
+                                    <g id="brain">
+                                        <path
+                                            d="M31,15.57a5.25,5.25,0,0,0-1.57-3.71,5.1,5.1,0,0,0,.21-1.46,5.2,5.2,0,0,0-4.78-5.18,4.41,4.41,0,0,0-.15-.55A5.18,5.18,0,0,0,16,2.61a5.19,5.19,0,0,0-8.71,2,3.39,3.39,0,0,0-.14.57A5.2,5.2,0,0,0,2.36,10.4a5.1,5.1,0,0,0,.21,1.46A5.25,5.25,0,0,0,1,15.57a5.18,5.18,0,0,0,1.56,3.7,5.36,5.36,0,0,0-.2,1.43,5.21,5.21,0,0,0,4.69,5.18,5,5,0,0,0,.24,1.45A5.18,5.18,0,0,0,16,29.39a5.19,5.19,0,0,0,8.71-2A5.26,5.26,0,0,0,25,25.88a5.21,5.21,0,0,0,4.69-5.18,5.36,5.36,0,0,0-.2-1.43A5.18,5.18,0,0,0,31,15.57ZM7.26,11.92a1,1,0,0,1,1.32-.51,2.83,2.83,0,0,0,1.36.24,4.71,4.71,0,0,1-1.09-2,1,1,0,0,1,2-.41,2.9,2.9,0,0,0,1.66,1.83,1,1,0,0,1,.16,1.74,5.59,5.59,0,0,1-2.9.86,4.76,4.76,0,0,1-2-.42A1,1,0,0,1,7.26,11.92ZM7.1,18a1,1,0,0,1-.71.29,1,1,0,0,1-.7-.29c-1.21-1.21-.67-3-.15-3.81a1,1,0,1,1,1.71,1s-.53,1-.15,1.36A1,1,0,0,1,7.1,18Zm1.34,4h0a1,1,0,0,1,0-2,3,3,0,0,0,3-2.23l.06-.23a1,1,0,0,1,1.95.45c0,.11,0,.22-.08.34-.24,1-.37,2.7.16,3.43a1,1,0,0,1-.8,1.59,1,1,0,0,1-.81-.4,4.16,4.16,0,0,1-.68-1.75A5.14,5.14,0,0,1,8.44,22Zm4.62,4.48a1.35,1.35,0,0,0-.69.23,1,1,0,0,1-.91.58.92.92,0,0,1-.42-.1,1,1,0,0,1-.48-1.33,2.91,2.91,0,0,1,2.37-1.38,1,1,0,0,1,.13,2ZM13.4,7.34a1,1,0,0,1-.33.06,1,1,0,0,1-1-.68c-.07-.22-.31-.19-.35-.19a1,1,0,0,1-1.13-.84,1,1,0,0,1,.84-1.14A2.31,2.31,0,0,1,14,6.07,1,1,0,0,1,13.4,7.34Zm9,1.12a1,1,0,0,1,.78,1.18,4.66,4.66,0,0,1-1.09,2,2.73,2.73,0,0,0,1.36-.24,1,1,0,0,1,.82,1.83,4.76,4.76,0,0,1-2,.42,5.59,5.59,0,0,1-2.9-.86,1,1,0,0,1,.16-1.74,2.91,2.91,0,0,0,1.66-1.82A1,1,0,0,1,22.37,8.46ZM18,6.07a2.3,2.3,0,0,1,2.53-1.52,1,1,0,0,1-.27,2c-.29,0-.36.13-.37.18a1,1,0,0,1-.95.68,1,1,0,0,1-.33-.06A1,1,0,0,1,18,6.07Zm3,21.11a1.06,1.06,0,0,1-.42.09,1,1,0,0,1-.91-.58,1.36,1.36,0,0,0-.68-.22A1,1,0,0,1,18,25.41a1,1,0,0,1,1.06-.94,2.91,2.91,0,0,1,2.37,1.38A1,1,0,0,1,21,27.18ZM23.57,22h0a5.14,5.14,0,0,1-2.79-.8,4.16,4.16,0,0,1-.68,1.75,1,1,0,0,1-.81.4,1,1,0,0,1-.8-1.59c.55-.75.37-2.49.16-3.44,0-.11-.06-.22-.08-.33a1,1,0,0,1,2-.45s0,.13.06.24a3,3,0,0,0,3,2.22,1,1,0,0,1,0,2Zm2.74-4a1,1,0,0,1-.7.29A1,1,0,0,1,24.9,18a1,1,0,0,1,0-1.42c.38-.38-.14-1.34-.15-1.35a1,1,0,0,1,.34-1.38,1,1,0,0,1,1.37.34C27,15,27.52,16.79,26.31,18Z" />
+                                    </g>
+                                </svg>
+                                <p class="readable">Ciências Humanas</p>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a class="p-3" href="videos.html?mat=ling">
+                                <?xml version="1.0" ?><svg width="42px" height="42px"
+                                    viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M448 336v-288C448 21.49 426.5 0 400 0H96C42.98 0 0 42.98 0 96v320c0 53.02 42.98 96 96 96h320c17.67 0 32-14.33 32-31.1c0-11.72-6.607-21.52-16-27.1v-81.36C441.8 362.8 448 350.2 448 336zM143.1 128h192C344.8 128 352 135.2 352 144C352 152.8 344.8 160 336 160H143.1C135.2 160 128 152.8 128 144C128 135.2 135.2 128 143.1 128zM143.1 192h192C344.8 192 352 199.2 352 208C352 216.8 344.8 224 336 224H143.1C135.2 224 128 216.8 128 208C128 199.2 135.2 192 143.1 192zM384 448H96c-17.67 0-32-14.33-32-32c0-17.67 14.33-32 32-32h288V448z" />
+                                </svg>
+                                <p class="readable">Linguagens</p>
+                            </a>
+                        </div>
+                        <div class="col">
+                            <a href="videos.html?mat=mat" class="p-3">
+                                <?xml version="1.0" ?><svg width="42px" height="42px"
+                                    viewBox="0 0 448 512" xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M400 0H48C22.4 0 0 22.4 0 48v416c0 25.6 22.4 48 48 48h352c25.6 0 48-22.4 48-48V48c0-25.6-22.4-48-48-48zM128 435.2c0 6.4-6.4 12.8-12.8 12.8H76.8c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm0-128c0 6.4-6.4 12.8-12.8 12.8H76.8c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm128 128c0 6.4-6.4 12.8-12.8 12.8h-38.4c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm0-128c0 6.4-6.4 12.8-12.8 12.8h-38.4c-6.4 0-12.8-6.4-12.8-12.8v-38.4c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v38.4zm128 128c0 6.4-6.4 12.8-12.8 12.8h-38.4c-6.4 0-12.8-6.4-12.8-12.8V268.8c0-6.4 6.4-12.8 12.8-12.8h38.4c6.4 0 12.8 6.4 12.8 12.8v166.4zm0-256c0 6.4-6.4 12.8-12.8 12.8H76.8c-6.4 0-12.8-6.4-12.8-12.8V76.8C64 70.4 70.4 64 76.8 64h294.4c6.4 0 12.8 6.4 12.8 12.8v102.4z" />
+                                </svg>
+                                <p class="readable">Matemática</p>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+        <div id="friends-container">
+            <h1 class="readable">Amigos</h1>
+            <p class="readable">Que vença o melhor!</p>
+            <div>
+                <p id="friends-info-p" class="readable">Meus amigos</p>
+                <div id="friends-header">
+                    <div class="friends-icon" id="friends-icon-add"> 
+                        <?xml version="1.0" ?><svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M11.0004 17.5003C11.0004 16.2113 11.3755 15.01 12.0226 13.9996L4.25278 14.0002C3.01076 14.0002 2.00391 15.007 2.00391 16.2491V17.169C2.00391 17.7411 2.18231 18.2989 2.51427 18.7648C4.05643 20.9292 6.5794 22.0013 10.0004 22.0013C10.9317 22.0013 11.7966 21.9219 12.5921 21.7618C11.6006 20.6207 11.0004 19.1306 11.0004 17.5003Z"/><path d="M15.0004 7.00488C15.0004 4.24346 12.7618 2.00488 10.0004 2.00488C7.23894 2.00488 5.00036 4.24346 5.00036 7.00488C5.00036 9.76631 7.23894 12.0049 10.0004 12.0049C12.7618 12.0049 15.0004 9.76631 15.0004 7.00488Z"/><path d="M23.0004 17.5002C23.0004 14.4627 20.5379 12.0002 17.5004 12.0002C14.4628 12.0002 12.0004 14.4627 12.0004 17.5002C12.0004 20.5378 14.4628 23.0002 17.5004 23.0002C20.5379 23.0002 23.0004 20.5378 23.0004 17.5002ZM17.4105 14.0083L17.5004 14.0002L17.5902 14.0083C17.7943 14.0453 17.9553 14.2063 17.9923 14.4104L18.0004 14.5002L17.9994 17.0002H20.5043L20.5942 17.0083C20.7982 17.0453 20.9592 17.2063 20.9962 17.4104L21.0043 17.5002L20.9962 17.5901C20.9592 17.7942 20.7982 17.9551 20.5942 17.9922L20.5043 18.0002H17.9994L18.0004 20.5002L17.9923 20.5901C17.9553 20.7942 17.7943 20.9551 17.5902 20.9922L17.5004 21.0002L17.4105 20.9922C17.2064 20.9551 17.0455 20.7942 17.0084 20.5901L17.0004 20.5002L16.9994 18.0002H14.5043L14.4144 17.9922C14.2103 17.9551 14.0494 17.7942 14.0123 17.5901L14.0043 17.5002L14.0123 17.4104C14.0494 17.2063 14.2103 17.0453 14.4144 17.0083L14.5043 17.0002H16.9994L17.0004 14.5002L17.0084 14.4104C17.0455 14.2063 17.2064 14.0453 17.4105 14.0083Z"/></svg>
+                    </div>
+                    <div id="friends-search">
+                        <input type="text" placeholder="Pesquisar" name="search-friends" id="input-search-friends">
+                        <span onclick="pesquisaAmigo" id="friends-icon-search"><?xml version="1.0" ?><svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10 2.5C14.1421 2.5 17.5 5.85786 17.5 10C17.5 11.7101 16.9276 13.2866 15.964 14.5483L20.7071 19.2929C21.0976 19.6834 21.0976 20.3166 20.7071 20.7071C20.3466 21.0676 19.7794 21.0953 19.3871 20.7903L19.2929 20.7071L14.5483 15.964C13.2866 16.9276 11.7101 17.5 10 17.5C5.85786 17.5 2.5 14.1421 2.5 10C2.5 5.85786 5.85786 2.5 10 2.5ZM10 4.5C6.96243 4.5 4.5 6.96243 4.5 10C4.5 13.0376 6.96243 15.5 10 15.5C13.0376 15.5 15.5 13.0376 15.5 10C15.5 6.96243 13.0376 4.5 10 4.5Z"/></svg></span>
+                    </div>
+                </div>
+                <div class="friends-list" id="friends-list">
+                    <ul id="friends-ul">
+                        <li>
+                            <div class="friends-box">
+                                <div class="img-wrapper">
+                                    <img src="../imgs/Nuvem.png">
+                                </div>
+                                <div class="friends-info">
+                                    <p class="friends-name readable">Gustavo</p>
+                                    <p class="friends-username readable">@offhawk</p>
+                                </div>
+                                <div class="svg-wrapper">
+                                    <?xml version="1.0" ?><svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M17.5001 11.9998C20.5377 11.9998 23.0001 14.4622 23.0001 17.4998C23.0001 20.5373 20.5377 22.9998 17.5001 22.9998C14.4626 22.9998 12.0001 20.5373 12.0001 17.4998C12.0001 14.4622 14.4626 11.9998 17.5001 11.9998ZM12.0227 13.9986C11.3754 15.0091 11.0001 16.2106 11.0001 17.4998C11.0001 19.1435 11.6102 20.6447 12.6164 21.7893C11.815 21.9311 10.9421 22.0008 10.0001 22.0008C7.11062 22.0008 4.87181 21.3442 3.30894 20.0006C2.48032 19.2882 2.00366 18.2498 2.00366 17.157V16.2497C2.00366 15.0071 3.01102 13.9997 4.25366 13.9997L12.0227 13.9986ZM20.8093 15.252L15.2524 20.809C15.893 21.2449 16.6668 21.4998 17.5001 21.4998C19.7093 21.4998 21.5001 19.7089 21.5001 17.4998C21.5001 16.6665 21.2453 15.8927 20.8093 15.252ZM17.5001 13.4998C15.291 13.4998 13.5001 15.2906 13.5001 17.4998C13.5001 18.3331 13.7549 19.1069 14.1909 19.7475L19.7479 14.1906C19.1072 13.7546 18.3334 13.4998 17.5001 13.4998ZM10.0001 2.00439C12.7615 2.00439 15.0001 4.24297 15.0001 7.00439C15.0001 9.76582 12.7615 12.0044 10.0001 12.0044C7.2387 12.0044 5.00012 9.76582 5.00012 7.00439C5.00012 4.24297 7.2387 2.00439 10.0001 2.00439Z"/></svg>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="friends-list hidden" id="search-list">
+                    <ul id="search-ul">
+                        <li>
+                            <div class="friends-box" id="search-box">
+                                <div class="img-wrapper">
+                                    <img src="../imgs/Nuvem.png">
+                                </div>
+                                <div class="friends-info">
+                                    <p class="friends-name">Gustavo</p>
+                                    <p class="friends-username">@offhawk</p>
+                                </div>
+                                <div class="svg-wrapper">
+                                    <?xml version="1.0" ?><svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M11.0004 17.5003C11.0004 16.2113 11.3755 15.01 12.0226 13.9996L4.25278 14.0002C3.01076 14.0002 2.00391 15.007 2.00391 16.2491V17.169C2.00391 17.7411 2.18231 18.2989 2.51427 18.7648C4.05643 20.9292 6.5794 22.0013 10.0004 22.0013C10.9317 22.0013 11.7966 21.9219 12.5921 21.7618C11.6006 20.6207 11.0004 19.1306 11.0004 17.5003Z"/><path d="M15.0004 7.00488C15.0004 4.24346 12.7618 2.00488 10.0004 2.00488C7.23894 2.00488 5.00036 4.24346 5.00036 7.00488C5.00036 9.76631 7.23894 12.0049 10.0004 12.0049C12.7618 12.0049 15.0004 9.76631 15.0004 7.00488Z"/><path d="M23.0004 17.5002C23.0004 14.4627 20.5379 12.0002 17.5004 12.0002C14.4628 12.0002 12.0004 14.4627 12.0004 17.5002C12.0004 20.5378 14.4628 23.0002 17.5004 23.0002C20.5379 23.0002 23.0004 20.5378 23.0004 17.5002ZM17.4105 14.0083L17.5004 14.0002L17.5902 14.0083C17.7943 14.0453 17.9553 14.2063 17.9923 14.4104L18.0004 14.5002L17.9994 17.0002H20.5043L20.5942 17.0083C20.7982 17.0453 20.9592 17.2063 20.9962 17.4104L21.0043 17.5002L20.9962 17.5901C20.9592 17.7942 20.7982 17.9551 20.5942 17.9922L20.5043 18.0002H17.9994L18.0004 20.5002L17.9923 20.5901C17.9553 20.7942 17.7943 20.9551 17.5902 20.9922L17.5004 21.0002L17.4105 20.9922C17.2064 20.9551 17.0455 20.7942 17.0084 20.5901L17.0004 20.5002L16.9994 18.0002H14.5043L14.4144 17.9922C14.2103 17.9551 14.0494 17.7942 14.0123 17.5901L14.0043 17.5002L14.0123 17.4104C14.0494 17.2063 14.2103 17.0453 14.4144 17.0083L14.5043 17.0002H16.9994L17.0004 14.5002L17.0084 14.4104C17.0455 14.2063 17.2064 14.0453 17.4105 14.0083Z"/></svg>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
     <div vw class="enabled">
         <div vw-access-button class="active"></div>
         <div vw-plugin-wrapper>
-          <div class="vw-plugin-top-wrapper"></div>
+        <div class="vw-plugin-top-wrapper"></div>
         </div>
     </div>
     <div class="fixed-button-container">
@@ -98,9 +183,6 @@
         <a class="fixed-button" id="botaodiminuir"><svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 24 24" fill="white">
             <path d="M6 12L18 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
             </svg></a>
-            <a class="fixed-button" id="botaocontraste"><svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 16 16">
-                <path fill="#ffffff" fill-rule="evenodd" d="M524,109 L522.497699,109 C522.214844,109 522,109.223858 522,109.5 C522,109.768066 522.222827,110 522.497699,110 L524,110 L524,111.502301 C524,111.785156 524.223858,112 524.5,112 C524.768066,112 525,111.777173 525,111.502301 L525,110 L526.502301,110 C526.785156,110 527,109.776142 527,109.5 C527,109.231934 526.777173,109 526.502301,109 L525,109 L525,107.497699 C525,107.214844 524.776142,107 524.5,107 C524.231934,107 524,107.222827 524,107.497699 L524,109 Z M519,112 C519,107.581722 522.590712,104 527,104 C531.418278,104 535,107.590712 535,112 C535,116.418278 531.409288,120 527,120 C522.581722,120 519,116.409288 519,112 Z M532,107.100505 C529.26633,104.366835 524.834175,104.366835 522.100505,107.100505 C519.366835,109.834175 519.366835,114.26633 522.100505,117 L532,107.100505 Z M528,114.5 C528,114.223858 528.215057,114 528.490479,114 L531.509521,114 C531.780405,114 532,114.231934 532,114.5 C532,114.776142 531.784943,115 531.509521,115 L528.490479,115 C528.219595,115 528,114.768066 528,114.5 Z" transform="translate(-519 -104)"/>
-              </svg></a>
     </div>
     <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
@@ -110,12 +192,13 @@
     <script src="../js/loading.js"></script>
     <script src="../js/firebase.js"></script>
     <script src="../js/login.js"></script>
-    <script src="../js/modal.js"></script>
-    <script src="../js/profile.js"></script>
     <script src="../js/script.js"></script>
+    <script src="../js/auth-guard.js"></script>
+    <script src="../js/profile.js"></script>
     <script src="../js/acessibilidade.js"></script>
     <script>
         new window.VLibras.Widget('https://vlibras.gov.br/app');
     </script>
 </body>
+
 </html>

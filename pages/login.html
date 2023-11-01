@@ -30,7 +30,7 @@
                             <input type="email" name="email" id="email" placeholder="seuemail@gmail.com" onchange="validateFields()">
                         </label>
                         <label>
-                            <div class="readable"> Senha</div><span class="invalido readable" id="senha-invalido"></span>
+                            <div class="readable"> Senha <span class="invalido readable" id="senha-invalido"></span></div>
                             <input type="password" name="password" id="password" placeholder="********" onchange="validateFields()">
                             <button type="button" onclick="resetPassword()" id="esqueceu"><span class="link">Esqueceu a senha?</span></button>
                             <div id="mensagem-redefinicao-senha"></div>
@@ -78,7 +78,7 @@
                             <input class="inputs required" type="password" name="confirmpassword" id="confirmpassword" placeholder="********" onchange="validateFields('input-cadastro')"  oninput="comparePassword()">
                             <span class="span-required readable">Senhas devem ser compatíveis</span>
                         </label>
-                        <button type="button" class="botao" id="input-login" value="CADASTRAR"disabled>CADASTRAR</button>
+                        <button type="button" class="botao" id="input-cadastro" value="CADASTRAR" disabled>CADASTRAR</button>
                     </div>
                 </div>
             </div>
