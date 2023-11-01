@@ -52,8 +52,8 @@ function nameValidate(){
     }
 }
 
-function telValidate(){
-    if(campos[1].value.length < 11) {
+function userValidate(){
+    if(campos[1].value.length < 3) {
 
         setError(1);
     } else {

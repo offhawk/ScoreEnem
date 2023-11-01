@@ -355,6 +355,14 @@ startButton.addEventListener("click", () => {
 });
 //hide quiz and display start screen
 window.onload = () => {
+
+    if(localStorage.getItem("theme") == null){
+        localStorage.setItem("theme", "light");
+    } else {
+        theme = localStorage.getItem("theme");
+        document.querySelector('body').setAttribute('data-theme', theme);
+    }
+
     startScreen.classList.remove("hide");
     displayContainer.classList.add("hide");
 };

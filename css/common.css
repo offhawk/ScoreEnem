@@ -1,6 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+@font-face {
+    font-family: trap;
+    src: url(../fonts/Trap-Black.otf);
+}
+
+*{
+    box-sizing: border-box;
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+}
+
 html {
     --scrollbarBG: #CFD8DC;
     --thumbBG: #90A4AE;
+}
+
+body[data-theme="light"] {
+    --text: #22262a;
+    --placeholder: #999999;
+    --background: #E4F0F6;
+    --primary: #14EBB1;
+    --disabled: #70b8a5;
+    --secondary: #F2FAFD;
+    --accent: #ff9eda;
+    --accent2: #7830C0;
+    --accent3: #2F57C6;
+}
+
+body[data-theme="dark"] {
+    --text: #d5d9dd;
+    --placeholder: #7a7a7a;
+    --background: #060e13;
+    --primary: #14EBB1;
+    --disabled: #70b8a5;
+    --secondary: #10222d;
+    --accent: #ff9eda;
+    --accent2: #B687FF;
+    --accent3: #0E9EE1;
 }
 
 body::-webkit-scrollbar {
@@ -36,7 +73,7 @@ body::-webkit-scrollbar-thumb {
     top: 50%;
 }
 .loading svg{
-    filter: drop-shadow(0px 0px 10px #21EDC5) drop-shadow(0px 0px 25px #21EDC5);
+    filter: drop-shadow(0px 0px 10px var(--primary)) drop-shadow(0px 0px 25px var(--primary));
     animation: loading 1.5s linear infinite
 }
 
@@ -50,7 +87,6 @@ body::-webkit-scrollbar-thumb {
 }
 
 #friends-container>div{
-    background-color: #ffffff;
     border-radius: 15px;
     padding: 20px;
     margin-top: 20px;
@@ -78,19 +114,20 @@ body::-webkit-scrollbar-thumb {
     font-weight: 500;
     box-sizing: border-box;
     width: 100%;
-    background-color: #ecf4f9;
+    background-color: var(--background);
     height: 100%;
     border-radius: 20px;
     padding: 5px 5px 5px 10px;
-    border: 1px solid rgba(0, 0, 0, .1);
+    border: 1px solid var(--secondary);
 }
 
 #friends-search input:focus{
-    border: 1px solid #21EDC5;
+    border: 1px solid var(--primary);
+    background-color: var(--secondary);
 }
 
 #friends-search input:focus ~ svg{
-    fill: #21EDC5;
+    fill: var(--primary);
 }
 
 .friends-icon{
@@ -99,7 +136,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .friends-icon svg{
-    fill: #212529;
+    fill: var(--text);
     display: inline-block;
     height: 100%;
     width: 100%;
@@ -114,21 +151,32 @@ body::-webkit-scrollbar-thumb {
 .svg-wrapper:hover  svg,
 #friends-search svg:hover{
     cursor: pointer;
-    fill: #999fa3;
+    fill: var(--primary);
 }
 
 
 .friends-list ul{
     margin: 0;
-    padding: 10px 0;
+    padding: 0;
     border-bottom: 1px solid rgba(0, 0, 0, .1);
     list-style-type: none;
+}
+
+.friends-list li{
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.friends-list li:hover{
+    background-color: var(--secondary);
 }
 
 .friends-box{
     display: flex;
     font-weight: 600;
     justify-content: space-between;
+    align-items: center;
 }
 
 .friends-box img{
@@ -139,6 +187,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .friends-box svg{
+    fill: var(--text);
     width: 24px;
 }
 
@@ -147,6 +196,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 #friends-search svg{
+    fill: var(--text);
     position: absolute;
     padding: 5px;
     width: 35px;
@@ -172,7 +222,7 @@ body::-webkit-scrollbar-thumb {
 
 .friends-username{
     font-weight: 600;
-    color: rgb(0, 0, 0, .4);
+    color: var(--text);
 }
 
 .friends-info{
@@ -186,4 +236,81 @@ body::-webkit-scrollbar-thumb {
 #friends-info-p{
     margin-bottom: 15px;
     font-weight: 500;
+}
+
+.home-header {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    width: calc(100% - 30px);
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 100px;
+    background-color: var(--primary);
+    border: 1px solid black;
+    max-height: 101px;
+    z-index: 999;
+    border-radius: 150px;
+}
+
+#menu-nav {
+    color: #22262a;
+    display: flex;
+    text-align: right;
+    align-items: center;
+}
+
+#menu-nav svg{
+    fill: #22262a;
+}
+
+#menu-nav svg:hover{
+    cursor: pointer;
+}
+
+.link-header {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+div#menu-nav > .link-header {
+    list-style: none;
+    list-style-type: none;
+}
+
+.link-header > a {
+    font-size: 1.25em;
+    text-decoration: none;
+    color: black;
+    font-weight: 700;
+    padding-right: 30px;
+    display: inline;
+}
+
+.navigation{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.navigation svg{
+    width: 28px;
+    fill: var(--text);
+    transition: all 200ms;
+}
+
+.navigation p{
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.navigation:hover svg{
+    transform: translateX(-10px);
+}
+
+.navigation:hover{
+    cursor: pointer;
 }

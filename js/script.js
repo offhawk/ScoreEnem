@@ -1,5 +1,32 @@
 let namesEl = document.querySelectorAll('.header-name');
 let usuario = [];
+let username = document.querySelector('.user-name')
+
+let themeChangerEl = document.querySelector('#theme-changer');
+let navigationEl = document.querySelector('.navigation');
+
+let theme = "";
+
+window.onload = function() {
+    if(localStorage.getItem("theme") == null){
+        localStorage.setItem("theme", "light");
+    } else {
+        theme = localStorage.getItem("theme");
+        document.querySelector('body').setAttribute('data-theme', theme);
+    }
+}
+
+themeChangerEl.addEventListener('click', function() {
+    if(theme == "light"){
+        localStorage.setItem("theme", "dark");
+        theme = "dark";
+        document.querySelector('body').setAttribute('data-theme', "dark");
+    } else {
+        localStorage.setItem("theme", "light");
+        theme = "light";
+        document.querySelector('body').setAttribute('data-theme', "light");
+    }
+})
 
 firebase.auth().onAuthStateChanged(function(user){
     if(user) {
@@ -33,10 +60,16 @@ function preencheHeader(usuario) {
             namesEl[1].innerHTML = 'Log Out';
             namesEl[1].addEventListener('click', logOut);
         }
+        if (username) {
+            username.innerHTML = usuario[0].nome;
+        }
     }
-   
 }
 
 function irParaMeuPerfil() {
     window.location.href = "../pages/profile.html";
 }
+
+navigationEl.addEventListener('click', () => {
+    window.history.back();
+})
