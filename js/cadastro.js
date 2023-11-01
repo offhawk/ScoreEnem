@@ -5,13 +5,6 @@ const emailRegex = /\S+@\S+\.\S+/;
 
 let erros = 0;
 
-setError(0);
-setError(1);
-setError(2);
-setError(3);
-setError(4);
-
-
 function setError(index){
     campos[index].style.border = '2px solid #ff0000';
     spans[index].style.display = 'block';
@@ -28,6 +21,7 @@ function removeError(index){
     campos[index].style.border = '';
     spans[index].style.display = 'none';
 
+
     erros = 0;
 
     spans.forEach((span => {
@@ -36,15 +30,17 @@ function removeError(index){
         } else erros--;
     }))
 
+    console.log(spans.length)
+    console.log(erros)
+
     if(erros == spans.length){
-        document.getElementById('input-cadastro').disabled = false;
-    } else document.getElementById('input-cadastro').disabled = true;
+        document.getElementById('input-cadastro').removeAttribute('disabled');
+    } else document.getElementById('input-cadastro').setAttribute('disabled', '');
 
 }
 
 function nameValidate(){
     if(campos[0].value.length < 3) {
-
         setError(0);
 
     } else {
@@ -54,10 +50,8 @@ function nameValidate(){
 
 function userValidate(){
     if(campos[1].value.length < 3) {
-
         setError(1);
     } else {
-
         removeError(1);
     }
 
@@ -65,21 +59,16 @@ function userValidate(){
 
 function emailValidate(){
     if(!emailRegex.test(campos[2].value)) {
-
         setError(2);
-
     } else {
-
         removeError(2);
     }
 }
 
 function mainPasswordValidate(){
     if(campos[3].value.length < 6) {
-
         setError(3);
     } else {
-
         removeError(3);
         comparePassword();
     }
@@ -88,11 +77,8 @@ function mainPasswordValidate(){
 function comparePassword(){
     
     if(campos[3].value == campos[4].value && campos[4].value.length >= 6) {
-        
         removeError(4);
-    
     } else {
-        
         setError(4);
     }
 }
