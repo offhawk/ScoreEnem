@@ -1,4 +1,3 @@
-
 let password = document.getElementById('password');
 let email = document.getElementById('email');
 let emailInvalido = document.getElementById('email-invalido');
@@ -107,7 +106,7 @@ function resetPassword() {
     }
     else {
         document.querySelector("#mensagem-redefinicao-senha").innerHTML =
-            "";
+            "Tente Novamente";
         emailInvalido.innerHTML = "Email Inválido";
       }
     }
