@@ -63,7 +63,6 @@ main{
 
 #videos-container {
     width: 32%;
-    overflow-y: scroll;
 }
 
 #videos-list::-webkit-scrollbar {
