@@ -1,3 +1,4 @@
+
 let searchEl = document.querySelector('#input-search-friends');
 let searchIconEl = document.querySelector('#friends-icon-search');
 let addIconEl = document.querySelector('#friends-icon-add');
@@ -202,3 +203,4 @@ function removerAmigo(parent) {
             })
     }))
 }
+
