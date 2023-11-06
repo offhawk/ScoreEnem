@@ -143,7 +143,7 @@ function pesquisaAmigo() {
         searchListEl.innerHTML = "Pesquisando...";
         let user;
 
-        firebase.firestore().collection('usuario').orderBy('nomeSearch').where('nomeSearch', '>=', pesquisa.toUpperCase()).where('username', '>=', pesquisa.toLowerCase()).get().then((snapshot => {
+        firebase.firestore().collection('usuario').orderBy('nomeSearch').startAt(pesquisa.toUpperCase()).endAt(pesquisa.toUpperCase() + "\uf8ff").get().then((snapshot => {
             if(!snapshot.empty){
                 searchListEl.innerHTML = "";
             } else searchListEl.innerHTML = "Nenhum usuário encontrado.";

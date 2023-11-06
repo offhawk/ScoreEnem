@@ -16,6 +16,25 @@ html {
     --thumbBG: #90A4AE;
 }
 
+#logo-title{
+    font-family: trap;
+    font-size: 4em;
+    text-align: center;
+    width: 100%;
+}
+
+.logo-title{
+    font-weight: bolder;
+    font-size: 4em;
+}
+
+.logo-title-header{
+    color: #22262a;
+    text-decoration: none;
+    font-family: trap!important;
+    font-size: 2em;
+}
+
 body[data-theme="light"] {
     --text: #22262a;
     --placeholder: #999999;

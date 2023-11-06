@@ -225,3 +225,42 @@ a:hover {
     border-radius: 50%;
     background-color: #21EDC5;
 }
+
+#theme-changer svg{
+    fill: #22262a;
+    margin-left: 3px;
+    margin-top: 5px;
+}
+
+.dark-theme {
+    position: relative;
+    display: block;
+    white-space: nowrap;
+    font-weight: bolder;
+    font-size: 20px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin: 5px 0px;
+}
+
+.bg-white #theme-changer {
+    position: relative;
+    display: flex;
+    text-decoration: none;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+#alinhado {
+    display: flex;
+}
+
+#alinhado:hover {
+    cursor: pointer;
+}
+
+#alinhado2 {
+    margin-left: 3px;
+}
