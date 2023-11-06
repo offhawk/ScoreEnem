@@ -63,6 +63,7 @@ main{
 
 #videos-container {
     width: 32%;
+    overflow-y: scroll;
 }
 
 #videos-list::-webkit-scrollbar {
@@ -259,7 +260,6 @@ p{
     background-color: var(--secondary);
     border-bottom: 2px solid black;
 }
-
 #heart { 
     margin: 10px;
     position: relative; 

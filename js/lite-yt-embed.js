@@ -28,7 +28,7 @@ class LiteYTEmbed extends HTMLElement {
          * TODO: Consider using webp if supported, falling back to jpg
          */
         if (!this.style.backgroundImage) {
-          this.style.backgroundImage = `url("https://i.ytimg.com/vi/${this.videoId}/maxresdefault.jpg")`;
+          this.style.backgroundImage = `url("https://i.ytimg.com/vi/${this.videoId}/hqdefault.jpg")`;
         }
 
         // Set up play button, and its visually hidden label

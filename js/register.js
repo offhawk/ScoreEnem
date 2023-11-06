@@ -1,24 +1,16 @@
 let rpassword = document.getElementById('r-password');
 let remail = document.getElementById('r-email');
 let rnome = document.getElementById('nome');
-let rtelefone = document.getElementById('telefone');
+let rusuario = document.getElementById('usuario');
+
 
 function validateFieldsReg(e) {
 
     const emailValid = isEmailValid();
     const passwordValid = isPasswordValid();
-    const telValid = isTelValid();
     const nameValid = isNameValid();
     //document.getElementById('input-cadastro').disabled = !emailValid || !passwordValid || !telValid || !nameValid;
 
-}
-
-
-function isTelValid(e) {
-    if (!rtelefone.value) {
-        return false;
-    }
-    return true;
 }
 
 function isNameValid(e) {
@@ -28,8 +20,9 @@ function isNameValid(e) {
     return true;
 }
 
+document.getElementById('input-cadastro').addEventListener('click', cadastro)
 
-function cadastro(e) {
+function cadastro() {
     showLoading()
     firebase.auth().createUserWithEmailAndPassword(remail.value, rpassword.value).then(response => {
 
@@ -50,11 +43,13 @@ function salvaUsuario() {
     const usuario = {
         nome: rnome.value,
         email: remail.value,
-        telefone: rtelefone.value,
-        uid: firebase.auth().currentUser.uid
+        username: rusuario.value.toLowerCase(),
+        uid: firebase.auth().currentUser.uid,
+        nomeSearch: rnome.value.toUpperCase()
     }
 
-    firebase.firestore().collection('usuario').add(usuario).then(() => {
+    firebase.firestore().collection('usuario').doc(firebase.auth().currentUser.uid).set(usuario).then(() => {
+        window.location.href = "../index.html";
         return true;
     }).catch(() => {
         return false;

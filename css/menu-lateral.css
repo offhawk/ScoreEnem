@@ -1,0 +1,227 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+.d-flex {
+    display: flex !important;
+}
+
+
+#wrapper{
+    position: absolute;
+    gap: 20px;
+    overflow-x: hidden;
+}
+
+.bg-white {
+    width: 70px;
+    background-color: var(--primary);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.bg-white:hover {
+    width: 260px;
+}
+
+.bg-white:hover #profile-pic {
+    border-radius: 50%;
+    border-color: #22262a;
+    border: 1px solid;
+    width: 100px;
+    height: 100px;
+}
+
+.bg-white:hover #profile-name {
+    color: #22262a;
+    display: block;
+    font-weight: bolder;
+    font-size: 24px;
+}
+
+.bg-white a {
+    position: relative;
+    display: flex;
+    text-decoration: none;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.bg-white .menu-items {
+    position: relative;
+    display: block;
+    white-space: nowrap;
+}
+
+.bg-white .active {
+    background: #0e4c3f;
+}
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    border-radius: 0px 20px 20px 0px;
+    position: relative;
+}
+
+#sidebar-wrapper .list-group {
+    width: 15rem;
+}
+
+.list-group {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+
+.list-group-flush {
+    border-radius: 0;
+}
+
+body{
+    display: block;
+    background-color: var(--background);
+    margin: 0px;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+}
+
+#sidebar-wrapper .list-group {
+    width: 15rem;
+}
+
+.bg-white #profile-pic {
+    border-radius: 50%;
+    border-color: black;
+    border: 1px solid;
+    width: 50px;
+    height: 50px;
+    transition: 0.5s;
+}
+
+#perfil-infos {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+    margin-top: 50px;
+}
+
+#profile-name {
+    transition: color 0.5s;
+    font-weight: bolder;
+    font-size: 24px;
+    color: #21EDC5;
+}
+
+.list-group-item {
+    padding-bottom: 5px;
+    padding-top: 5px;
+    background-color: rgba(0, 0, 0, 0);
+    transition: background-color 200ms;
+}
+
+#sair {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+.items-dashboard {
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+}
+
+.menu-images {
+    margin-right: 10px;
+    transition: all 200ms;
+}
+
+.bg-white:hover .menu-items {
+    font-weight: bolder;
+    font-size: 22px;
+    transition: color 0.5s;
+    color: #212529;
+}
+
+.menu-items {
+    color: var(--primary);
+    font-weight: bolder;
+    font-size: 22px;
+    transition: color 0.5s;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+.list-group-item:hover{
+    background-color: rgba(0, 0, 0, .25);
+}
+
+#sair:hover {
+    cursor: pointer;
+}
+
+#wrapper > div{
+    padding-top: 20px;
+}
+
+.g-5, .gx-5 {
+    --bs-gutter-x: 3rem;
+}
+
+
+.p-3 {
+    text-align: left;
+    margin: 30px 10px 30px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 15px;
+    height: 150px;
+    transition: all 200ms;
+    padding: 1rem !important;
+}
+
+.p-3 p {
+    margin: 0;
+    font-size: 1.2em;
+}
+
+a {
+    text-decoration: none;
+    color: unset;
+    display: block;
+}
+
+a:hover {
+    --bs-link-color-rgb: var(--bs-link-hover-color-rgb);
+}
+
+#add-icon{
+    height: 100%;
+}
+
+#add-icon svg{
+    display: inline-block;
+    height: 100%;
+    object-fit: contain;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+#add-icon:hover{
+    cursor: pointer;
+}
+
+.img-wrapper{
+    margin-right: 10px;
+    border: 1px solid black;
+    width: 50px;
+    border-radius: 50%;
+    background-color: #21EDC5;
+}

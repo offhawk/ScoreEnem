@@ -4,77 +4,109 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/login.css">
     <link rel="stylesheet" href="css/home.css">
-    <link rel="stylesheet" href="css/common.css">
     <link rel="shortcut icon" href="imgs/clip.ico" type="image/x-icon">
+    <script src="https://unpkg.com/scrollreveal"></script>
     <title>Home - ScoreEnem</title>
 </head>
-<body id="body-home">
+<body id="body-home" data-scroll-container data-theme="light">
     <header class="home-header">
             <!-- Início Cabeçalho -->
             <div>
-                <h1 class="logo-title-header">ScoreEnem</h1>
+                <h1 class="logo-title-header readable">ScoreEnem</h1>
             </div>
             <!-- Links das outras páginas html, login, e o cadastre-se -->
             <div id="menu-nav">
                 <div class="link-header">
-                    <a class="header-name" href="pages/login.html">Login</a>
-                    <a class="header-name" href="pages/login.html">Cadastre-se</a>
+                    <a class="header-name readable" href="pages/login.html">Login</a>
+                    <a class="header-name readable" href="pages/login.html">Cadastre-se</a>
+                </div>
+                <div id="theme-changer">
+                    <?xml version="1.0" ?><svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12 20V4C16.4183 4 20 7.58172 20 12C20 16.4183 16.4183 20 12 20Z"/></svg>
                 </div>
             </div>
     </header>
     <main>
         <div>
-            <div style="width: 600px;">
-                <form action="POST">
-                    <h1 class="logo-title">ESTUDE PARA O ENEM</h1>
-                    <div id="acesse">
-                        <li class="link-header"><a href="pages/dashboard.html">Acesse</a></li>
+            <div style="width: 600px;" class="reveal">
+                <div>
+                    <h1 class="logo-title reveal readable">Estude para o ENEM</h1>
+                    <h2 class="logo-subtitle readable">Estude de forma divertida os conteúdos abordados pelo ENEM!</h2>
+                    <div id="acesse" class="reveal">
+                        <li class="link-header" ><a href="pages/dashboard.html" class="readable">Acesse <?xml version="1.0" ?><svg fill="none" height="28" viewBox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg"><path d="M4.99902 17.585L19.2912 3.29483C19.6817 2.90431 20.3149 2.90433 20.7054 3.29486C21.0659 3.65535 21.0936 4.22259 20.7886 4.61487L20.7054 4.70908L6.41302 19L11.5006 19.0005C12.0134 19.0005 12.4361 19.3865 12.4938 19.8839L12.5006 20.0005C12.5006 20.5133 12.1145 20.936 11.6172 20.9938L11.5006 21.0005L3.93962 20.9987L3.84404 20.9885L3.76739 20.9735L3.6899 20.9517L3.62087 20.9265L3.53078 20.8843L3.44123 20.8306L3.34976 20.7611L3.38227 20.7877C3.32046 20.7392 3.2645 20.6836 3.21563 20.6221L3.16451 20.5517L3.12575 20.4882L3.09275 20.4237L3.05896 20.3423L3.03384 20.2627L3.01034 20.1509L3.00299 20.0897L2.99902 20.0005V12.4966C2.99902 11.9443 3.44674 11.4966 3.99902 11.4966C4.51186 11.4966 4.93453 11.8826 4.9923 12.38L4.99902 12.4966V17.585L19.2912 3.29483L4.99902 17.585Z" fill="#212121"/></svg></a></li>
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-        <div id="img-container">
+        <div id="img-container" class="reveal">
             <img id="clipes" src="imgs/clip.png" alt="" srcset="">
         </div>
     </main>
     <div class="div-video">
-        <div id="img-container2">
+        <div id="img-container2" class="reveal">
             <img id="img-video" src="imgs/video.png">
         </div>
         <div>
             <div class="texto-video">
-                    <h1 class="logo-title-video">Tenha acesso a centenas de videoaulas</h1>
-                    <h2 class="logo-subtitle-video">Veja conteúdos diversos dos melhores professores, totalmente GRATUITO</h2>
+                    <h1 class="logo-title-video reveal readable">Tenha acesso a centenas de videoaulas</h1>
+                    <h2 class="logo-subtitle-video reveal readable">Veja conteúdos diversos dos melhores professores, totalmente GRATUITO</h2>
             </div>
         </div>
     </div>
     <div class="div-mae">
         <div>
             <div class="texto-redacao">
-                    <h1 class="logo-title-redacao">Alcance nota 1000 na Redação</h1>
-                    <h2 class="logo-subtitle-redacao">Veja modelos, exemplos e correções de redações nota 1000 no ENEM!</h2>
-                    <div id="redacao">
+                    <h1 class="logo-title-redacao reveal readable">Alcance nota 1000 na Redação</h1>
+                    <h2 class="logo-subtitle-redacao reveal readable">Veja modelos, exemplos e correções de redações nota 1000 no ENEM!</h2>
+                    <div id="redacao" class="reveal">
                         <li class="curso-txt">
-                            <h1 style="margin-bottom: 20px;">Curso Completo</h1>
-                            <h2>Tenha acesso a um curso completo de redação do básico ao avançado.</h2>
+                            <h1 class="readable" style="margin-bottom: 20px;">Curso Completo</h1>
+                            <h2 class="readable">Tenha acesso a um curso completo de redação do básico ao avançado.</h2>
                         </li>
                     </div>
             </div>
         </div>
-        <div id="img-container">
-            <img id="img-redacao" src="imgs/redacao.png" alt="" srcset="">
+        <div id="img-container3">
+            <img id="img-redacao" class="reveal" src="imgs/redacao.png" alt="" srcset="">
         </div>
     </div>
     <footer></footer>
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+          <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <div class="fixed-button-container">
+        <a class="fixed-button" id="botaofalar"><svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.4 1.8C11.5532 0.262376 14 1.07799 14 3.00001V21.1214C14 23.0539 11.5313 23.8627 10.3878 22.3049L6.49356 17H4C2.34315 17 1 15.6569 1 14V10C1 8.34315 2.34315 7 4 7H6.5L10.4 1.8ZM12 3L8.1 8.2C7.72229 8.70361 7.12951 9 6.5 9H4C3.44772 9 3 9.44772 3 10V14C3 14.5523 3.44772 15 4 15H6.49356C7.13031 15 7.72901 15.3032 8.10581 15.8165L12 21.1214V3Z" fill="white"/>
+            <path d="M16.2137 4.17445C16.1094 3.56451 16.5773 3 17.1961 3C17.6635 3 18.0648 3.328 18.1464 3.78824C18.4242 5.35347 19 8.96465 19 12C19 15.0353 18.4242 18.6465 18.1464 20.2118C18.0648 20.672 17.6635 21 17.1961 21C16.5773 21 16.1094 20.4355 16.2137 19.8256C16.5074 18.1073 17 14.8074 17 12C17 9.19264 16.5074 5.8927 16.2137 4.17445Z" fill="white"/>
+            <path d="M21.41 5C20.7346 5 20.2402 5.69397 20.3966 6.35098C20.6758 7.52413 21 9.4379 21 12C21 14.5621 20.6758 16.4759 20.3966 17.649C20.2402 18.306 20.7346 19 21.41 19C21.7716 19 22.0974 18.7944 22.2101 18.4509C22.5034 17.5569 23 15.5233 23 12C23 8.47672 22.5034 6.44306 22.2101 5.54913C22.0974 5.20556 21.7716 5 21.41 5Z" fill="white"/>
+            </svg></a>
+        <a class="fixed-button" id="botaoaumentar"><svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 24 24" fill="none">
+            <path d="M4 12H20M12 4V20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg></a>
+        <a class="fixed-button" id="botaodiminuir"><svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 24 24" fill="white">
+            <path d="M6 12L18 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg></a>
+            <a class="fixed-button" id="botaocontraste"><svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 16 16">
+                <path fill="#ffffff" fill-rule="evenodd" d="M524,109 L522.497699,109 C522.214844,109 522,109.223858 522,109.5 C522,109.768066 522.222827,110 522.497699,110 L524,110 L524,111.502301 C524,111.785156 524.223858,112 524.5,112 C524.768066,112 525,111.777173 525,111.502301 L525,110 L526.502301,110 C526.785156,110 527,109.776142 527,109.5 C527,109.231934 526.777173,109 526.502301,109 L525,109 L525,107.497699 C525,107.214844 524.776142,107 524.5,107 C524.231934,107 524,107.222827 524,107.497699 L524,109 Z M519,112 C519,107.581722 522.590712,104 527,104 C531.418278,104 535,107.590712 535,112 C535,116.418278 531.409288,120 527,120 C522.581722,120 519,116.409288 519,112 Z M532,107.100505 C529.26633,104.366835 524.834175,104.366835 522.100505,107.100505 C519.366835,109.834175 519.366835,114.26633 522.100505,117 L532,107.100505 Z M528,114.5 C528,114.223858 528.215057,114 528.490479,114 L531.509521,114 C531.780405,114 532,114.231934 532,114.5 C532,114.776142 531.784943,115 531.509521,115 L528.490479,115 C528.219595,115 528,114.768066 528,114.5 Z" transform="translate(-519 -104)"/>
+              </svg></a>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
-    <script src="../js/loading.js"></script>
     <script src="js/firebase.js"></script>
     <script src="js/loading.js"></script>
     <script src="js/login.js"></script>
+    <script src="js/acessibilidade.js"></script>
     <script src="js/script.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+        ScrollReveal().reveal('.reveal', {viewFactor: 0.5, origin: 'bottom', duration: 1800, distance: '100px', ease: 'ease-in'});
+    </script>
 </body>
 </html>

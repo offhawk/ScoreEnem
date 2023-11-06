@@ -6,12 +6,15 @@
     box-sizing: border-box;
     font-family: 'Inter', sans-serif!important;
   }
+  label {
+    font-family: 'Inter', sans-serif!important;
+  }
   h1{
     font-weight: 600;
   }
   body {
     height: 100vh;
-    background: #ecf4f9;
+    background: var(--background);
   }
   .start-screen,
   .score-container {
@@ -51,10 +54,10 @@
     justify-content: space-between;
     align-items: center;
     padding-bottom: 0.6em;
-    border-bottom: 0.1em solid #c0bfd2;
+    border-bottom: 0.1em solid var(--background);
   }
   .timer-div {
-    background-color: #e1f5fe;
+    background-color: var(--secondary);
     width: 7.5em;
     border-radius: 1.8em;
     display: flex;
@@ -77,11 +80,12 @@
     text-align: left;
     outline: none;
     background: transparent;
-    border: 1px solid #c0bfd2;
+    border: 1px solid var(--background);
     border-radius: 0.3em;
   }
   .option-div:disabled {
-    color: #000000;
+    border-color: var(--placeholder);
+    color: var(--placeholder);
     cursor: not-allowed;
   }
   #next-button {
@@ -126,12 +130,11 @@
     background-color: rgba(0, 0, 0, 0.1);
   }
   .responder-button{
-    border: 1px solid black;
     font-size: 1em;
     margin-top: 1.5em;
     font-weight: bold;
-    background-color: #21EDC5;
-    color: #000;
+    background-color: var(--primary);
+    color: #22262a;
     padding: 0.7em 1.8em;
     border-radius: 0.3em;
     box-shadow: rgba(33, 237, 197, 0) 0px 7px 29px 0px;
@@ -139,9 +142,13 @@
   }
   #next-button:disabled{
     box-shadow: none!important;
+    background-color: var(--disabled);
     cursor: not-allowed;
   }
-
+  .filtro-container{
+    background-color: var(--secondary);
+    border: none;
+  }
   #next-button:hover,
   .responder-button:hover{
     box-shadow: rgba(33, 237, 197, .75) 0px 7px 29px 0px;
@@ -156,28 +163,28 @@
   }
   .correct {
     background-color: #dafff8;
-    color: #000;
-    border-color: #21EDC5;
+    color: var(--text);
+    border-color: var(--primary);
   }
   #user-score {
     font-size: 1.5em;
     color: #ffffff;
   }
   .marcado{
-    border-color: black;
+    border-color: var(--placeholder);
   }
   .container-mid{
     position: relative;
     margin: 3em 0;
     padding: 1em 1.8em 3.1em;
-    background-color: #fff;
+    background-color: var(--secondary);
     border-radius: 15px;
     box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.00);
     transition: box-shadow 200ms ease;
   }
   .desc span {
     display: inline-block;
-    background-color: #ecf4f9;
+    background-color: var(--background);
     padding: 5px 15px;
     margin: 5px;
     border-radius: 15px;
@@ -195,7 +202,7 @@
     box-shadow: 0px 25px 25px rgba(0, 0, 0, 0.05);
   }
   #sidenav{
-    background-color: #21EDC5;
+    background-color: var(--primary);
     width: 250px;
     height: 100%;
     border-radius: 0 15px 15px 0;
@@ -274,3 +281,78 @@
   .display-none{
     display: none!important;
   }
+  #filtro {
+    display: flex;
+    justify-content: center;
+  }
+  .page-link {
+    position: relative;
+    display: block;
+    padding: 0.5rem 0.75rem;
+    margin-left: -1px;
+    line-height: 1.25;
+    color: var(--text);
+    background-color: var(--secondary);
+    border: 1px solid var(--secondary);
+  }
+  .page-link:hover {
+    background-color: var(--background);
+    color: var(--text);
+    border-color: var(--secondary);
+  }
+  .dropdown-item.active {
+    color: #22262a;
+    background-color: var(--secondary);
+  }
+  .dropdown-item:active {
+    background-color: red;
+  }
+  .btn-light{
+    background-color: var(--background);
+    color: var(--text);
+    border-color: var(--placeholder);
+  }
+  .btn-light:hover{
+    background-color: var(--secondary);
+  }
+  .dropdown-menu{
+    background-color: var(--background);
+  }
+  .show>.btn-light.dropdown-toggle{
+    background-color: var(--secondary);
+  }
+  .dropdown-item:hover{
+    background-color: var(--secondary);
+  }
+
+  .fixed-button-container {
+    position: fixed;
+    top: 70%;
+    right: 10px;
+    transform: translateY(-50%);
+    z-index: 999; 
+}
+
+.fixed-button {
+    display: block;
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 7px;
+    margin-bottom: 10px;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 25%;
+}
+
+.fixed-button:hover {
+    cursor: pointer;
+}
+
+#botaofalar {
+    background-color: #007bff; /* Cor de fundo padrão */
+    margin-top: 7px;
+}
+
+#botaofalar.mudarCor {
+    background-color: #ff9eda; /* Nova cor de fundo */
+}
