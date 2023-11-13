@@ -223,6 +223,33 @@ body::-webkit-scrollbar-thumb {
     right: 5px;
 }
 
+.friends-nav{
+    display: flex;
+}
+
+.friends-nav p{
+    position: relative;
+    text-align: center;
+    padding: 10px 15px;
+}
+
+.friends-nav p:after{
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    width: var(--width);
+    height: 100%;
+    z-index: -1;
+    border-radius: 50px;
+    right: 0;
+    background-color: var(--secondary);
+    transition: all 300ms;
+}
+
+.friends-nav p:hover{
+    cursor: pointer;
+}
+
 .svg-wrapper{
     width: 50px;
     align-items: center;
@@ -252,7 +279,7 @@ body::-webkit-scrollbar-thumb {
     display: none;
 }
 
-#friends-info-p{
+.friends-info-p{
     margin-bottom: 15px;
     font-weight: 500;
 }

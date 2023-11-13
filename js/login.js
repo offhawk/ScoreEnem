@@ -3,6 +3,17 @@ let email = document.getElementById('email');
 let emailInvalido = document.getElementById('email-invalido');
 let senhaInvalido = document.getElementById('senha-invalido');
 let loginErro = document.getElementById('login-error');
+let inputsEl = document.querySelectorAll('input');
+let modal = document.getElementById('modal-full');
+
+function alteraModal(e) {
+
+    inputsEl.forEach(input => {
+        input.value = "";
+    });
+
+    modal.classList.toggle('show');
+}
 
 let query = location.search.slice(1);
 let partes = query.split('&');
@@ -17,6 +28,10 @@ partes.forEach(function (parte) {
 if (data.logado == 0) {
     loginErro.classList.toggle('hidden');
     loginErro.innerHTML = "Faça Login para acessar a página"
+}
+
+if (data.cad == 1) {
+    alteraModal();
 }
 
 function validateFields() {
