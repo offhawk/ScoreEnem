@@ -311,38 +311,49 @@ function curtirVideo (liked) {
 };
 
 function marcarComoAssistido() {
-  // Obtenha o ID do vídeo atualmente em exibição
-  let liteEmbedEl = document.querySelector("lite-youtube");
-  const videoId = liteEmbedEl.getAttribute('videoid');
+    // Obtenha o ID do vídeo atualmente em exibição
+    let liteEmbedEl = document.querySelector("lite-youtube");
+    const videoId = liteEmbedEl.getAttribute('videoid');
 
-  // Obtenha o ID do usuário atualmente autenticado
-  const userId = firebase.auth().currentUser.uid;
+    // Obtenha o ID do usuário atualmente autenticado
+    const userId = firebase.auth().currentUser.uid;
 
-  // Consulte o banco de dados para verificar se o vídeo já está marcado como assistido
-  firebase.firestore().collection('usuario').doc(userId).get()
-    .then((doc) => {
-      if (doc.exists) {
-        const watchedVideos = doc.data().watched || [];
+    // Consulte o banco de dados para obter o ID do vídeo associado ao 'videoid'
+    const videoRef = firebase.firestore().collection('video').where('id', '==', videoId);
 
-        // Verifique se o vídeo já está na lista de assistidos
-        if (watchedVideos.includes(videoId)) {
-          // Se estiver, remova o vídeo da lista
-          firebase.firestore().collection('usuario').doc(userId).update({
-            watched: firebase.firestore.FieldValue.arrayRemove(videoId)
-          });
-          console.log("Vídeo removido da lista de assistidos");
-        } else {
-          // Se não estiver, adicione o vídeo à lista
-          firebase.firestore().collection('usuario').doc(userId).update({
-            watched: firebase.firestore.FieldValue.arrayUnion(videoId)
-          });
-          console.log("Vídeo adicionado à lista de assistidos");
-        }
-      } else {
-        console.error("Documento do usuário não encontrado.");
-      }
-    })
-    .catch((error) => {
-      console.error("Erro ao marcar como assistido:", error);
+    videoRef.get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            const videoDatabaseId = doc.id;
+
+            // Consulte o banco de dados do usuário para verificar se o vídeo já está marcado como assistido
+            firebase.firestore().collection('usuario').doc(userId).get()
+                .then((userDoc) => {
+                    if (userDoc.exists) {
+                        const watchedVideos = userDoc.data().watched || [];
+
+                        // Verifique se o vídeo já está na lista de assistidos
+                        if (watchedVideos.includes(videoDatabaseId)) {
+                            // Se estiver, remova o vídeo da lista
+                            firebase.firestore().collection('usuario').doc(userId).update({
+                                watched: firebase.firestore.FieldValue.arrayRemove(videoDatabaseId)
+                            });
+                            console.log("Vídeo removido da lista de assistidos");
+                        } else {
+                            // Se não estiver, adicione o vídeo à lista
+                            firebase.firestore().collection('usuario').doc(userId).update({
+                                watched: firebase.firestore.FieldValue.arrayUnion(videoDatabaseId)
+                            });
+                            console.log("Vídeo adicionado à lista de assistidos");
+                        }
+                    } else {
+                        console.error("Documento do usuário não encontrado.");
+                    }
+                })
+                .catch((error) => {
+                    console.error("Erro ao marcar como assistido:", error);
+                });
+        });
+    }).catch((error) => {
+        console.error("Erro ao obter informações do vídeo:", error);
     });
 }
