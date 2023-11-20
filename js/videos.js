@@ -160,48 +160,57 @@ function atualizaPlaylist(elemento) {
 
 }
 
+document.addEventListener('DOMContentLoaded', function () {
+  // Adiciona um evento de escuta ao pressionar a tecla "Enter" no campo de input
+  document.querySelector('#input-comment').addEventListener('keyup', function (event) {
+      if (event.key === 'Enter') {
+          addComment(); // Chama a função addComment() ao pressionar "Enter"
+      }
+  });
+});
+
 function addComment() {
+  let liteEmbedEl = document.querySelector("lite-youtube");
+  console.log(liteEmbedEl.getAttribute('videoid'))
 
+  let comment = document.querySelector('#input-comment').value
 
-    let liteEmbedEl = document.querySelector("lite-youtube");
-    console.log(liteEmbedEl.getAttribute('videoid'))
+  console.log(comment)
 
-    let comment = document.querySelector('#input-comment').value
+  const q = firebase.firestore().collection('video').where('id', '==', liteEmbedEl.getAttribute('videoid')).get()
+  .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+          // doc.data() is never undefined for query doc snapshots
+          doc.ref.update({
+              comments: firebase.firestore.FieldValue.arrayUnion(comment)
+          });
+          atualizaComentario(doc.ref)
+      });
+  })
+  .catch((error) => {
+      console.log("Error getting documents: ", error);
+  });
 
-    console.log(comment)
-
-    const q = firebase.firestore().collection('video').where('id', '==', liteEmbedEl.getAttribute('videoid')).get()
-    .then((querySnapshot) => {
-        querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
-            doc.ref.update({
-                comments: firebase.firestore.FieldValue.arrayUnion(comment)
-            });
-            atualizaComentario(doc.ref)
-        });
-    })
-    .catch((error) => {
-        console.log("Error getting documents: ", error);
-    });
-
-
+  // Limpar o valor do input após enviar o comentário
+  document.querySelector('#input-comment').value = '';
 }
 
 function atualizaComentario(docRef) {
-    // Pegue o documento do vídeo no banco de dados
-  
-    let comments = []
-    let ul = document.getElementById("ul-comments");
-    ul.innerHTML = ' '
-    // Retorne os comentários do vídeo
-    docRef.get().then(document => {
-      //return document.data().comments;
-      let data = document.data().comments
-      data.forEach((c) => {
-        ul.innerHTML += '<li>' + c + '</li>';
-      })
-    });
+  // Pegue o documento do vídeo no banco de dados
 
+  let comments = []
+  let ul = document.getElementById("ul-comments");
+  ul.innerHTML = ' ';
+  
+  // Retorne os comentários do vídeo
+  docRef.get().then(document => {
+      let data = document.data().comments;
+
+      // Iterar pelos comentários em ordem reversa
+      for (let i = data.length - 1; i >= 0; i--) {
+          ul.innerHTML += '<li>' + data[i] + '</li>';
+      }
+  });
 }
 
 function carregarComentariosIniciais() {
@@ -300,3 +309,40 @@ function curtirVideo (liked) {
       console.log("Like adicionado");
   }
 };
+
+function marcarComoAssistido() {
+  // Obtenha o ID do vídeo atualmente em exibição
+  let liteEmbedEl = document.querySelector("lite-youtube");
+  const videoId = liteEmbedEl.getAttribute('videoid');
+
+  // Obtenha o ID do usuário atualmente autenticado
+  const userId = firebase.auth().currentUser.uid;
+
+  // Consulte o banco de dados para verificar se o vídeo já está marcado como assistido
+  firebase.firestore().collection('usuario').doc(userId).get()
+    .then((doc) => {
+      if (doc.exists) {
+        const watchedVideos = doc.data().watched || [];
+
+        // Verifique se o vídeo já está na lista de assistidos
+        if (watchedVideos.includes(videoId)) {
+          // Se estiver, remova o vídeo da lista
+          firebase.firestore().collection('usuario').doc(userId).update({
+            watched: firebase.firestore.FieldValue.arrayRemove(videoId)
+          });
+          console.log("Vídeo removido da lista de assistidos");
+        } else {
+          // Se não estiver, adicione o vídeo à lista
+          firebase.firestore().collection('usuario').doc(userId).update({
+            watched: firebase.firestore.FieldValue.arrayUnion(videoId)
+          });
+          console.log("Vídeo adicionado à lista de assistidos");
+        }
+      } else {
+        console.error("Documento do usuário não encontrado.");
+      }
+    })
+    .catch((error) => {
+      console.error("Erro ao marcar como assistido:", error);
+    });
+}
