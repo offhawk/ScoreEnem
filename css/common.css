@@ -335,28 +335,29 @@ div#menu-nav > .link-header {
     display: inline;
 }
 
-.navigation{
+.navigation {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-top: 20px;
+    width: fit-content; /* Define a largura com base no conteúdo */
 }
 
-.navigation svg{
+.navigation svg {
     width: 28px;
     fill: var(--text);
     transition: all 200ms;
 }
 
-.navigation p{
+.navigation p {
     font-weight: 500;
     font-size: 1.2rem;
 }
 
-.navigation:hover svg{
+.navigation:hover svg {
     transform: translateX(-10px);
 }
 
-.navigation:hover{
+.navigation:hover {
     cursor: pointer;
 }
