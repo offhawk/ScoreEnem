@@ -369,7 +369,9 @@ window.onload = () => {
 
 function atualizaUser() {
 
-    preencheClassificacao('#table-class-2')
+    setTimeout(() => {
+        preencheClassificacao('#table-class-2')
+    }, 300);
 
 }
 

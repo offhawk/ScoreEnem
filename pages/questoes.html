@@ -5,17 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/menu-lateral.css">
     <link rel="stylesheet" href="../css/bootstrap-select.css" />
     <link rel="stylesheet" href="../css/questoes.css">
     <link rel="shortcut icon" href="../imgs/clip.ico" type="image/x-icon">
     <title>ScoreEnem - Quiz</title>
 </head>
 <body data-theme="light">
-    <main>
-
-        <div id="nav-container">
-            <nav id="sidenav"></nav>
+    <header class="home-header">
+        <!-- Início Cabeçalho -->
+        <div>
+            <a href="../index.html" style="text-decoration: none;">
+                <h1 class="logo-title-header">ScoreEnem</h1>
+            </a>
         </div>
+        <!-- Links das outras páginas html, login, e o cadastre-se -->
+        <div id="menu-nav">
+            <div class="link-header">
+                <a class="header-name readable" href="pages/login.html">Login</a>
+                <a class="header-name readable" href="pages/login.html">Cadastre-se</a>
+            </div>
+            <div id="theme-changer">
+                <?xml version="1.0" ?><svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12 20V4C16.4183 4 20 7.58172 20 12C20 16.4183 16.4183 20 12 20Z"/></svg>
+            </div>
+        </div>
+    </header>
+    <main>
         <div id="display-container">
             <div class="navigation">
                 <?xml version="1.0" ?><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="Left"><path d="M21,11H5.14L8.77,6.64A1,1,0,1,0,7.23,5.36l-5,6a1.19,1.19,0,0,0-.09.15c0,.05-.05.08-.07.13A1,1,0,0,0,2,12H2a1,1,0,0,0,.07.36c0,.05.05.08.07.13a1.19,1.19,0,0,0,.09.15l5,6A1,1,0,0,0,8,19a1,1,0,0,0,.64-.23,1,1,0,0,0,.13-1.41L5.14,13H21a1,1,0,0,0,0-2Z"/></g></svg>
@@ -31,7 +46,7 @@
                 <!-- columns -->
                 <div class="form-group">
                 <div class="form-row align-items-center">
-                    <div class="col-md-5 mb-3">
+                    <div class="col-md-12 mb-3">
                         <div class="form-group">
                             <label for="select_id_2" class="readable">Matéria</label>
                             <select class="selectpicker form-control" data-live-search="true" name="select_id_2" id="sel-mat">
@@ -45,46 +60,7 @@
                             </select>       
                         </div>               
                     </div>
-                    <div class="col-md-7 mb-3">
-                        <div class="form-group">
-                            <label for="select_id_2" class="readable">Assunto</label>
-                            <select class="selectpicker form-control" data-live-search="true" name="select_id_3">
-                                <option data-tokens="qualquer all tudo todas todo todos">Qualquer</option>
-                                <option data-tokens="ciencias das naturezas">Ciências das Naturezas</option>
-                                <option data-tokens="ciencias humanas">Ciências Humanas</option>
-                                <option data-tokens="linguagens">Linguagens</option>
-                                <option data-tokens="matematica">Matemática</option>
-                            </select>       
-                        </div>   
-                    </div>
-                </div>
-                </div>
-                <div class="form-group">
-                <div class="form-row align-items-center" style="
-                justify-content: center;
-            ">
-                    <div class="col-md-4 mb-3">
-                        <div class="form-group">
-                            <label for="select_id_2" class="readable">Instituição</label>
-                            <select class="selectpicker form-control" data-live-search="true" name="select_id_4">
-                                <option data-tokens="all tudo todas todo">Todas</option>
-                                <option data-tokens="enem">ENEM</option>
-                                <option data-tokens="cefet">CEFET</option>
-                            </select>       
-                        </div>
-                    </div>   
-                    <div class="col-md-4 mb-3">
-                        <div class="form-group">
-                            <label for="select_id_2" class="readable">Ano</label>
-                            <select class="selectpicker form-control" data-live-search="true" name="select_id_5">
-                                <option data-tokens="all todos tudo" class="readable">Todos</option>
-                                <option data-tokens="2023">2023</option>
-                                <option data-tokens="2022">2022</option>
-                                <option data-tokens="2021">2021</option>
-                            </select>       
-                        </div>
-                    </div>
-                   
+                    
                 </div>
                 <div id="filtro">
                     <button type="button" class="responder-button readable" name="button_id_2" id="btn-filtro">Filtrar</button>
