@@ -63,7 +63,6 @@ main{
 
 #videos-container {
     width: 32%;
-    overflow-y: scroll;
 }
 
 #videos-list::-webkit-scrollbar {
@@ -92,9 +91,9 @@ main{
 #videos-list {
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: var(--secondary);
     border-radius: 1em 0px 0px 1em;
-    border: 2px solid #898989;
+    border: 2px solid var(--secondary);
     overflow-y: scroll; /* Aplicar o scroll apenas a esta div */
     max-height: 100%;
 }
@@ -115,7 +114,7 @@ main{
     background-color: var(--background);
     width: 35%;
     border-radius: 10px;
-    border: 2px solid black;
+    border: 2px solid var(--secondary);
     overflow: hidden;
     /* flex: 1 1 auto; */
 }
@@ -143,7 +142,7 @@ h1{
     font-weight: 600;
     margin: 0;
     padding: .3em;
-    color: black;
+    color: var(--text);
 }
 
 h2{
@@ -177,8 +176,9 @@ label{
 input{
     width: 100%;
     height: 75px;
-    background-color: var(--secondary);
+    background-color: var(--background);
     border: 1px solid var(--secondary);
+    color: var(--text);
     border-radius: 15px;
     margin: 5px 0;
     cursor: text;
@@ -193,7 +193,7 @@ input:focus{
 }
 
 input::placeholder{
-    color: rgba(0,0,0,0.3);
+    color: var(--placeholder);
 }
 
 input[type=submit]{
@@ -257,8 +257,8 @@ p{
 }
 
 .play-select{
-    background-color: var(--secondary);
-    border-bottom: 2px solid black;
+    background-color: var(--background);
+    border-bottom: 2px solid var(--primary);
 }
 #heart { 
     margin: 10px;
@@ -337,7 +337,7 @@ li {
 }
 
 .like h1{
-    color: black;
+    color: var(--text);
 }
 
 .like:hover{
@@ -346,7 +346,7 @@ li {
 }
 
 .like {
-    background-color: white;
+    background-color: var(--secondary);
     border-color: #898989;
     border-radius: 20px;
     display: flex;
@@ -357,7 +357,7 @@ li {
 #watched {
     border-color: #898989;
     border-radius: 20px;
-    background-color: white;
+    background-color: var(--secondary);
     border-style: solid;
     border-width: 2px;
 }
@@ -378,7 +378,7 @@ li {
 
 .comments-box {
     width: 65%;
-    background-color: white;
+    background-color: var(--secondary);
     border-radius: 20px 20px 0px 0px;
     border-color: #898989;
     border-style: solid;
