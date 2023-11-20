@@ -355,7 +355,7 @@ li {
 }
 
 #watched {
-    border-color: var(--text);
+    border-color: #898989;
     border-radius: 20px;
     background-color: var(--secondary);
     border-style: solid;
