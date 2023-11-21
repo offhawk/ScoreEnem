@@ -74,7 +74,7 @@ h2{
     display: flex;
     justify-content: space-between;
     width: 100%;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     align-items: center;
     box-sizing: border-box;
     align-content: center;
@@ -100,9 +100,6 @@ input, .botao{
     font-size: 1em;
     padding: 10px;
     font-weight: lighter;
-}
-.botao {
-    margin-top: 30px;
 }
 #esqueceu {
     font-size: 1em;
@@ -310,7 +307,7 @@ body[data-theme="dark"] #img-container3::before{
     padding-top: 20px;
     margin-left: auto;
     margin-right: auto;
-    position: absolute;
+    position: relative;
     z-index: 9;
 }
 
@@ -322,7 +319,7 @@ body[data-theme="dark"] #img-container3::before{
 #label-cadastro {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 10px;
 }
 
 #label-cadastro label{
@@ -362,12 +359,11 @@ body[data-theme="dark"] #img-container3::before{
     z-index: 1;
 }
 
-#modal-cadastro span{
+#modal-cadastro>span{
     position: absolute;
     right: 30px;
-    top: 10px;
+    top: 5px;
     padding: 20px;
-    font-size: 1em;
     font-weight: bolder;
     cursor: pointer;
 }
@@ -514,17 +510,12 @@ body[data-theme="dark"] #redacao *{
 
 .span-required {
     display: none;
-    text-align: center;
+    text-align: left;
     color: red;
     opacity: 50%;
-    margin-top: 83px;
     font-family: 'Inter', sans-serif;
     font-weight: 400;
-    position: absolute;
-    right: 30px;
-    top: 10px;
-    padding: 20px;
-    font-size: 25px;
+    font-size: 1em;
 }
 
 
@@ -567,13 +558,17 @@ form > div{
 @media screen and (max-width: 480px) {
     main{
         padding: 0;
+        font-size: 14px;
+    }
+    label{
+        font-size: 1.25em;
     }
     #login-bg{
         border-radius: 0;
         border: none;
         height: 100%;
         width: 100%;
-        padding: 30px 15px;
+        padding: 30px 30px;
     }
     #logo-title{
         font-size: 3em;
@@ -583,6 +578,28 @@ form > div{
     }
     #login-sidebg{
         display: none;
+    }
+    #login-form form{
+        justify-content: center;
+        gap: 30px;
+    }
+    #cadastro-bg{
+        width: 100%;
+        border: none;
+        padding: 15px 30px;
+        height: auto;
+    }
+    #modal-full{
+        padding: 20px;
+    }
+    main input{
+        height: 50px;
+    }
+    .botao{
+        height: 60px;
+    }
+    h2{
+        text-align: center;
     }
 }
 
@@ -600,6 +617,13 @@ form > div{
     #login-sidebg{
         display: none;
     }
+    #cadastro-bg{
+        width: 100%;
+        height: auto;
+    }
+    #modal-full{
+        padding: 30px;
+    }
 }
 
 @media screen and (min-width: 769px) and (max-width: 1279px) {
@@ -614,5 +638,12 @@ form > div{
     }
     #login-sidebg{
         display: none;
+    }
+    #cadastro-bg{
+        width: 100%;
+        height: auto;
+    }
+    #modal-full{
+        padding: 30px;
     }
 }
