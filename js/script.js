@@ -49,27 +49,32 @@ function salvaUsuario(user) {
 }
 
 function preencheHeader(usuario) {
+    // Verifica se a página atual é a página "index"
+    const isIndexPage = window.location.pathname.endsWith('/index.html');
 
-    if(namesEl.length > 0){
-        if(namesEl.length == 1){
+    if (namesEl.length > 0) {
+        if (namesEl.length == 1) {
             namesEl[0].innerHTML = usuario[0].nome;
-            namesEl[0].setAttribute('href', 'pages/profile.html')
+
+            // Redireciona para diferentes páginas com base na condição
+            namesEl[0].setAttribute('href', isIndexPage ? 'pages/profile.html' : '../pages/profile.html');
         } else {
             namesEl[0].innerHTML = usuario[0].nome;
-            namesEl[0].setAttribute('href', 'pages/profile.html')
+            namesEl[0].setAttribute('href', isIndexPage ? 'pages/profile.html' : '../pages/profile.html');
             namesEl[1].innerHTML = 'Log Out';
             namesEl[1].addEventListener('click', logOut);
         }
+
         if (username) {
             username.innerHTML = usuario[0].nome;
         }
     }
 }
 
-function irParaMeuPerfil() {
-    window.location.href = "../pages/profile.html";
-}
-
 navigationEl.addEventListener('click', () => {
     window.history.back();
 })
+
+function voltaPaginaAnterior() {
+    window.history.back();
+  }

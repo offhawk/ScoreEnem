@@ -16,6 +16,25 @@ html {
     --thumbBG: #90A4AE;
 }
 
+#logo-title{
+    font-family: trap;
+    font-size: 4em;
+    text-align: center;
+    width: 100%;
+}
+
+.logo-title{
+    font-weight: bolder;
+    font-size: 4em;
+}
+
+.logo-title-header{
+    color: #22262a;
+    text-decoration: none;
+    font-family: trap!important;
+    font-size: 2em;
+}
+
 body[data-theme="light"] {
     --text: #22262a;
     --placeholder: #999999;
@@ -204,6 +223,33 @@ body::-webkit-scrollbar-thumb {
     right: 5px;
 }
 
+.friends-nav{
+    display: flex;
+}
+
+.friends-nav p{
+    position: relative;
+    text-align: center;
+    padding: 10px 15px;
+}
+
+.friends-nav p:after{
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    width: var(--width);
+    height: 100%;
+    z-index: -1;
+    border-radius: 50px;
+    right: 0;
+    background-color: var(--secondary);
+    transition: all 300ms;
+}
+
+.friends-nav p:hover{
+    cursor: pointer;
+}
+
 .svg-wrapper{
     width: 50px;
     align-items: center;
@@ -233,7 +279,7 @@ body::-webkit-scrollbar-thumb {
     display: none;
 }
 
-#friends-info-p{
+.friends-info-p{
     margin-bottom: 15px;
     font-weight: 500;
 }
@@ -289,28 +335,29 @@ div#menu-nav > .link-header {
     display: inline;
 }
 
-.navigation{
+.navigation {
     display: flex;
     align-items: center;
     gap: 10px;
     margin-top: 20px;
+    width: fit-content; /* Define a largura com base no conteúdo */
 }
 
-.navigation svg{
+.navigation svg {
     width: 28px;
     fill: var(--text);
     transition: all 200ms;
 }
 
-.navigation p{
+.navigation p {
     font-weight: 500;
     font-size: 1.2rem;
 }
 
-.navigation:hover svg{
+.navigation:hover svg {
     transform: translateX(-10px);
 }
 
-.navigation:hover{
+.navigation:hover {
     cursor: pointer;
 }

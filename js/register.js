@@ -45,7 +45,8 @@ function salvaUsuario() {
         email: remail.value,
         username: rusuario.value.toLowerCase(),
         uid: firebase.auth().currentUser.uid,
-        nomeSearch: rnome.value.toUpperCase()
+        nomeSearch: rnome.value.toUpperCase(),
+        imgURL: "https://firebasestorage.googleapis.com/v0/b/scoreenem.appspot.com/o/profilePictures%2FNovo%20Projeto.jpg?alt=media&token=8f325fe3-b5a1-4501-a6aa-c45df71362f1"
     }
 
     firebase.firestore().collection('usuario').doc(firebase.auth().currentUser.uid).set(usuario).then(() => {
