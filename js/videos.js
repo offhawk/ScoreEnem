@@ -3,7 +3,6 @@ showLoading();
 firebase.auth().onAuthStateChanged(function(user){
   if (user == null || user == "") {
       hideLoading()
-      alert("Você não está logado!");
       window.location.href = "../pages/login.html";
     } else {
       fetchUserData(user);

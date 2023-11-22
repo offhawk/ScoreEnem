@@ -10,7 +10,6 @@ let friendsListEl = document.querySelector('#friends-ul');
 firebase.auth().onAuthStateChanged(function(user){
     if (user == null || user == "") {
         hideLoading()
-        alert("Você não está logado!");
         window.location.href = "../pages/login.html";
       } else {
         fetchUserData(user);
@@ -214,4 +213,59 @@ function removerAmigo(parent) {
             })
     }))
 }
+
+document.getElementById('sair').addEventListener('click', function() {
+    // Criação da janela modal
+    var modal = document.createElement('div');
+    modal.id = 'modal';
+
+    // Conteúdo da modal
+    var modalContent = document.createElement('div');
+    modalContent.id = 'modal-content';
+
+    var h1 = document.createElement('h1');
+    h1.textContent = 'Deseja sair?';
+
+    var p = document.createElement('p');
+
+    var btnCancel = document.createElement('button');
+    btnCancel.textContent = 'CANCELAR';
+    btnCancel.id = 'cancelar';
+    btnCancel.classList.add('btn', 'btn-cancel'); // Adicione classes para personalização
+
+    var btnExit = document.createElement('button');
+    btnExit.textContent = 'SAIR';
+    btnExit.id = 'sair-modal';
+    btnExit.classList.add('btn', 'btn-exit'); // Adicione classes para personalização
+
+    modalContent.appendChild(h1);
+    modalContent.appendChild(p);
+    modalContent.appendChild(btnCancel);
+    modalContent.appendChild(btnExit);
+
+    modal.appendChild(modalContent);
+
+    // Adiciona a modal ao corpo do documento
+    document.body.appendChild(modal);
+
+    // Fecha a modal ao clicar no botão "Cancelar"
+    document.getElementById('cancelar').addEventListener('click', function() {
+        document.body.removeChild(modal);
+    });
+
+    // Fecha a modal ao clicar fora dela
+    modal.addEventListener('click', function(event) {
+        if (event.target === modal) {
+            document.body.removeChild(modal);
+        }
+    });
+
+    // Adiciona a animação
+    modalContent.classList.add('animate__animated', 'animate__bounceIn');
+
+    // Adiciona a função para chamar logOut() ao clicar no botão "Sair"
+    document.getElementById('sair-modal').addEventListener('click', function() {
+        logOut();
+    });
+});
 

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
 *{
     box-sizing: border-box;
     color: var(--text);
@@ -301,3 +302,70 @@ a:hover {
 #botaofalar.mudarCor {
     background-color: #ff9eda; /* Nova cor de fundo */
 }
+
+    /* Estilos da modal */
+    #modal {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+
+    #modal-content {
+        background: var(--background);
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Adicione os estilos de animação desejados */
+    .animate__animated {
+        animation-duration: 0.5s;
+    }
+
+    .animate__bounceIn {
+        animation-name: bounceIn;
+    }
+
+    /* Estilos personalizados dos botões */
+    .btn {
+        padding: 10px 20px;
+        margin: 5px;
+        cursor: pointer;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+
+    .btn-cancel {
+        background-color: var(--secondary);
+        color: var(--text);
+        font-family: 'Inter', sans-serif;
+        transition: all 400ms;
+    }
+
+    .btn-cancel:hover{
+        background-color: var(--primary);
+        color: var(--background);
+    }
+
+    .btn-exit {
+        background-color: #d9534f;
+        color: #fff;
+        font-family: 'Inter', sans-serif;
+        transition: all 400ms;
+    }
+
+    .btn-exit:hover {
+        background-color: red;
+    }
+
+
+    
