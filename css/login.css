@@ -559,6 +559,7 @@ form > div{
     main{
         padding: 0;
         font-size: 14px;
+        height: auto;
     }
     label{
         font-size: 1.25em;
@@ -607,6 +608,7 @@ form > div{
     main{
         flex-direction: column-reverse;
         padding: 20px;
+        height: auto;
     }
     #login-bg{
         width: 100%;
@@ -629,6 +631,7 @@ form > div{
 @media screen and (min-width: 769px) and (max-width: 1279px) {
     main{
         padding: 100px;
+        height: auto;
     }
     #login-bg{
         width: 100%;
@@ -645,5 +648,47 @@ form > div{
     }
     #modal-full{
         padding: 30px;
+    }
+}
+
+@media screen and (max-height: 768px) and (orientation: landscape){
+    main{
+        padding: 0;
+        height: 100vh;
+        align-items: stretch;
+        font-size: 13px;
+    }
+    #login-bg{
+        width: 40%;
+        height: 100%;
+        border: none;
+    }
+    #login-sidebg{
+        height: auto;
+        border: none;
+    }
+    #login-sidebg img{
+        height: auto;
+        width: 70%;
+    }
+    main input, .botao{
+        height: 60px;
+    }
+    #cadastro-bg{
+        height: 100%;
+        padding: 30px;
+        overflow: scroll;
+    }
+    #modal-full{
+        padding: 30px;
+    }
+    label{
+        font-size: 1.4em;
+    }
+}
+
+@media screen and (orientation: portrait) and (min-height: 769px){
+    main{
+        height: 100vh;
     }
 }
