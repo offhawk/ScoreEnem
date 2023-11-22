@@ -112,7 +112,7 @@ body{
     transition: color 0.5s;
     font-weight: bolder;
     font-size: 24px;
-    color: #21EDC5;
+    color: var(--primary);
 }
 
 .list-group-item {
