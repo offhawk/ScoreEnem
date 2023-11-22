@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/lite-yt-embed.css">
+    <link rel="stylesheet" href="../css/menu-lateral.css">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/editprof.css">
+    <link rel="shortcut icon" href="../imgs/clip.ico" type="image/x-icon">
+    <title>Editar Perfil - ScoreEnem</title>
+</head>
+
+<body data-theme="light">
+    <header class="home-header">
+        <!-- Início Cabeçalho -->
+        <div>
+            <a href="../index.html" style="text-decoration: none;">
+                <h1 class="logo-title-header">ScoreEnem</h1>
+            </a>
+        </div>
+        <!-- Links das outras páginas html, login, e o cadastre-se -->
+        <div id="menu-nav">
+            <div class="link-header">
+                <a class="header-name readable" href="pages/login.html">Login</a>
+                <a class="header-name readable" href="pages/login.html">Cadastre-se</a>
+            </div>
+            <div id="theme-changer">
+                <?xml version="1.0" ?><svg fill="none" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22ZM12 20V4C16.4183 4 20 7.58172 20 12C20 16.4183 16.4183 20 12 20Z"/></svg>
+            </div>
+        </div>
+    </header>
+    <div class="d-flex" id="wrapper">
+        <div class="page-content-wrapper">
+            <div class="navigation">
+                <?xml version="1.0" ?><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="Left"><path d="M21,11H5.14L8.77,6.64A1,1,0,1,0,7.23,5.36l-5,6a1.19,1.19,0,0,0-.09.15c0,.05-.05.08-.07.13A1,1,0,0,0,2,12H2a1,1,0,0,0,.07.36c0,.05.05.08.07.13a1.19,1.19,0,0,0,.09.15l5,6A1,1,0,0,0,8,19a1,1,0,0,0,.64-.23,1,1,0,0,0,.13-1.41L5.14,13H21a1,1,0,0,0,0-2Z"/></g></svg>
+                <p style="margin: 0;">Voltar</p>
+            </div>
+            <div class="seu-perfil">
+            <h1 class="mb-3 readable">Edite seu perfil!</h1>
+            <p>Deixe a sua cara!</p>
+        </div>
+        <div class="rounded p-4 filtro-container">
+                <form>
+                <!-- columns -->
+                <div class="form-group">
+                <div class="form-row align-items-center">
+                    <div class="col-md-12 mb-3">
+                        <div class="nome-imagem">
+                                    <div class="img-avatar">
+                                        <img src="https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg" class="avatar" id="profile-pic">
+                                        <input type="file" name="picture__input" id="picture__input" title=" ">
+                                    </div>
+                                    <span class="user-name">Nome</span>
+                                </div>
+                        <div class="form-group">
+                            <p>Nome do Perfil</p>
+                        </div>               
+                    </div>
+                </div>
+                <div id="edit-box">
+                    <div class="edit-profile" id="edit-name">
+                        <input type="text" placeholder="Seu nome">
+                    </div>
+                </div>
+                <div class="edit-box">
+                    <div class="form-row align-items-center">
+                        <div class="col-md-12 mb-3">
+                                <p>Descrição</p>
+                                <div id="edit-box">
+                                    <div class="edit-profile" id="edit-desc">
+                                        <input type="text" placeholder="Seu nome">
+                                    </div>
+                                </div>           
+                        </div>
+                    </div>
+                <div id="filtro">
+                    <button type="button" class="responder-button readable" name="button_id_2" id="btn-filtro">Cancelar</button>
+                    <button type="button" class="responder-button readable" name="button_id_2" id="btn-filtro">Salvar</button>
+                </div>
+                </div>
+                
+                </form>
+            </div>
+    </div>
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <div class="fixed-button-container">
+        <a class="fixed-button" id="botaofalar"><svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" fill="none">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M10.4 1.8C11.5532 0.262376 14 1.07799 14 3.00001V21.1214C14 23.0539 11.5313 23.8627 10.3878 22.3049L6.49356 17H4C2.34315 17 1 15.6569 1 14V10C1 8.34315 2.34315 7 4 7H6.5L10.4 1.8ZM12 3L8.1 8.2C7.72229 8.70361 7.12951 9 6.5 9H4C3.44772 9 3 9.44772 3 10V14C3 14.5523 3.44772 15 4 15H6.49356C7.13031 15 7.72901 15.3032 8.10581 15.8165L12 21.1214V3Z" fill="white"/>
+            <path d="M16.2137 4.17445C16.1094 3.56451 16.5773 3 17.1961 3C17.6635 3 18.0648 3.328 18.1464 3.78824C18.4242 5.35347 19 8.96465 19 12C19 15.0353 18.4242 18.6465 18.1464 20.2118C18.0648 20.672 17.6635 21 17.1961 21C16.5773 21 16.1094 20.4355 16.2137 19.8256C16.5074 18.1073 17 14.8074 17 12C17 9.19264 16.5074 5.8927 16.2137 4.17445Z" fill="white"/>
+            <path d="M21.41 5C20.7346 5 20.2402 5.69397 20.3966 6.35098C20.6758 7.52413 21 9.4379 21 12C21 14.5621 20.6758 16.4759 20.3966 17.649C20.2402 18.306 20.7346 19 21.41 19C21.7716 19 22.0974 18.7944 22.2101 18.4509C22.5034 17.5569 23 15.5233 23 12C23 8.47672 22.5034 6.44306 22.2101 5.54913C22.0974 5.20556 21.7716 5 21.41 5Z" fill="white"/>
+            </svg></a>
+        <a class="fixed-button" id="botaoaumentar"><svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 24 24" fill="none">
+            <path d="M4 12H20M12 4V20" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg></a>
+        <a class="fixed-button" id="botaodiminuir"><svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 24 24" fill="white">
+            <path d="M6 12L18 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg></a>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-storage-compat.js"></script>
+    <script src="../js/loading.js"></script>
+    <script src="../js/firebase.js"></script>
+    <script src="../js/login.js"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/auth-guard.js"></script>
+    <script src="../js/profile.js"></script>
+    <script src="../js/acessibilidade.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+</body>
+
+</html>
