@@ -496,6 +496,6 @@ li {
 }
 
 .assistido {
-background-color: rgba(20, 235, 177, 0.1);
-border-color : rgba(20, 235, 177, 0.5);
+background-color: rgba(20, 235, 177, 0.1)!important;
+border-color : rgba(20, 235, 177, 0.5)!important;
 }

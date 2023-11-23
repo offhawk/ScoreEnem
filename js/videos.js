@@ -60,6 +60,9 @@ let svgElement = document.getElementById("coracao");
 let videosPlaylistEl = [];
 function preenchePlaylist(videos) {
 
+    const olhoSvg = document.getElementById('olho');
+    olhoSvg.innerHTML = '';
+
     mainVideoBox.firstElementChild.remove()
     let liteEmbedEl = document.createElement("lite-youtube");
     let likeButton = document.getElementById("contador");
@@ -71,6 +74,27 @@ function preenchePlaylist(videos) {
     carregarComentariosIniciais();
     valor.innerHTML = videos[0].likes?videos[0].likes.length:"0";
     const videoRef = firebase.firestore().collection('video').where('id', '==', videos[0].id);
+
+    firebase.firestore()
+    .collection("usuario")
+    .where("uid", "==", firebase.auth().currentUser.uid)
+    .get()
+    .then((querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+        var userData = doc.data();
+        watched = userData.watched;
+        let isWatched = watched.filter(vid => vid.id == videos[0].id).length > 0;
+        if (!isWatched) {
+          // Adicione aqui o código SVG para o estado inicial
+          olhoSvg.innerHTML = '<path d="M15.0007 12C15.0007 13.6569 13.6576 15 12.0007 15C10.3439 15 9.00073 13.6569 9.00073 12C9.00073 10.3431 10.3439 9 12.0007 9C13.6576 9 15.0007 10.3431 15.0007 12Z" stroke="var(--text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.0012 5C7.52354 5 3.73326 7.94288 2.45898 12C3.73324 16.0571 7.52354 19 12.0012 19C16.4788 19 20.2691 16.0571 21.5434 12C20.2691 7.94291 16.4788 5 12.0012 5Z" stroke="var(--text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+          document.querySelector('#watched').classList.remove('assistido');
+        } else {
+          // Adicione aqui o código SVG para o estado após a modificação
+          olhoSvg.innerHTML = '<path d="M2.99902 3L20.999 21M9.8433 9.91364C9.32066 10.4536 8.99902 11.1892 8.99902 12C8.99902 13.6569 10.3422 15 11.999 15C12.8215 15 13.5667 14.669 14.1086 14.133M6.49902 6.64715C4.59972 7.90034 3.15305 9.78394 2.45703 12C3.73128 16.0571 7.52159 19 11.9992 19C13.9881 19 15.8414 18.4194 17.3988 17.4184M10.999 5.04939C11.328 5.01673 11.6617 5 11.9992 5C16.4769 5 20.2672 7.94291 21.5414 12C21.2607 12.894 20.8577 13.7338 20.3522 14.5" stroke="var(--text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+          document.querySelector('#watched').classList.add('assistido');
+        } 
+      });
+    })
 
       videoRef.get().then((querySnapshot) => {
         console.log("entrou");
@@ -145,7 +169,6 @@ function alteraVideo(e) {
     const olhoSvg = document.getElementById('olho');
     olhoSvg.innerHTML = '';
 
-    const isWatched = watched.filter(vid => vid.id == clicado.dataset.id).length > 0;
     const videoRef = firebase.firestore().collection('video').where('id', '==', clicado.dataset.id);
 
       videoRef.get().then((querySnapshot) => {
@@ -155,12 +178,12 @@ function alteraVideo(e) {
           const likes = doc.data().likes;
 
           if (likes && likes.includes(firebase.auth().currentUser.uid)) {
-          pathElement.setAttribute("fill", "red");
-          console.log(valor.innerHTML);
-          console.log("Like adicionado");
-          let primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary');
-          likeButton.style.backgroundColor = "rgba(20, 235, 177, 0.1)";
-          likeButton.style.borderColor = "rgba(20, 235, 177, 0.5)";
+            pathElement.setAttribute("fill", "red");
+            console.log(valor.innerHTML);
+            console.log("Like adicionado");
+            let primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--primary');
+            likeButton.style.backgroundColor = "rgba(20, 235, 177, 0.1)";
+            likeButton.style.borderColor = "rgba(20, 235, 177, 0.5)";
           }
           else  {
             pathElement.setAttribute("fill", "var(--secondary)");
@@ -174,14 +197,16 @@ function alteraVideo(e) {
         console.error("Erro ao verificar se o usuário curtiu o vídeo:", error);
       }); // Limpa o conteúdo atual do SVG
 
+      
+      let isWatched = watched.filter(vid => vid.id == clicado.dataset.id).length > 0;
       if (!isWatched) {
         // Adicione aqui o código SVG para o estado inicial
         olhoSvg.innerHTML = '<path d="M15.0007 12C15.0007 13.6569 13.6576 15 12.0007 15C10.3439 15 9.00073 13.6569 9.00073 12C9.00073 10.3431 10.3439 9 12.0007 9C13.6576 9 15.0007 10.3431 15.0007 12Z" stroke="var(--text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.0012 5C7.52354 5 3.73326 7.94288 2.45898 12C3.73324 16.0571 7.52354 19 12.0012 19C16.4788 19 20.2691 16.0571 21.5434 12C20.2691 7.94291 16.4788 5 12.0012 5Z" stroke="var(--text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
-        olhoSvg.classList.remove('assistido');
-    } else {
+        document.querySelector('#watched').classList.remove('assistido');
+      } else {
         // Adicione aqui o código SVG para o estado após a modificação
         olhoSvg.innerHTML = '<path d="M2.99902 3L20.999 21M9.8433 9.91364C9.32066 10.4536 8.99902 11.1892 8.99902 12C8.99902 13.6569 10.3422 15 11.999 15C12.8215 15 13.5667 14.669 14.1086 14.133M6.49902 6.64715C4.59972 7.90034 3.15305 9.78394 2.45703 12C3.73128 16.0571 7.52159 19 11.9992 19C13.9881 19 15.8414 18.4194 17.3988 17.4184M10.999 5.04939C11.328 5.01673 11.6617 5 11.9992 5C16.4769 5 20.2672 7.94291 21.5414 12C21.2607 12.894 20.8577 13.7338 20.3522 14.5" stroke="var(--text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-        olhoSvg.classList.add('assistido');
+        document.querySelector('#watched').classList.add('assistido');
       } 
       mainVideoBox.firstElementChild.remove()
     let liteEmbedEl = document.createElement("lite-youtube");
@@ -426,6 +451,7 @@ function exibirModalAssistido() {
             event.stopPropagation();
             marcarAssistido(videoId, isWatched);
             document.body.removeChild(modal);
+            
 
             // Modifica o SVG ao clicar no botão
             const olhoSvg = document.getElementById('olho');
@@ -434,12 +460,13 @@ function exibirModalAssistido() {
             if (isWatched) {
                 // Adicione aqui o código SVG para o estado inicial
                 olhoSvg.innerHTML = '<path d="M15.0007 12C15.0007 13.6569 13.6576 15 12.0007 15C10.3439 15 9.00073 13.6569 9.00073 12C9.00073 10.3431 10.3439 9 12.0007 9C13.6576 9 15.0007 10.3431 15.0007 12Z" stroke="var(--text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.0012 5C7.52354 5 3.73326 7.94288 2.45898 12C3.73324 16.0571 7.52354 19 12.0012 19C16.4788 19 20.2691 16.0571 21.5434 12C20.2691 7.94291 16.4788 5 12.0012 5Z" stroke="var(--text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
-                olhoSvg.classList.remove('assistido');
+                document.querySelector('#watched').classList.remove('assistido');
             } else {
                 // Adicione aqui o código SVG para o estado após a modificação
                 olhoSvg.innerHTML = '<path d="M2.99902 3L20.999 21M9.8433 9.91364C9.32066 10.4536 8.99902 11.1892 8.99902 12C8.99902 13.6569 10.3422 15 11.999 15C12.8215 15 13.5667 14.669 14.1086 14.133M6.49902 6.64715C4.59972 7.90034 3.15305 9.78394 2.45703 12C3.73128 16.0571 7.52159 19 11.9992 19C13.9881 19 15.8414 18.4194 17.3988 17.4184M10.999 5.04939C11.328 5.01673 11.6617 5 11.9992 5C16.4769 5 20.2672 7.94291 21.5414 12C21.2607 12.894 20.8577 13.7338 20.3522 14.5" stroke="var(--text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-                olhoSvg.classList.add('assistido');
+                document.querySelector('#watched').classList.add('assistido');
             }
+            fetchUserData(firebase.auth().currentUser)
         });
     } else {
         console.error("Documento do usuário não encontrado.");
