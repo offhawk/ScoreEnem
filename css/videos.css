@@ -1,321 +1,698 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css");
 
 @font-face {
-    font-family: trap;
-    src: url(../fonts/Trap-Black.otf);
+  font-family: trap;
+  src: url(../fonts/Trap-Black.otf);
 }
 
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 
-body{
-    background-color: var(--background);
-    height: 100vh;
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    font-weight: 400;
+body {
+  background-color: var(--background);
+  height: 100vh;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
 }
 
 header {
-    display: flex;
+  display: flex;
 }
 
 #header-container {
-    border-bottom: 5px solid black;
-    border-right: 5px solid black;
-    width: 80%;
-    display: inline;
+  border-bottom: 5px solid black;
+  border-right: 5px solid black;
+  width: 80%;
+  display: inline;
 }
 
 #header-right-container {
-    border-bottom: 5px solid black;
-    width: 20%;
-    text-align: right;
+  border-bottom: 5px solid black;
+  width: 20%;
+  text-align: right;
 }
 
 #header-title {
-    padding-top: .5em   ;
-    vertical-align: middle;
-    text-align: center;
-    font-size: 2.5em;
-    font-weight: 400;
-    margin: 0;
+  padding-top: 0.5em;
+  vertical-align: middle;
+  text-align: center;
+  font-size: 2.5em;
+  font-weight: 400;
+  margin: 0;
 }
 
-main{
-    width: 100%;
-    height: 100%;
-    display: block!important;
-    background-color: var(--background);
-    border: 1px solid var(--secondary);
-    flex: 1 0 0%;
-    transition: background-color 200ms;
+main {
+  width: 100%;
+  height: 100%;
+  display: block !important;
+  background-color: var(--background);
+  flex: 1 0 0%;
+  transition: background-color 200ms;
 }
 
 #main-container {
-    width: 65%;
+  width: 65%;
+  max-height: 100%;
 }
 
 .main-title {
-    width: 100%;
+  width: 100%;
 }
 
 #videos-container {
-    width: 32%;
-    overflow-y: scroll;
+  width: 32%;
+}
+
+#videos-list::-webkit-scrollbar {
+  width: 11px;
+  width: thin;
+  color: var(--thumbBG) var(--scrollbarBG);
+}
+
+#videos-list::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG);
+  border-radius: 6px;
+  border: 3px solid var(--scrollbarBG);
+}
+
+#videos-list::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
 }
 
 #video-box {
-    background-color: var(--primary);
-    height: auto;
-    border-radius: 1em;
-    border: 5px solid black;
+  background-color: var(--primary);
+  height: auto;
+  border-radius: 5px;
+  border: 3px solid var(--secondary);
 }
 
-/* #videos-list {
-    display: flex;
-    flex-direction: column;
-    background-color: #21EDC5;
-    width: 100%;
-    height: 100%;
-    border-radius: 1em;
-    border: 5px solid black;
-} */
+#videos-list {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--secondary);
+  border-radius: 1em 0px 0px 1em;
+  border: 2px solid var(--secondary);
+  overflow-y: scroll; /* Aplicar o scroll apenas a esta div */
+  max-height: 100%;
+}
 
 .video-line {
-    display: flex;
-    height: 124px;
-    padding: 15px 0;
-    justify-content: space-between;
-    font-weight: 600;
-    cursor: pointer;
-    border-radius: 15px;
-    padding: 15px;
-    transition: all 300ms;
+  display: flex;
+  height: 124px;
+  padding: 15px 0;
+  justify-content: space-between;
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 15px;
+  padding: 15px;
+  transition: all 300ms;
 }
 
 .video {
-    background-color: var(--background);
-    width: 35%;
-    border-radius: 10px;
-    border: 2px solid black;
-    overflow: hidden;
-    /* flex: 1 1 auto; */
+  background-color: var(--background);
+  width: 35%;
+  border-radius: 10px;
+  border: 2px solid var(--secondary);
+  overflow: hidden;
+  /* flex: 1 1 auto; */
 }
 
-#main-container h1{
-    font-family: 'Inter', sans-serif;
+#main-container h1 {
+  font-family: "Inter", sans-serif;
 }
 
 #logo-header {
-    font-family: trap;
-    font-size: 4em;
-    padding-top: .3em;
-    padding-left: 1.3em;
-    width: 100%;
+  font-family: trap;
+  font-size: 4em;
+  padding-top: 0.3em;
+  padding-left: 1.3em;
+  width: 100%;
 }
-#logo-title{
-    font-family: trap;
-    font-size: 4em;
-    text-align: center;
-    width: 100%;
-}
-
-h1{
-    font-size: 2.5em;
-    font-weight: 600;
-    margin: 0;
-    padding: .3em;
+#logo-title {
+  font-family: trap;
+  font-size: 4em;
+  text-align: center;
+  width: 100%;
 }
 
-h2{
-    font-size: 1.5em;
-    font-weight: lighter;
-    margin: 0;
+h1 {
+  font-size: 2.5em;
+  font-weight: 600;
+  margin: 0;
+  padding: 0.3em;
+  color: var(--text);
 }
 
-#login-form{
-    height: 100%;
+h2 {
+  font-size: 1.5em;
+  font-weight: lighter;
+  margin: 0;
 }
 
-#login-form form{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    flex-wrap: wrap;
-    align-items: center;
-    box-sizing: border-box;
-    align-content: center;
-    flex-direction: column;
-    height: 100%;
+#login-form {
+  height: 100%;
 }
 
-label{
-    font-size: 1.5em;
-    width: 100%;
-    margin: 20px 0;
+#login-form form {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: center;
+  box-sizing: border-box;
+  align-content: center;
+  flex-direction: column;
+  height: 100%;
 }
 
-input{
-    width: 100%;
-    height: 75px;
-    background-color: var(--secondary);
-    border: 1px solid var(--secondary);
-    border-radius: 15px;
-    margin: 5px 0;
-    cursor: text;
-    font-size: 1em;
-    padding: 10px;
-    font-weight: lighter;
+label {
+  font-size: 1.5em;
+  width: 100%;
+  margin: 20px 0;
 }
 
-input:focus{
-    outline: none;
-    border: 2px solid var(--primary);
+input {
+  width: 100%;
+  height: 75px;
+  background-color: var(--background);
+  border: 1px solid var(--secondary);
+  color: var(--text);
+  border-radius: 15px;
+  margin: 5px 0;
+  cursor: text;
+  font-size: 1em;
+  padding: 10px;
+  font-weight: lighter;
 }
 
-input::placeholder{
-    color: rgba(0,0,0,0.3);
+input:focus {
+  outline: none;
+  border: 2px solid var(--primary);
 }
 
-input[type=submit]{
-    background-color: var(--primary);
-    font-weight: bolder;
-    font-size: 2em;
-    border: 2px solid black;
-    transition: all 150ms ease-out;
-    cursor: pointer;
+input::placeholder {
+  color: var(--placeholder);
 }
 
-input[type=submit]:hover{
-    box-shadow: rgba(33, 237, 197, .75) 0px 7px 29px 0px;
+input[type="submit"] {
+  background-color: var(--primary);
+  font-weight: bolder;
+  font-size: 2em;
+  border: 2px solid black;
+  transition: all 150ms ease-out;
+  cursor: pointer;
 }
 
-.link{
-    color: var(--primary);
-    text-decoration: underline;
-    cursor: pointer;
+input[type="submit"]:hover {
+  box-shadow: rgba(33, 237, 197, 0.75) 0px 7px 29px 0px;
 }
 
-p{
-    font-size: 1.5em;
-    margin: 0;
+.link {
+  color: var(--primary);
+  text-decoration: underline;
+  cursor: pointer;
 }
 
+p {
+  font-size: 1.5em;
+  margin: 0;
+}
 
 #login-sidebg img {
-    height: 80%;
-    object-fit: cover;
+  height: 80%;
+  object-fit: cover;
 }
 
-#form-icons{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    width: 50%;
+#form-icons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 50%;
 }
 
-#flex-container{
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: space-between;
+#flex-container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
 }
 
-.thumbnail-video{
-    object-fit: cover;
-    height: 135%;
-    width: 100%;
-    object-position: 50% -15px;
+.thumbnail-video {
+  object-fit: cover;
+  height: 135%;
+  width: 100%;
+  object-position: 50% -15px;
 }
 
 .video-title-box p {
-    padding-top: 5px;
+  padding-top: 5px;
 }
 
 .video-title-box {
-    width: 60%;
-    overflow: hidden;
+  width: 60%;
+  overflow: hidden;
 }
 
-.play-select{
-    background-color: var(--secondary);
-    border-bottom: 2px solid black;
+.play-select {
+  background-color: var(--background);
+  border-bottom: 2px solid var(--primary);
 }
-#like {
-    display: flex;
-    width: 20%;
-    height: 10%;
+#heart {
+  margin: 10px;
+  position: relative;
+  width: 100px;
+  height: 90px;
 }
-#heart { 
-    margin: 10px;
-    position: relative; 
-    width: 100px; 
-    height: 90px; 
-} 
 
-#heart:before, #heart:after { 
-    position: absolute; 
-    content: ""; 
-    left: 50px; 
-    top: 0; 
-    width: 50px; 
-    height: 80px; 
-    background: red; 
-    border-radius: 50px 50px 0 0; 
-    transform: rotate(-45deg); 
-    transform-origin: 0 100%; 
-} 
+#heart:before,
+#heart:after {
+  position: absolute;
+  content: "";
+  left: 50px;
+  top: 0;
+  width: 50px;
+  height: 80px;
+  background: red;
+  border-radius: 50px 50px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
 
-#heart:after { 
-    left: 0; 
-    transform: rotate(45deg); 
-    transform-origin :100% 100%; 
+#heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
 }
 ul {
-    border: 1px solid black;
-    border-radius: 15px;
-    padding-left:0;
-    padding-top:0 ;
-    padding-bottom: .1em;
+  padding-left: 0;
+  padding-top: 0;
+  padding-bottom: 0.1em;
 }
 li {
-    padding: .5em;
-    margin: 0;
-    list-style: none;
-    border-bottom: solid 1px rgb(117, 117, 117);
+  padding: 0.5em;
+  margin: 0;
+  list-style: none;
+  border-bottom: solid 1px rgb(117, 117, 117);
 }
 
-
 .fixed-button-container {
-    position: fixed;
-    top: 70%;
-    right: 10px;
-    transform: translateY(-50%);
-    z-index: 999; 
+  position: fixed;
+  top: 70%;
+  right: 10px;
+  transform: translateY(-50%);
+  z-index: 999;
 }
 
 .fixed-button {
-    display: block;
-    background-color: #007bff;
-    color: #fff;
-    padding: 5px 7px;
-    margin-bottom: 10px;
-    text-align: center;
-    text-decoration: none;
-    border-radius: 25%;
+  display: block;
+  background-color: #007bff;
+  color: #fff;
+  padding: 5px 7px;
+  margin-bottom: 10px;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 25%;
 }
 
 .fixed-button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #botaofalar {
-    background-color: #007bff; /* Cor de fundo padrão */
-    margin-top: 7px;
+  background-color: #007bff; /* Cor de fundo padrÃ£o */
+  margin-top: 7px;
 }
 
 #botaofalar.mudarCor {
-    background-color: #ff9eda; /* Nova cor de fundo */
+  background-color: #ff9eda; /* Nova cor de fundo */
+}
+
+#reacts {
+  display: flex;
+  padding: 5px;
+  gap: 20px;
+}
+
+.like h1 {
+  color: var(--text);
+}
+
+.like:hover {
+  cursor: pointer;
+  border-color: var(--primary);
+}
+
+.like {
+  background-color: var(--secondary);
+  border-color: var(--secondary);
+  border-radius: 20px;
+  display: flex;
+  border-style: solid;
+  border-width: 2px;
+}
+
+#watched {
+  border-color: var(--secondary);
+  border-radius: 20px;
+  background-color: var(--secondary);
+  border-style: solid;
+  border-width: 2px;
+}
+
+#watched:hover {
+  cursor: pointer;
+  border-color: var(--primary);
+}
+
+#coracao {
+  padding-left: 5px;
+  padding-top: 10px;
+}
+
+#olho {
+  padding-top: 7px;
+}
+
+.comments-box {
+  width: 65%;
+  background-color: var(--secondary);
+  border-radius: 20px 20px 0px 0px;
+  border-color: var(--text);
+  border-style: solid;
+  border-width: 2px;
+}
+
+#resgate {
+  display: flex;
+}
+
+#profile-pic {
+  border-radius: 50%;
+  border-color: #22262a;
+  border: 1px solid;
+  width: 75px;
+  height: 75px;
+}
+
+.comment-form {
+  display: flex;
+  padding: 10px;
+}
+
+#arrow path:hover {
+  cursor: pointer;
+  stroke: var(--primary);
+  fill: var(--secondary);
+}
+
+#arrow {
+  margin-top: 18px;
+  margin-left: 10px;
+}
+
+.comment-profilepic {
+  margin-right: 7px;
+  margin-top: 4px;
+}
+
+/* Estilos da modal */
+#modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+#modal-content {
+  background: var(--background);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Adicione os estilos de animação desejados */
+.animate__animated {
+  animation-duration: 0.5s;
+}
+
+.animate__bounceIn {
+  animation-name: bounceIn;
+}
+
+.btn {
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.btn-cancel {
+  background-color: var(--secondary);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+  transition: all 400ms;
+}
+
+.btn-cancel:hover {
+  background-color: var(--primary);
+  color: var(--background);
+}
+
+/* Estilos personalizados dos botões para a modal de marcação como assistido */
+.btn-add {
+  background-color: #28a745;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  transition: all 400ms;
+}
+
+.btn-add:hover {
+  background-color: #218838;
+}
+
+/* Estilos personalizados dos botões para a modal de remoção de assistido */
+.btn-exit {
+  background-color: #d9534f;
+  color: #fff;
+  font-family: "Inter", sans-serif;
+  transition: all 400ms;
+}
+
+.btn-exit:hover {
+  background-color: #c9302c;
+}
+
+.assistido {
+  background-color: rgba(20, 235, 177, 0.1) !important;
+  border-color: rgba(20, 235, 177, 0.5) !important;
+}
+.mobile-videos-button {
+  position: fixed;
+  top: 250px;
+  right: 10px;
+  width: 40px;
+  height: 120px;
+  background-color: #007bff;
+  border-radius: 10PX;
+  display: none;
+}
+.mobile-videos-button button {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+  border: none;
+  color: #fff;
+  font-size: 12px;
+}
+.mobile-videos-button button P{
+    color: #fff;
+}
+@media only screen and (max-width: 768px) {
+  main {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #main-container {
+    margin-top: 100px;
+    width: 100%;
+  }
+
+  #main-container,
+  #videos-container {
+    width: 100%;
+  }
+
+  #videos-list {
+    max-height: 50vh;
+  }
+
+  .video-line {
+    flex-direction: column;
+    height: auto;
+  }
+
+  #flex-container {
+    display: flex;
+    flex-direction: column; /* Alteração para exibir em coluna */
+    width: 80%; /* Você pode ajustar a largura conforme necessário */
+  }
+
+  #main-container {
+    width: 100%; /* Ocupar 100% da largura do #flex-container */
+  }
+
+  #videos-container {
+    width: 100%; /* Ocupar 100% da largura do #flex-container */
+    margin-top: 20px; /* Adicionado espaçamento entre o #main-container e #videos-container */
+  }
+
+  .comments-box {
+    width: 100%;
+  }
+}
+
+/* Adicione regras de mídia para resoluções móveis */
+@media only screen and (max-width: 400px) {
+  #header-title {
+    font-size: 1.5em; /* Ajuste de tamanho de fonte no cabeçalho para telas muito pequenas */
+  }
+
+  #main-container,
+  #videos-container {
+    width: 100%; /* Ocupar 100% da largura em telas móveis */
+    margin-top: 10px; /* Adicionado espaçamento entre o #main-container e #videos-container */
+  }
+
+  #flex-container {
+    flex-direction: column; /* Exibição em coluna em telas móveis */
+  }
+
+  .video {
+    width: 100%; /* Vídeos ocupando 100% da largura em telas móveis */
+    margin-bottom: 10px; /* Espaçamento entre vídeos em telas móveis */
+  }
+
+  #videos-list {
+    border-radius: 0; /* Remover a borda arredondada no lado esquerdo da lista de vídeos em telas móveis */
+  }
+
+  .comments-box {
+    width: 100%; /* Ocupar 100% da largura em telas móveis */
+  }
+}
+
+/* Adicione regras de mídia para resoluções móveis */
+@media only screen and (max-width: 400px) {
+  #header-title {
+    font-size: 1.5em; /* Ajuste de tamanho de fonte no cabeçalho para telas muito pequenas */
+  }
+
+  #main-container {
+    margin-top: 50px;
+  }
+
+  #main-container,
+  #videos-container {
+    width: 100%; /* Ocupar 100% da largura em telas móveis */
+    margin-top: 10px; /* Adicionado espaçamento entre o #main-container e #videos-container */
+  }
+
+  #flex-container {
+    flex-direction: column; /* Exibição em coluna em telas móveis */
+  }
+
+  .video {
+    width: 100%; /* Vídeos ocupando 100% da largura em telas móveis */
+    margin-bottom: 10px; /* Espaçamento entre vídeos em telas móveis */
+  }
+
+  #videos-list {
+    border-radius: 0; /* Remover a borda arredondada no lado esquerdo da lista de vídeos em telas móveis */
+  }
+
+  .comments-box {
+    width: 100%; /* Ocupar 100% da largura em telas móveis */
+  }
+
+  header {
+    display: none; /* Esconder o cabeçalho em telas menores que 400 pixels de largura */
+  }
+}
+
+/* Adicione regras de mídia para resoluções móveis */
+@media only screen and (max-width: 400px) {
+  /* ... (as regras anteriores) ... */
+}
+
+/* Adicione regras de mídia para resoluções a partir de 768px */
+@media only screen and (max-width: 768px) {
+  #header-container {
+    width: 70%; /* Reduzir a largura do #header-container para acomodar a mudança */
+  }
+
+  #header-right-container {
+    width: 30%; /* Ajustar a largura do #header-right-container */
+  }
+
+  #main-container,
+  #videos-container {
+    width: 48%; /* Reduzir a largura do #main-container e #videos-container para acomodar ambos em uma linha */
+  }
+
+  #flex-container {
+    flex-direction: row; /* Exibir em linha em resoluções maiores que 768 pixels */
+  }
+
+  .video {
+    width: 48%; /* Manter os vídeos em uma linha com algum espaçamento entre eles */
+    margin-right: 4%; /* Adicionar espaçamento entre os vídeos */
+    margin-bottom: 10px; /* Manter algum espaçamento na parte inferior dos vídeos */
+  }
+
+  #videos-list {
+    border-radius: 1em 0px 0px 1em; /* Restaurar a borda arredondada no lado esquerdo da lista de vídeos */
+  }
+
+  .comments-box {
+    width: 48%; /* Manter a largura da caixa de comentários em uma linha */
+    margin-left: 4%; /* Adicionar espaçamento entre a lista de vídeos e a caixa de comentários */
+  }
+
+  header {
+    display: flex; /* Garantir que o cabeçalho seja exibido em resoluções maiores que 400 pixels de largura */
+  }
+  #videos-container {
+    position: absolute;
+    right: 55px;
+    top: 200px;
+    background-color: #14ebb1;
+    border-radius: 15px;
+    display: none;
+  }
+  #main-container,
+  #flex-container {
+    justify-content: center;
+    width: 95%;
+    height: 580px;
+  }
+  .mobile-videos-button{
+    display: block;
+  }
+  .mobile-videos-button:hover{
+    transform: scale(1.05);
+    cursor: pointer;
+  }
 }
