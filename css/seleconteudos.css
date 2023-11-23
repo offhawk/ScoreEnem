@@ -1,4 +1,4 @@
-body{
+body {
     background-color: var(--background);
     display: flex;
     flex-wrap: wrap;
@@ -8,20 +8,21 @@ body{
     min-height: 100vh;
     font-weight: bold;
     text-align: center;
+    margin: 0; /* Removido a margem padrão do corpo */
 }
 
 h1 {
     font-weight: bold;
-
 }
-a{
+
+a {
     text-decoration: none;
     color: unset;
     display: block;
 }
 
-.main-selec{
-    height: 80vh;
+.main-selec {
+    height: auto; /* Alterado para altura automática */
     margin: 0;
     overflow: hidden;
     width: 100%;
@@ -29,11 +30,11 @@ a{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 100px;
+    padding: 20px; /* Alterado o padding para 20px */
 }
 
-.col{
-    flex: 1 40%!important;
+.col {
+    flex: 1 100%; /* Alterado para ocupar 100% da largura em todas as telas */
 }
 
 .fixed-button-container {
@@ -41,7 +42,7 @@ a{
     top: 70%;
     right: 10px;
     transform: translateY(-50%);
-    z-index: 999; 
+    z-index: 999;
 }
 
 .fixed-button {
@@ -60,31 +61,15 @@ a{
 }
 
 #botaofalar {
-    background-color: #007bff; /* Cor de fundo padrão */
+    background-color: #007bff;
     margin-top: 7px;
 }
 
 #botaofalar.mudarCor {
-    background-color: #ff9eda; /* Nova cor de fundo */
-}
-
-body {
-    background-color: var(--background);
-    font-family: 'Inter', sans-serif;
-    font-weight: bold;
-    text-align: center;
-}
-
-.main-selec {
-    padding: 20px;
-}
-
-.col {
-    flex: 1 100%; /* Alterado para ocupar 100% da largura em telas pequenas */
+    background-color: #ff9eda;
 }
 
 @media only screen and (min-width: 768px) {
-    /* Estilos para telas maiores que 768px */
     .col {
         flex: 1 40%!important;
     }
@@ -94,4 +79,3 @@ img {
     max-width: 100%;
     height: auto;
 }
-
