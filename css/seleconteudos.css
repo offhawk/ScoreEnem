@@ -67,3 +67,31 @@ a{
 #botaofalar.mudarCor {
     background-color: #ff9eda; /* Nova cor de fundo */
 }
+
+body {
+    background-color: var(--background);
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    text-align: center;
+}
+
+.main-selec {
+    padding: 20px;
+}
+
+.col {
+    flex: 1 100%; /* Alterado para ocupar 100% da largura em telas pequenas */
+}
+
+@media only screen and (min-width: 768px) {
+    /* Estilos para telas maiores que 768px */
+    .col {
+        flex: 1 40%!important;
+    }
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
