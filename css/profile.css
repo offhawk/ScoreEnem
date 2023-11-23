@@ -469,3 +469,82 @@ a:hover {
     padding-left: 20px;
     padding-top: 50px;
 }
+
+/* Add this at the end of your existing CSS */
+
+@media screen and (max-width: 768px) {
+    #wrapper {
+      flex-direction: column;
+    }
+  
+    .page-content-wrapper,
+    #friends-container {
+      width: 100%;
+    }
+  
+    #friends-list,
+    #search-list {
+      width: 100%;
+    }
+  
+    .col {
+      margin: 10px 0;
+    }
+  
+    .page-content-wrapper,
+    #friends-container {
+      padding-top: 60px;
+    }
+  
+    #menu-nav {
+      display: none;
+    }
+  
+    #theme-changer {
+      display: none;
+    }
+
+    #sidebar-wrapper {
+        display: none;
+      }
+
+}
+  
+  @media screen and (max-width: 576px) {
+    #sidebar-wrapper {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
+    #wrapper {
+      flex-direction: column;
+    }
+  
+    .page-content-wrapper,
+    #friends-container {
+      width: 100%;
+    }
+  
+    #friends-list,
+    #search-list {
+      width: 100%;
+    }
+  
+    .col {
+      margin: 10px 0;
+    }
+  
+    .page-content-wrapper,
+    #friends-container {
+      padding-top: 60px;
+    }
+  
+    #menu-nav {
+      display: none;
+    }
+  
+    #theme-changer {
+      display: none;
+    }
+  }
