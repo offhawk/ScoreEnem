@@ -6,6 +6,7 @@ firebase.auth().onAuthStateChanged(function(user){
         window.location.href = "../pages/login.html";
       } else {
         fetchUserData(user);
+        displayLastWatchedVideos(user.uid);
     }
 })
 
@@ -14,6 +15,8 @@ firebase.auth().onAuthStateChanged(function(user){
 // Obter referência ao formulário e campos
 var form = document.querySelector("form");
 var inputNome = document.getElementById("inputNome");
+var inputDescricao = document.getElementById("inputDescricao");
+var inputDescricaoProf = document.querySelector(".user-description");
 var inputEmail = document.getElementById("inputEmail");
 var inputIdade = document.getElementById("inputIdade");
 var inputTelefone = document.getElementById("inputTelefone");
@@ -77,22 +80,6 @@ function salvaNome() {
         })
 }
 
-function novaMudança() {
-    return {
-        type: form.typeExpense().checked ? "expense" : "income",
-        date: form.date().value,
-        money: {
-            currency: form.currency().value,
-            value: parseFloat(form.value().value)
-        },
-        transactionType: form.transactionType().value,
-        description: form.description().value,
-        user: {
-            uid: firebase.auth().currentUser.uid
-        }
-    };
-}
-
 function atualizaNome() {
 
     showLoading();
@@ -122,6 +109,101 @@ function atualizaNome() {
     });
 }
 
+function validarNome() {
+    const inputNome = document.getElementById("inputNome");
+    const nomeUsuario = inputNome.value.trim();
+  
+    if (nomeUsuario === "") {
+      // Nome de usuário está vazio, exiba uma mensagem de erro
+      alert("Por favor, preencha o campo de nome de usuário.");
+      return false; // Impede que a função `atualizaNome()` seja chamada
+    }
+    // Nome de usuário não está vazio, pode chamar a função `atualizaNome()`
+    atualizaNome();
+  }
+
+function novaMudança() {
+    return {
+        type: form.typeExpense().checked ? "expense" : "income",
+        date: form.date().value,
+        money: {
+            currency: form.currency().value,
+            value: parseFloat(form.value().value)
+        },
+        transactionType: form.transactionType().value,
+        description: form.description().value,
+        user: {
+            uid: firebase.auth().currentUser.uid
+        }
+    };
+}
+
+firebase.auth().onAuthStateChanged(function(user){
+    if(user) {
+        userUid = user.uid;
+    }
+})
+
+function salvaDescricao() {
+    showLoading();
+
+    const transaction = novaMudança();
+
+    firebase.firestore()
+        .collection('usuario')
+        .add()
+        .then(() => {
+            hideLoading();
+            window.location.href = "../home/home.html";
+        })
+        .catch(() => {
+            hideLoading();
+            alert('Erro ao salvar alteração');
+        })
+}
+
+function atualizaDescricao() {
+
+    showLoading();
+
+    let inputDescricao = document.querySelector("#inputDescricao").value;
+    var washingtonRef = firebase.firestore().collection("usuario").where("uid", "==", userUid).get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            doc.ref.update ({
+                descricao: inputDescricao
+            })
+            
+            .then(() => {
+                console.log("O seu nome foi alterado com sucesso!");
+                salvaUsuario(userUid);
+                hideLoading()
+            })
+            .catch((error) => {
+                // The document probably doesn't exist.
+                console.error("Erro ao atualizar o nome ", error);
+                hideLoading()
+                });
+        });
+    })
+    .catch((error) => {
+        console.log("Error getting documents: ", error);
+        hideLoading()
+    });
+}
+
+function validarDescricao() {
+    const inputDescricao = document.getElementById("inputDescricao");
+    const descUsuario = inputDescricao.value.trim();
+  
+    if (descUsuario === "") {
+      // Nome de usuário está vazio, exiba uma mensagem de erro
+      alert("Por favor, preencha o campo de descrição do usuário.");
+      return false; // Impede que a função `atualizaNome()` seja chamada
+    }
+    // Nome de usuário não está vazio, pode chamar a função `atualizaNome()`
+    atualizaDescricao();
+  }
+
 // Define um ouvinte de evento para o campo de entrada de imagem
 document.getElementById("picture__input").addEventListener("change", function (event) {
   const file = event.target.files[0];
@@ -129,6 +211,11 @@ document.getElementById("picture__input").addEventListener("change", function (e
     uploadProfilePicture(file);
   }
 });
+
+function atualizaUsuario() {
+    atualizaNome();
+    atualizaDescricao();
+}
 
 // Função para fazer o upload da imagem de perfil
 function uploadProfilePicture(file) {
@@ -164,20 +251,6 @@ function uploadProfilePicture(file) {
   }
 }
 
-function validarNome() {
-  const inputNome = document.getElementById("inputNome");
-  const nomeUsuario = inputNome.value.trim();
-
-  if (nomeUsuario === "") {
-    // Nome de usuário está vazio, exiba uma mensagem de erro
-    alert("Por favor, preencha o campo de nome de usuário.");
-    return false; // Impede que a função `atualizaNome()` seja chamada
-  }
-
-  // Nome de usuário não está vazio, pode chamar a função `atualizaNome()`
-  atualizaNome();
-}
-
 function displayLastWatchedVideos(userId) {
   const lastWatchedVideosContainer = document.getElementById("last-watched-videos");
   lastWatchedVideosContainer.innerHTML = ""; // Limpa o conteúdo anterior
@@ -185,27 +258,50 @@ function displayLastWatchedVideos(userId) {
   // Consulta o banco de dados para obter os últimos vídeos assistidos do usuário
   firebase.firestore()
       .collection("usuario")
-      .where("watched", "==", watched)
-      .orderBy("timestamp", "desc") // Ordena por timestamp em ordem decrescente para obter os mais recentes
+      .doc(userId)
       .get()
       .then((querySnapshot) => {
-          querySnapshot.forEach((doc) => {
-              const videoData = doc.data();
+              const data = querySnapshot.data();
 
-              // Cria um link para o vídeo
-              const videoLink = document.createElement("a");
-              videoLink.classList.add("p-3");
-              videoLink.href = videoData.link;
-              console.log("CHEGOU AQUI2");
-              // Cria um parágrafo com o título do vídeo
-              const videoTitle = document.createElement("p");
-              videoTitle.classList.add("readable");
-              videoTitle.textContent = videoData.titulo;
+            const videos = data.watched;
 
-              // Adiciona o título ao link e o link ao contêiner
-              videoLink.appendChild(videoTitle);
-              lastWatchedVideosContainer.appendChild(videoLink);
-          });
+            let videosDivEl = document.querySelector("#allvideos");
+
+            videos.forEach(video => {
+
+                let videoLine = document.createElement("div");
+                videoLine.classList.add('col');
+            
+                videoLine.dataset.id = video.id;
+                videoLine.dataset.titulo = video.titulo;
+            
+                let imgContainer = document.createElement("div");
+                imgContainer.classList.add('video');
+                let img = document.createElement("img");
+            
+                img.width = 600;
+                img.height = 400;
+            
+                img.classList.add('thumbnail-video');
+            
+                img.src = "https://i.ytimg.com/vi/" + video.id + "/hqdefault.jpg";
+            
+                imgContainer.appendChild(img);
+            
+                let titleContainer = document.createElement("div");
+                titleContainer.classList.add('video-title-box');
+                let title = document.createElement("p");
+            
+                title.textContent = video.titulo;
+            
+                titleContainer.appendChild(title);
+            
+                videoLine.appendChild(imgContainer);
+                videoLine.appendChild(titleContainer);
+            
+                videosDivEl.appendChild(videoLine);
+            
+            });
       })
       .catch((error) => {
           console.error("Erro ao buscar histórico de vídeos:", error);
@@ -303,7 +399,9 @@ function fetchUserData(user) {
         querySnapshot.forEach((doc) => {
             var userData = doc.data();
             document.getElementById("profile-pic").src = userData.imgURL;
-            //inputNome.value = userData.nome;
+            inputNome?inputNome.value = userData.nome:"";
+            inputDescricao?inputDescricao.value = userData.descricao:inputDescricaoProf.innerHTML = userData.descricao;
+            console.log("CHEGOUAQUI4");
             //console.log(userData.nome);
             //inputEmail.value = userData.email;
             //inputIdade.value = userData.idade;
