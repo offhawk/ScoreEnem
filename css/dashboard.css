@@ -367,5 +367,37 @@ a:hover {
         background-color: red;
     }
 
+@media screen and (min-width: 481px) and (max-width: 768px) {
+      .page-content-wrapper{
+          width: 100%;
+      }
+      #friends-container{
+          width: 100%;
+      }
+      #sidebar-wrapper:hover{
+        overflow: visible;
+      }
+}
+      
+@media screen and (max-width: 480px) {
+        #sidebar-wrapper{
+            position: fixed;
+            left: 0;
+            top: 0;
+        }
+        #sidebar-wrapper:hover{
+          overflow: visible;
+        }
+        #wrapper{
+          flex-direction: column;
+          padding: 30px 30px 30px 100px;
+        }
+        .page-content-wrapper{
+            width: 100%;
+        }
+        #friends-container{
+            width: 100%;
+        }
+}
 
     
