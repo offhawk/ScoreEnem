@@ -543,7 +543,7 @@ body[data-theme="dark"] #redacao *{
 }
 
 #botaofalar {
-    background-color: #007bff; /* Cor de fundo padrão */
+    background-color: #007bff; /* Cor de fundo padrÃ£o */
     margin-top: 7px;
 }
 
@@ -557,9 +557,10 @@ form > div{
 
 @media screen and (max-width: 480px) {
     main{
-        padding: 0;
+        padding: 0!important;
         font-size: 14px;
-        height: auto;
+        height: 100vh;
+        flex-direction: column;
     }
     label{
         font-size: 1.25em;
@@ -602,6 +603,144 @@ form > div{
     h2{
         text-align: center;
     }
+
+    .home-header{
+        padding: 10px 10px 10px 10px;
+    }
+
+    .logo-title-header{
+        font-size: 20px;
+    }
+
+    div#menu-nav > .link-header{
+        font-size: 10px;
+        padding-left: 10px;
+        margin: 0;
+    }
+
+    .link-header > a{
+        padding-right: 15px ;
+    }
+
+    .logo-title{
+        font-size: 33px;
+    }
+
+    .logo-subtitle{
+        margin: 0;
+        font-size: 23px;
+    }
+
+    #clipes{
+        width: 200px;
+    }
+
+    #div-main-101010{
+        width: 100%!important;
+    }
+
+    #div-main-10768010{
+        margin: 150px 0px 20px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #div-main-10768010 h1, #div-main-10768010 h2, #div-main-10768010 div{
+        margin-top: 15px;
+    }
+
+    #img-container{
+        height: auto;
+        margin: 20px 0 20px 0;
+    }
+
+    #img-video{
+        width: 150px;
+    }
+
+    #img-container2{
+        height: auto;
+        width: auto;
+    }
+
+    .div-video{
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .logo-title-video{
+        font-size: 33px;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .logo-subtitle-video{
+        font-size: 23px;
+        text-align: center;
+        margin-left: 0;
+    }
+
+    /* #img-redacao{
+        width: 150px;
+    } */
+
+    .div-mae{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .div-filho-746123{
+        display: flex;
+    }
+
+    .texto-redacao{
+        display: flex;
+        flex-direction: column;
+        margin: 0px ;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 20px 0 20px;
+    }
+
+    .logo-title-redacao{
+        font-size: 33px;
+        margin: 0;
+        text-align: center;
+    }
+
+    .logo-subtitle-redacao{
+        font-size: 23px;
+        margin: 0;
+        text-align: center;
+    }
+
+    #img-container3{
+        display: none;
+    }
+
+    #redacao{
+        margin-right: 0px;
+        margin-top: 20px;
+        
+    }
+
+    #redacao h1{
+        font-size: 30px;
+    }
+
+    #redacao h2{
+        font-size: 23px;
+    }
+
+
 }
 
 @media screen and (min-width: 481px) and (max-width: 768px) {
@@ -609,6 +748,8 @@ form > div{
         flex-direction: column-reverse;
         padding: 20px;
         height: auto;
+        display: flex;
+        flex-direction: column;
     }
     #login-bg{
         width: 100%;
@@ -626,12 +767,132 @@ form > div{
     #modal-full{
         padding: 30px;
     }
+
+    .logo-title{
+        font-size: 50px;
+    }
+
+    .logo-subtitle{
+        margin: 0;
+        font-size: 25px;
+    }
+
+    #clipes{
+        width: 250px;
+    }
+
+    #div-main-101010{
+        width: 100%!important;
+    }
+
+    #div-main-10768010{
+        margin: 100px 0px 20px 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    #div-main-10768010 h1, #div-main-10768010 h2, #div-main-10768010 div{
+        margin-top: 15px;
+    }
+
+    #img-container{
+        height: auto;
+        margin: 20px 0 20px 0;
+    }
+
+    #img-video{
+        width: 250px;
+    }
+
+    #img-container2{
+        height: auto;
+        width: auto;
+    }
+
+    .div-video{
+        display: flex;
+        flex-direction: column;
+        padding: 0;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .logo-title-video{
+        font-size: 50px;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .logo-subtitle-video{
+        font-size: 25px;
+        text-align: center;
+        margin-left: 0;
+    }
+
+    /* #img-redacao{
+        width: 150px;
+    } */
+
+    .div-mae{
+        display: flex;
+        flex-direction: row;
+    }
+
+    .div-filho-746123{
+        display: flex;
+    }
+
+    .texto-redacao{
+        display: flex;
+        flex-direction: column;
+        margin: 0px ;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 20px 0 20px;
+    }
+
+    .logo-title-redacao{
+        font-size: 50px;
+        margin: 0;
+        text-align: center;
+    }
+
+    .logo-subtitle-redacao{
+        font-size: 23px;
+        margin: 0;
+        text-align: center;
+    }
+
+    #img-container3{
+        display: none;
+    }
+
+    #redacao{
+        margin-right: 0px;
+        margin-top: 20px;
+        width: 90%;
+    }
+
+    #redacao h1{
+        text-align: center;
+        font-size: 30px;
+    }
+
+    #redacao h2{
+        text-align: center;
+        font-size: 23px;
+    }
 }
 
 @media screen and (min-width: 769px) and (max-width: 1279px) {
     main{
         padding: 100px;
-        height: auto;
+        height: 100vh;
     }
     #login-bg{
         width: 100%;
@@ -649,6 +910,19 @@ form > div{
     #modal-full{
         padding: 30px;
     }
+
+    #clipes, #img-video, #img-redacao{
+        width: 250px;
+    }
+
+    #main-index, .div-video, .div-mae{
+        padding-left: 20px;
+    }
+
+    #img-redacao{
+        margin-top: 300px;
+    }
+    
 }
 
 @media screen and (max-height: 768px) and (orientation: landscape){
@@ -685,6 +959,8 @@ form > div{
     label{
         font-size: 1.4em;
     }
+
+   
 }
 
 @media screen and (orientation: portrait) and (min-height: 769px){

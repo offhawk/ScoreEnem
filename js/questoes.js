@@ -20,6 +20,7 @@ let pagina = 0;
 let btnFiltro = document.querySelector('#btn-filtro');
 let quizChunk = []
 let splitSize = 10
+let quizDump = []
 showLoading();
 
 const splitArray = (array, size) => {
@@ -42,6 +43,7 @@ firebase.firestore().collection('questoes').orderBy('ano').get().then((snapshot 
     })
 
     if(quizArray){
+        quizDump = quizArray;
         quizArrayChunk = quizArray;
         preenchePaginas()
     }
@@ -51,7 +53,6 @@ firebase.firestore().collection('questoes').orderBy('ano').get().then((snapshot 
 
 
 function preenchePaginas() {
-
 
     quizChunk = splitArray(quizArrayChunk, splitSize)
 
@@ -223,32 +224,62 @@ function initial() {
 //hide quiz and display start screen
 
 btnFiltro.addEventListener('click', filtrarQuestoes);
+document.querySelector('#sel-mat').addEventListener('change', preencheAssunto);
+document.querySelector('#sel-mat').addEventListener('change', filtrarQuestoes);
+document.querySelector('#sel-as').addEventListener('change', filtrarQuestoes);
 
-function filtrarQuestoes() {
-    showLoading()
-
+function preencheAssunto() {
     let materiaVal = document.querySelector('#sel-mat').value;
 
-    quizArray = []
-    
     if(materiaVal == 'Qualquer'){
-        firebase.firestore().collection('questoes').orderBy('ano').limit().get().then((snapshot => {
-            snapshot.forEach((doc) => {
-                quizArray.push(doc.data());
-            })
-            quizArrayChunk = quizArray;
-            preenchePaginas()
-        }))
+        console.log("a")
+        $("#sel-as").find('option').remove();
+        $("#sel-as").append('<option value="Qualquer">'+"Qualquer"+'</option>');
+        $("#sel-as").selectpicker("refresh");
+        $("#sel-as").selectpicker('val', 'Qualquer');
     } else {
-        firebase.firestore().collection('questoes').orderBy('ano').where('mat', '==', materiaVal).limit().get().then((snapshot => {
-            snapshot.forEach((doc) => {
-                quizArray.push(doc.data());
-            })
-            quizArrayChunk = quizArray;
-            preenchePaginas()
-        }))
-    }
+        let assuntosArr = quizDump.filter((questao) => questao.mat == materiaVal);
+        let assuntos = [];
+        $("#sel-as").find('option').remove();
+        $("#sel-as").append('<option value="Qualquer">'+"Qualquer"+'</option>');
+        assuntosArr.forEach(assunto => {
     
+            let assuntosChunk = assunto.descricao.split(",");
+            assuntosChunk.forEach((assnt) => {
+                //document.querySelector('#sel-mat').innerHTML += `<option data-tokens="${assnt}">${assnt}</option>`;
+                $("#sel-as").append('<option value="'+assnt+'">'+assnt+'</option>');
+                $("#sel-as").selectpicker("refresh");
+            })
+        });
+    }
+   
+}
+
+
+function filtrarQuestoes(e) {
+    showLoading()
+    let materiaVal = document.querySelector('#sel-mat').value;
+    let assuntoVal = document.querySelector('#sel-as').value;
+
+    if(e.target.id == "sel-mat"){
+    
+        if(materiaVal == 'Qualquer'){
+            quizArrayChunk = quizDump;
+            preenchePaginas()
+        } else {
+                quizArrayChunk = quizDump.filter((questao) => questao.mat == materiaVal);
+                preenchePaginas()
+        }
+    } else {
+        if(assuntoVal == 'Qualquer'){
+            quizArrayChunk = quizDump.filter((questao) => questao.mat == materiaVal);
+            preenchePaginas()
+        } else {
+                quizArrayChunk = quizDump.filter((questao) => questao.mat == materiaVal);
+                quizArrayChunk = quizArrayChunk.filter((questao) => questao.descricao.includes(assuntoVal));
+                preenchePaginas()
+        }
+    }
 }
 
 function alteraPagina(cl) {
