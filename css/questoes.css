@@ -353,3 +353,23 @@
 #botaofalar.mudarCor {
     background-color: #ff9eda; /* Nova cor de fundo */
 }
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  #display-container{
+    padding: 0px;
+    margin: 150px auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  #display-container{
+    padding: 0px;
+    margin: 15px auto;
+  }
+  .start-screen{
+    padding: 20px;
+  }
+  .home-header{
+    display: none;
+  }
+}
