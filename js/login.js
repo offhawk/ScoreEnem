@@ -88,9 +88,8 @@ function login() {
         hideLoading()
         console.log('success', response);
     }).catch(error => {
-        hideLoading()
-        loginErro.classList.toggle('hidden');
-        loginErro.innerHTML = "Usuário ou senha incorretos."
+        hideLoading();
+        errorHandlerLog(error);
     });
 }
 
@@ -153,3 +152,27 @@ function () {
         signInWithRedirect(auth, provider);
     }
 */
+
+function errorHandlerLog(erro) {
+    let erroLoginEl = document.querySelector("#login-error");   
+    
+    erro = erro.code
+
+    switch (erro) {
+      case "auth/invalid-email":
+        erroLoginEl.innerHTML = "Email ou Senha Incorretas";
+        break;
+      case "auth/invalid-password":
+      case "auth/wrong-password":
+        erroLoginEl.innerHTML = "Email ou Senha Incorretas";
+        break;
+      case "auth/user-not-found":
+        erroLoginEl.innerHTML = "Usuário não encontrado.";
+        break;
+      default:
+        erroLoginEl.innerHTML = "Ocorreu um erro. Tente novamente.";
+        break;
+    }
+
+    erroLoginEl.classList.remove('hidden')
+  }

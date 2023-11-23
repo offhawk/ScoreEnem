@@ -64,7 +64,6 @@ function fetchUserData(user) {
       .catch(function (error) {
         console.log("Erro ao buscar informações do usuário:", error);
         hideLoading()
-
       });
   }
 
@@ -110,7 +109,7 @@ function alteraPesquisa(e) {
 
 function pesquisaAmigo() {
 
-    if(searchEl.value == ""){
+    if(searchEl.value === ""){
         searchListEl.innerHTML = "";
         fetchUserData(firebase.auth().currentUser)
         return;
