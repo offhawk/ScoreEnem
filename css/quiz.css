@@ -490,3 +490,18 @@ th, tr, tbody, .table tbody+tbody, td{
 .classificacao{
   width: 100%;
 }
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+  .start-screen{
+    padding: 50px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .start-screen{
+    padding: 20px;
+  }
+  .home-header{
+    display: none;
+  }
+}
