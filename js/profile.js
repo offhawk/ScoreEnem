@@ -43,6 +43,8 @@ function fetchUserData(user) {
         inputTelefone.value = userData.telefone;
         //inputLoc.value = userData.loc;
         displayLastWatchedVideos(user.uid);
+
+        console.log(userData.watched)
         
         hideLoading()
       });

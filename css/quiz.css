@@ -54,11 +54,14 @@ button {
   background-color: var(--primary);        
   font-size: 1.5em;
   border: 2px solid var(--background);   
-  color: #22262a;  
+  color: var(--text);  
   transition: all 300ms ease-out;     
   cursor: pointer;     
   text-align: center;
   border-radius: 5px;
+}
+#challenge{
+  color: #22262a;
 }
 .form-hed > div{
   flex: 1;
@@ -189,8 +192,8 @@ button {
   display: none;
 }
 .incorrect {
-  background-color: #ffdde0;
-  color: #d32f2f!important;
+  background-color: var(--incorrect);
+  color: var(--incorrect)!important;
   border-color: #d32f2f!important;
 }
 #score-result img{
@@ -281,12 +284,6 @@ button {
 
 .table th, .table td{
   text-align: center;
-}
-
-#info-challenge img{
-  margin: auto;
-  display: block;
-  width: 400px;
 }
 
 #start-screen > div {
@@ -409,4 +406,87 @@ th, tr, tbody, .table tbody+tbody, td{
 
 #botaofalar.mudarCor {
   background-color: #ff9eda; /* Nova cor de fundo */
+}
+
+#modal-amigos{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+#modal-amigos #friends-container{
+  border-radius: 15px;
+  background-color: var(--background);
+  z-index: 999;
+}
+
+#modal-amigos .friends-name, 
+#modal-amigos .friends-username,
+#desafios-list .friends-name, 
+#desafios-list .friends-username{
+  margin: 0;
+}
+
+#modal-amigos .friends-info-p{
+  z-index: 11;
+}
+
+#start-button{
+  color: #22262a;
+}
+
+#modal-amigos-backdrop{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .7);
+  backdrop-filter: blur(10px);
+  z-index: 1;
+}
+
+#info-challenge .svg-wrapper{
+  width: 100px;
+}
+
+.accept{
+  margin-right: 15px;
+}
+
+.decline:hover{
+  fill: #d32f2f!important;
+}
+
+#info-challenge .svg-wrapper:hover svg{
+  fill: var(--text);
+}
+
+.accept:hover{
+  fill: var(--primary)!important;
+}
+
+#historico-list .friends-info{
+  text-align: center;
+  margin: 0;
+}
+
+#historico-list .friends-username{
+  text-align: center;
+  margin: 0;
+  font-weight: 200;
+}
+
+#historico-list p{
+  margin: 0;
+}
+
+.classificacao{
+  width: 100%;
 }

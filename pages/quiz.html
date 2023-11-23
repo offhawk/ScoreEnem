@@ -72,7 +72,22 @@
                     </div>
                     <div id="info-challenge">
                         <div>
-                            <div><img src="../imgs/Nuvem.png"></div>
+                            <h1 class="readable">Desafios</h1>
+                            <p class="readable">Dispute com seus amigos!</p>
+                            <div>
+                                <div class="friends-nav">
+                                    <p class="desafios-info-p readable">Desafios</p>
+                                    <p class="desafios-info-p readable">Histórico</p>
+                                </div>   
+                                <div class="friends-list">
+                                    <ul id="desafios-list">
+                                        
+                                    </ul>
+                                    <ul id="historico-list" class="hidden">
+                                        
+                                    </ul>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -127,11 +142,42 @@
                   <div id="user-score" class="readable">Demo Score</div>
               </div>
               <div>
-                  <button id="challenge" class="readable">Desafiar um amigo</button>
+                  <button id="challenge" class="readable" onclick="modalAmigo()">Desafiar um amigo</button>
                   <button id="restart" class="readable">Reiniciar</button>
+                  <div id="modal-amigos" class="hidden">
+                    <div id="modal-amigos-backdrop" class="hidden"></div>
+                    <div id="friends-container">
+                        <div>
+                            <div class="friends-nav">
+                                <p class="friends-info-p readable">Meus amigos</p>
+                                <p class="friends-info-p readable">Adicionar Amigo</p>
+                            </div>
+                            <div id="friends-header">
+                                <div class="friends-icon" id="friends-icon-add"> 
+                                    <?xml version="1.0" ?><svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 14L13.5 14.001C14.2793 14.001 14.9204 14.5963 14.9931 15.3566L15 15.501V17.5C14.999 21 11.284 22 8.5 22C5.77787 22 2.1647 21.044 2.00545 17.7296L2 17.5V15.5C2 14.7207 2.59527 14.0796 3.35561 14.0069L3.5 14ZM15.488 14H20.5C21.2793 14 21.9204 14.5944 21.9931 15.3555L22 15.5V17C21.999 20.062 19.142 21 17 21C16.32 21 15.569 20.904 14.86 20.678C15.5128 19.9277 15.9362 18.9748 15.9934 17.78L16 17.5V15.5C16 15.0056 15.8507 14.5488 15.601 14.1616L15.488 14H20.5H15.488ZM8.5 3C10.985 3 13 5.015 13 7.5C13 9.985 10.985 12 8.5 12C6.015 12 4 9.985 4 7.5C4 5.015 6.015 3 8.5 3ZM17.5 5C19.433 5 21 6.567 21 8.5C21 10.433 19.433 12 17.5 12C15.567 12 14 10.433 14 8.5C14 6.567 15.567 5 17.5 5Z"></path></svg>
+                                </div>
+                                <div id="friends-search">
+                                    <input type="text" placeholder="Pesquisar" name="search-friends" id="input-search-friends">
+                                    <span onclick="pesquisaAmigo" id="friends-icon-search"><?xml version="1.0" ?><svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10 2.5C14.1421 2.5 17.5 5.85786 17.5 10C17.5 11.7101 16.9276 13.2866 15.964 14.5483L20.7071 19.2929C21.0976 19.6834 21.0976 20.3166 20.7071 20.7071C20.3466 21.0676 19.7794 21.0953 19.3871 20.7903L19.2929 20.7071L14.5483 15.964C13.2866 16.9276 11.7101 17.5 10 17.5C5.85786 17.5 2.5 14.1421 2.5 10C2.5 5.85786 5.85786 2.5 10 2.5ZM10 4.5C6.96243 4.5 4.5 6.96243 4.5 10C4.5 13.0376 6.96243 15.5 10 15.5C13.0376 15.5 15.5 13.0376 15.5 10C15.5 6.96243 13.0376 4.5 10 4.5Z"/></svg></span>
+                                </div>
+                            </div>
+                            <div class="friends-list" id="friends-list">
+                                <ul id="friends-ul">
+                                    
+                                </ul>
+                            </div>
+                            <div class="friends-list hidden" id="search-list">
+                                <ul id="search-ul">
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                  </div>
               </div>
           </div>
-          <div class="border rounded p-4 classificacao" id="result-class">
+          <div class="border rounded p-4 classificacao" >
+            <div id="result-class">
               <div>
                   <h1 class="readable">Classificação</h1>
                   <p class="readable">Resolva questões e seja o melhor!</p>
@@ -153,6 +199,10 @@
                       </tbody>
                   </table>
               </div>
+            </div>
+            <div id="comparacao" class="hidden">
+                <div><img src="../imgs/Estrela.png" alt=""></div>
+            </div>
           </div>
       </div>
   </div>
@@ -192,7 +242,6 @@
   <script src="../js/quiz.js"></script>
   <script src="../js/acessibilidade.js"></script>
     <script>
-
         new window.VLibras.Widget('https://vlibras.gov.br/app');
         $.fn.selectpicker.Constructor.BootstrapVersion = '4';
     </script>
