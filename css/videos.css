@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
 
 @font-face {
     font-family: trap;
@@ -85,7 +86,7 @@ main{
     background-color: var(--primary);
     height: auto;
     border-radius: 5px;
-    border: 3px solid #898989;
+    border: 3px solid var(--secondary);
 }
 
 #videos-list {
@@ -347,7 +348,7 @@ li {
 
 .like {
     background-color: var(--secondary);
-    border-color: #898989;
+    border-color: var(--secondary);
     border-radius: 20px;
     display: flex;
     border-style: solid;
@@ -355,7 +356,7 @@ li {
 }
 
 #watched {
-    border-color: #898989;
+    border-color: var(--secondary);
     border-radius: 20px;
     background-color: var(--secondary);
     border-style: solid;
@@ -380,7 +381,7 @@ li {
     width: 65%;
     background-color: var(--secondary);
     border-radius: 20px 20px 0px 0px;
-    border-color: #898989;
+    border-color: var(--text);
     border-style: solid;
     border-width: 2px;
 }
@@ -405,7 +406,7 @@ li {
 #arrow path:hover {
     cursor: pointer;
     stroke: var(--primary);
-    fill: white;
+    fill: var(--secondary);
 }
 
 #arrow {
@@ -416,4 +417,85 @@ li {
 .comment-profilepic {
     margin-right: 7px;
     margin-top: 4px;
+}
+
+/* Estilos da modal */
+#modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+}
+
+#modal-content {
+    background: var(--background);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Adicione os estilos de animação desejados */
+.animate__animated {
+    animation-duration: 0.5s;
+}
+
+.animate__bounceIn {
+    animation-name: bounceIn;
+}
+
+.btn {
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.btn-cancel {
+    background-color: var(--secondary);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    transition: all 400ms;
+}
+
+.btn-cancel:hover{
+    background-color: var(--primary);
+    color: var(--background);
+}
+
+/* Estilos personalizados dos botões para a modal de marcação como assistido */
+.btn-add {
+    background-color: #28a745;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    transition: all 400ms;
+}
+
+.btn-add:hover {
+    background-color: #218838;
+}
+
+/* Estilos personalizados dos botões para a modal de remoção de assistido */
+.btn-exit {
+    background-color: #d9534f;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    transition: all 400ms;
+}
+
+.btn-exit:hover {
+    background-color: #c9302c;
+}
+
+.assistido {
+background-color: rgba(20, 235, 177, 0.1);
+border-color : rgba(20, 235, 177, 0.5);
 }
