@@ -260,7 +260,7 @@ function filtrarQuestoes(e) {
     showLoading()
     let materiaVal = document.querySelector('#sel-mat').value;
     let assuntoVal = document.querySelector('#sel-as').value;
-
+    pagina = 0;
     if(e.target.id == "sel-mat"){
     
         if(materiaVal == 'Qualquer'){
@@ -288,7 +288,9 @@ function alteraPagina(cl) {
     let backNavEl = document.querySelectorAll('.backNav')
     switch (cl.textContent) {
         case "Próxima":
-            pagina++;
+            if(pagina == paginas - 1){
+
+            } else pagina++;
             break;
         case "Anterior":
             pagina--;
