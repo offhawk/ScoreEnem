@@ -22,8 +22,8 @@ function fetchUserData(user) {
     .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
         var userData = doc.data();
-        /*document.getElementById("profile-pic").src = userData.imgURL;
-        inputNome.value = userData.nome;
+        document.getElementById("profile-pic").src = userData.imgURL;
+        /*inputNome.value = userData.nome;
         console.log(userData.nome);
         inputEmail.value = userData.email;
         //inputIdade.value = userData.idade;
