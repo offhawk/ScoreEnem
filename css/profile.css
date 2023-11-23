@@ -280,7 +280,11 @@ a:hover {
 
 .col:hover{
     color: var(--text);
+<<<<<<< Updated upstream
     background-color: var(--background);
+=======
+    background-color: var(--primary);
+>>>>>>> Stashed changes
 }
 
 .col:hover p{
