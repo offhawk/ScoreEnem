@@ -345,16 +345,12 @@ getVideoData();
 function findTransactions() {
     showLoading();
 
-    console.log("AAAAAAA");
-
     let emailUsuario= document.querySelector("#inputEmail").value;
     let idadeUsuario = document.querySelector("#inputIdade").value;
     let telUsuario = document.querySelector("#inputTelefone").value;
     let locUsuario = document.querySelector("#inputLoc").value;
     let videosUsuario = document.querySelector("#inputVid").value;
     let jogosUsuario = document.querySelector("#inputJog").value;
-
-    console.log("AAAA");
 
     firebase.firestore()
         .collection('usuario')
@@ -382,16 +378,6 @@ let infoEl = document.querySelectorAll('.friends-info-p');
 let searchListEl = document.querySelector('#search-ul');
 let friendsListEl = document.querySelector('#friends-ul');
 
-firebase.auth().onAuthStateChanged(function(user){
-    if (user == null || user == "") {
-        hideLoading()
-        alert("Você não está logado!");
-        window.location.href = "../pages/login.html";
-      } else {
-        fetchUserData(user);
-    }
-})
-
 function fetchUserData(user) {
     firebase.firestore()
       .collection("usuario")
@@ -403,16 +389,9 @@ function fetchUserData(user) {
             document.getElementById("profile-pic").src = userData.imgURL;
             inputNome?inputNome.value = userData.nome:"";
             inputDescricao?inputDescricao.value = userData.descricao:inputDescricaoProf.innerHTML = userData.descricao;
-            console.log("CHEGOUAQUI4");
-            //console.log(userData.nome);
-            //inputEmail.value = userData.email;
-            //inputIdade.value = userData.idade;
-            //inputTelefone.value = userData.telefone;
-            //inputLoc.value = userData.loc;
-
             amigos = userData.amigos;
             console.log(amigos)
-            let amigosEl = "<p>Você ainda não tem nenhum amigo.</p>";
+            let amigosEl = "<p>Nenhum amigo encontrado.</p>";
             if(amigos != null){
                 friendsListEl.innerHTML = "";
                 amigos.forEach((friend) => {
