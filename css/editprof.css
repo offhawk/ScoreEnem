@@ -280,7 +280,7 @@ a:hover {
 
 .col:hover{
     color: var(--text);
-    background-color: var(--background);
+    background-color: var(--primary);
 }
 
 .col:hover p{
@@ -363,6 +363,9 @@ a:hover {
 
 .nome-imagem {
     display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .user-name {
@@ -379,6 +382,8 @@ a:hover {
 
 #wrapper {
     padding: 0px 50px;
+    text-align: center;
+    justify-content: center;
 }
 
 .user-description {
@@ -386,16 +391,122 @@ a:hover {
 }
 
 .responder-button {
-    border: 1px solid black;
-    font-size: 1em;
-    margin-top: 1.5em;
-    font-weight: bold;
-    background-color: #21EDC5;
-    color: #000;
+    border: 1px, solid, black;
+    background-color: var(--background);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    transition: all 400ms;
     padding: 0.7em 1.8em;
-    border-radius: 0.3em;
-    box-shadow: rgba(33, 237, 197, 0) 0px 7px 29px 0px;
-    transition: box-shadow 200ms ease;
+    border-radius: 0.3;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.responder-button:hover {
+    cursor: pointer;
+    background-color: var(--primary);
+    color: var(--background);
+}
+
+#friends-container {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    height: 100vh; /* Para ocupar a altura total da viewport */
+}
+
+.btn-exit {
+    background-color: #d9534f;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    transition: all 400ms;
+}
+
+.btn-exit:hover {
+    background-color: red;
+}
+
+.filtro-container {
+    background-color: var(--secondary);
+    border: none;
+    border-radius: 15px;
+}
+
+#display-container {
+    width: 80%;
+    margin: 120px auto;
+}
+
+.mb-3 {
+    font-weight: 600px;
+}
+
+.seu-perfil {
+    text-align: left;
+    justify-content: left;
+}
+
+.edit-profile{
+    width: 87%;
+    height: 35px;
+}
+
+.edit-profile input{
+    all: unset;
+    font-weight: 500;
+    box-sizing: border-box;
+    width: 100%;
+    background-color: var(--background);
+    height: 100%;
+    border-radius: 20px;
+    padding: 5px 5px 5px 10px;
+    border: 1px solid var(--secondary);
+}
+
+.edit-profile input:focus{
+    border: 1px solid var(--primary);
+    background-color: var(--secondary);
+}
+
+.edit-profile input:focus ~ svg{
+    fill: var(--primary);
+}
+
+.edit-profile svg:hover{
+    cursor: pointer;
+    fill: var(--primary);
+}
+
+.edit-profile{
+    position: relative;
+}
+
+.edit-profile svg{
+    fill: var(--text);
+    position: absolute;
+    padding: 5px;
+    width: 35px;
+    height: 35px;
+    right: 5px;
+}
+
+#edit-desc {
+    height: 120px;
+}
+
+#edit-name {
+    width: 500px;
+}
+
+#edit-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn {
@@ -409,10 +520,14 @@ a:hover {
 }
 
 .btn-cancel {
+    background-color: #21EDC5;
+    border: 1px, solid, black;
     background-color: var(--secondary);
     color: var(--text);
     font-family: 'Inter', sans-serif;
     transition: all 400ms;
+    padding: 0.7em 1.8em;
+    border-radius: 0.3;
 }
 
 .btn-cancel:hover{
