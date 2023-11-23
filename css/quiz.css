@@ -149,7 +149,7 @@ button {
 }
 
 .option-div:disabled {
-  color: #000000;
+  color: var(--text);
   cursor: not-allowed;
 }
 #next-button {
@@ -193,7 +193,7 @@ button {
 }
 .incorrect {
   background-color: var(--incorrect);
-  color: var(--incorrect)!important;
+  color: var(--text)!important;
   border-color: #d32f2f!important;
 }
 #score-result img{
@@ -206,7 +206,7 @@ button {
 }
 
 .correct {
-  background-color: #dafff8;
+  background-color: var(--correct);
   color: #000!important;
   border-color: #21EDC5!important;
 }
