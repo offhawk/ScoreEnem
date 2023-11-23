@@ -1,6 +1,8 @@
 showLoading();
 
 let watched;
+let imageurl;
+let spottinho;
 
 firebase.auth().onAuthStateChanged(function(user){
   if (user == null || user == "") {
@@ -29,6 +31,8 @@ function fetchUserData(user) {
         //inputIdade.value = userData.idade;
         inputTelefone.value = userData.telefone;
         //inputLoc.value = userData.loc;*/
+        imageurl = userData.imgURL;
+        spottinho = userData.nome;
         watched = userData.watched;
         hideLoading()
       });
@@ -71,7 +75,6 @@ let svgElement = document.getElementById("coracao");
 let videosPlaylistEl = [];
 
 function preenchePlaylist(videos) {
-
     mainVideoBox.firstElementChild.remove()
     let liteEmbedEl = document.createElement("lite-youtube");
     let likeButton = document.getElementById("contador");
@@ -84,7 +87,6 @@ function preenchePlaylist(videos) {
     valor.innerHTML = videos[0].likes?videos[0].likes.length:"0";
     
       const videoRef = firebase.firestore().collection('video').where('id', '==', videos[0].id);
-    
       videoRef.get().then((querySnapshot) => {
         console.log("entrou");
     
@@ -145,7 +147,7 @@ function preenchePlaylist(videos) {
         videoLine.appendChild(titleContainer);
     
         videosDivEl.appendChild(videoLine);
-
+        
     });
 
     videosPlaylistEl = document.querySelectorAll('.video-line');
@@ -250,13 +252,14 @@ function addComment() {
   let comment = document.querySelector('#input-comment').value
 
   console.log(comment)
-
+  console.log(imageurl)
+  console.log(spottinho)
   const q = firebase.firestore().collection('video').where('id', '==', liteEmbedEl.getAttribute('videoid')).get()
   .then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
           // doc.data() is never undefined for query doc snapshots
           doc.ref.update({
-              comments: firebase.firestore.FieldValue.arrayUnion(comment)
+              comments: firebase.firestore.FieldValue.arrayUnion({comentario: comment, pfp: imageurl, username: spottinho})
           });
           atualizaComentario(doc.ref)
       });
