@@ -18,9 +18,11 @@ let addIconEl = document.querySelector('#friends-icon-add');
 let searchDivEl = document.querySelector('#search-list');
 let friendsDivEl = document.querySelector('#friends-list');
 let infoEl = document.querySelectorAll('.friends-info-p');
+let infoDesEl = document.querySelectorAll('.desafios-info-p');
 let searchListEl = document.querySelector('#search-ul');
 let friendsListEl = document.querySelector('#friends-ul');
 let desafiosListEl = document.querySelector('#desafios-list');
+let historicoListEl = document.querySelector('#historico-list');
 let questionCount;
 let scoreCount = 0;
 let count = 20;
@@ -30,6 +32,7 @@ let userCorrect = 0;
 let userWrong = 0;
 let isDesafio = false;
 let desafioArray = [];
+let desafioRef;
 
 firebase.auth().onAuthStateChanged(function(user){
     if(user) {
@@ -94,18 +97,37 @@ nextBtn.addEventListener(
                     imgResult.src = '../imgs/Correto.png';
                     document.querySelector('#score-result').classList.add('correct')
                     userScore.innerHTML = "Parabéns! Você venceu.";
+                    desafioRef.update({
+                        vencedor: desafioArray.desafiado,
+                        status: true
+                    })
                 } else if (scoreCount == desafioArray.acertos) {
-                    imgResult.src = '../imgs/Maçã.png';
+                    imgResult.src = '../imgs/Errado.png';
                     document.querySelector('#score-result');
                     userScore.innerHTML = "Vocês empataram.";
+                    desafioRef.update({
+                        vencedor: 'empate',
+                        status: true
+                    })
                 } else if (scoreCount < desafioArray.acertos) {
-                    imgResult.src = '../imgs/Correto.png';
+                    imgResult.src = '../imgs/Errado.png';
                     document.querySelector('#score-result').classList.add('incorrect')
                     userScore.innerHTML = "Não foi dessa vez. Você perdeu.";
+                    desafioRef.update({
+                        vencedor: desafioArray.enviado,
+                        status: true
+                    })
                 }
 
-                document.querySelector('#table-class-2').style.display = 'none';
-                document.querySelector('#comparacao').style.display = 'block';
+                document.querySelector('#result-class').style.display = 'none';
+                document.querySelector('#comparacao').classList.remove('hidden');
+
+                firebase.firestore().collection('usuario').doc(desafioArray.enviado).get().then((doc) => {
+                    let userEnviado = doc.data();
+                    document.querySelector('#comparacao').innerHTML = `<p>${userEnviado.nome} acertou ${desafioArray.acertos} de ${questionCount} questões.</p>
+                                                                            <p>Você acertou ${scoreCount} de ${questionCount} questões.</p>`;
+                })
+                document.querySelector('#comparacao').innerHTML = "";
 
             } else {
                 let media = (scoreCount * 100) / questionCount;
@@ -164,6 +186,7 @@ nextBtn.addEventListener(
 
                 }));
 
+                userScore.innerHTML = `<p>Você acertou ${scoreCount} de ${questionCount} questões.</p>`;
                 
             }
 
@@ -336,7 +359,7 @@ startButton.addEventListener("click", () => {
     console.log(materiaVal + " " + qtdeVal)
 
     if(materiaVal == "Qualquer"){
-        firebase.firestore().collection('questoes').orderBy('ano').limit(qtdeVal).get().then((snapshot => {
+        firebase.firestore().collection('questoes').limit(qtdeVal).get().then((snapshot => {
             snapshot.forEach((doc) => {
                 quizArray.push(doc.data());
             })
@@ -410,13 +433,6 @@ function fetchUserData(user) {
       .then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
             var userData = doc.data();
-            //inputNome.value = userData.nome;
-            //console.log(userData.nome);
-            //inputEmail.value = userData.email;
-            //inputIdade.value = userData.idade;
-            //inputTelefone.value = userData.telefone;
-            //inputLoc.value = userData.loc;
-
             amigos = userData.amigos;
             desafios = userData.desafios;
             console.log(amigos)
@@ -448,36 +464,68 @@ function fetchUserData(user) {
             let desafiosUser = 0;
 
             if(desafios != null){
-                desafiosListEl.innerHTML = "";
+                desafiosListEl.innerHTML = "<p>Nenhum Desafio encontrado. Jogue agora mesmo!</p>";
                 desafios.forEach((desafio) => {
                     firebase.firestore().collection('desafio').doc(desafio).get().then((doc) => {
 
                         let desafioDoc = doc.data();
 
                         if(desafioDoc.desafiado == userData.uid){
-                            firebase.firestore().collection('usuario').doc(desafioDoc.enviado).get().then((doc2) => {
+                            if(!desafioDoc.status){
+                                desafiosListEl.innerHTML = ""
+                                firebase.firestore().collection('usuario').doc(desafioDoc.enviado).get().then((doc2) => {
 
-                                let amigoDoc = doc2.data()
-        
-                                desafiosListEl.innerHTML += `<li>
-                                                                <div class="friends-box" data-desafioId="${doc.ref.id}">
-                                                                    <div class="img-wrapper">
-                                                                        <img src="${amigoDoc.imgURL}">
+                                    let amigoDoc = doc2.data()
+            
+                                    desafiosListEl.innerHTML += `<li>
+                                                                    <div class="friends-box" data-desafioId="${doc.ref.id}">
+                                                                        <div class="img-wrapper">
+                                                                            <img src="${amigoDoc.imgURL}">
+                                                                        </div>
+                                                                        <div class="friends-info">
+                                                                            <p class="friends-name">${amigoDoc.nome}</p>
+                                                                            <p class="friends-username">${desafioDoc.quiz.length} Questões</p>
+                                                                            <p class="friends-username">${desafioDoc.acertos} Acertos</p>
+                                                                        </div>
+                                                                        <div class="svg-wrapper">
+                                                                            <?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg class="accept" data-id="${doc.ref.id}" onclick="aceitarDesafio(this)" enable-background="new 0 0 32 32" height="32px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M30.171,6.131l-0.858-0.858c-0.944-0.945-2.489-0.945-3.433,0L11.294,19.859l-5.175-5.174  c-0.943-0.944-2.489-0.944-3.432,0.001l-0.858,0.857c-0.943,0.944-0.943,2.489,0,3.433l7.744,7.75c0.944,0.945,2.489,0.945,3.433,0  L30.171,9.564C31.112,8.62,31.112,7.075,30.171,6.131z"/></svg>
+                                                                            <?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg class="decline" data-id="${doc.ref.id}" onclick="recusarDesafio(this)"  enable-background="new 0 0 32 32" height="32px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M20.377,16.519l6.567-6.566c0.962-0.963,0.962-2.539,0-3.502l-0.876-0.875c-0.963-0.964-2.539-0.964-3.501,0  L16,12.142L9.433,5.575c-0.962-0.963-2.538-0.963-3.501,0L5.056,6.45c-0.962,0.963-0.962,2.539,0,3.502l6.566,6.566l-6.566,6.567  c-0.962,0.963-0.962,2.538,0,3.501l0.876,0.876c0.963,0.963,2.539,0.963,3.501,0L16,20.896l6.567,6.566  c0.962,0.963,2.538,0.963,3.501,0l0.876-0.876c0.962-0.963,0.962-2.538,0-3.501L20.377,16.519z" /></svg>
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="friends-info">
-                                                                        <p class="friends-name">${amigoDoc.nome}</p>
-                                                                        <p class="friends-username">${desafioDoc.quiz.length} Questões</p>
-                                                                        <p class="friends-username">${desafioDoc.acertos} Acertos</p>
-                                                                    </div>
-                                                                    <div class="svg-wrapper">
-                                                                        <?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg class="accept" data-id="${doc.ref.id}" onclick="aceitarDesafio(this)" enable-background="new 0 0 32 32" height="32px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M30.171,6.131l-0.858-0.858c-0.944-0.945-2.489-0.945-3.433,0L11.294,19.859l-5.175-5.174  c-0.943-0.944-2.489-0.944-3.432,0.001l-0.858,0.857c-0.943,0.944-0.943,2.489,0,3.433l7.744,7.75c0.944,0.945,2.489,0.945,3.433,0  L30.171,9.564C31.112,8.62,31.112,7.075,30.171,6.131z"/></svg>
-                                                                        <?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg class="decline" data-id="${doc.ref.id}" onclick="recusarDesafio(this)"  enable-background="new 0 0 32 32" height="32px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M20.377,16.519l6.567-6.566c0.962-0.963,0.962-2.539,0-3.502l-0.876-0.875c-0.963-0.964-2.539-0.964-3.501,0  L16,12.142L9.433,5.575c-0.962-0.963-2.538-0.963-3.501,0L5.056,6.45c-0.962,0.963-0.962,2.539,0,3.502l6.566,6.566l-6.566,6.567  c-0.962,0.963-0.962,2.538,0,3.501l0.876,0.876c0.963,0.963,2.539,0.963,3.501,0L16,20.896l6.567,6.566  c0.962,0.963,2.538,0.963,3.501,0l0.876-0.876c0.962-0.963,0.962-2.538,0-3.501L20.377,16.519z" /></svg>
-                                                                    </div>
-                                                                </div>
-                                                            </li>`;
+                                                                </li>`;
+    
+    
+                                })
+                            } else {
+                                firebase.firestore().collection('usuario').doc(desafioDoc.enviado).get().then((doc2) => {
 
+                                    let amigoDoc = doc2.data()
+                                    let vencedor;
 
-                            })
+                                    if(desafioDoc.vencedor == userData.uid){
+                                        vencedor = userData.nome
+                                    } else if(desafioDoc.vencedor == amigoDoc.uid){
+                                        vencedor = amigoDoc.nome
+                                    } else vencedor = "Empate";
+
+                                    historicoListEl.innerHTML += `<li>
+                                                                    <div class="friends-box" data-desafioId="${doc.ref.id}">
+                                                                        <div class="img-wrapper">
+                                                                            <img src="${userData.imgURL}">
+                                                                        </div>
+                                                                        <div class="friends-info">
+                                                                            <p class="friends-name">${vencedor}</p>
+                                                                            <p class="friends-username">Vencedor</p>
+                                                                        </div>
+                                                                        <div class="img-wrapper">
+                                                                            <img src="${amigoDoc.imgURL}">
+                                                                        </div>
+                                                                    </div>
+                                                                </li>`;
+    
+    
+                                })
+                            }
                         } else {
                             desafiosUser++;
                         }
@@ -503,6 +551,11 @@ infoEl.forEach((info) => {
     info.addEventListener('click', alteraPesquisa);
 })
 
+infoDesEl.forEach((info) => {
+    info.addEventListener('click', alteraDesafio);
+})
+
+infoDesEl[0].style.setProperty('--width', '100%');
 infoEl[0].style.setProperty('--width', '100%');
 
 searchEl.addEventListener('change', pesquisaAmigo);
@@ -529,6 +582,26 @@ function alteraPesquisa(e) {
         searchDivEl.classList.add('hidden');
         friendsDivEl.classList.remove('hidden');
         addIconEl.innerHTML = `<?xml version="1.0" ?><svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 14L13.5 14.001C14.2793 14.001 14.9204 14.5963 14.9931 15.3566L15 15.501V17.5C14.999 21 11.284 22 8.5 22C5.77787 22 2.1647 21.044 2.00545 17.7296L2 17.5V15.5C2 14.7207 2.59527 14.0796 3.35561 14.0069L3.5 14ZM15.488 14H20.5C21.2793 14 21.9204 14.5944 21.9931 15.3555L22 15.5V17C21.999 20.062 19.142 21 17 21C16.32 21 15.569 20.904 14.86 20.678C15.5128 19.9277 15.9362 18.9748 15.9934 17.78L16 17.5V15.5C16 15.0056 15.8507 14.5488 15.601 14.1616L15.488 14H20.5H15.488ZM8.5 3C10.985 3 13 5.015 13 7.5C13 9.985 10.985 12 8.5 12C6.015 12 4 9.985 4 7.5C4 5.015 6.015 3 8.5 3ZM17.5 5C19.433 5 21 6.567 21 8.5C21 10.433 19.433 12 17.5 12C15.567 12 14 10.433 14 8.5C14 6.567 15.567 5 17.5 5Z"></path></svg>`
+    } 
+
+}
+
+function alteraDesafio(e) {
+
+    if(e.target.innerHTML == "Desafios"){
+        let style = infoDesEl[1].style;
+        style.setProperty('--width', '0');
+        style = infoDesEl[0].style;
+        style.setProperty('--width', '100%');
+        desafiosListEl.classList.remove('hidden');
+        historicoListEl.classList.add('hidden');
+    } else {
+        let style = infoDesEl[0].style;
+        style.setProperty('--width', '0');
+        style = infoDesEl[1].style;
+        style.setProperty('--width', '100%');
+        desafiosListEl.classList.add('hidden');
+        historicoListEl.classList.remove('hidden');
     } 
 
 }
@@ -636,6 +709,8 @@ function desafiarAmigo(parent) {
             
         })
     }))
+
+    parent.innerHTML = `<?xml version="1.0" ?><!DOCTYPE svg  PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'><svg enable-background="new 0 0 32 32" height="32px" id="Layer_1" version="1.1" viewBox="0 0 32 32" width="32px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><path d="M30.171,6.131l-0.858-0.858c-0.944-0.945-2.489-0.945-3.433,0L11.294,19.859l-5.175-5.174  c-0.943-0.944-2.489-0.944-3.432,0.001l-0.858,0.857c-0.943,0.944-0.943,2.489,0,3.433l7.744,7.75c0.944,0.945,2.489,0.945,3.433,0  L30.171,9.564C31.112,8.62,31.112,7.075,30.171,6.131z" fill="#14EBB1"/></svg>`
 }
 
 document.querySelector('#modal-amigos-backdrop').addEventListener('click', modalAmigo);
@@ -674,7 +749,11 @@ function aceitarDesafio(id) {
         initial(true);
         isDesafio = true;
         desafioArray = data;
+        desafioRef = doc.ref;
     });
+
+   
+
 
 }
 

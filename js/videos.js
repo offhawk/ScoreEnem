@@ -313,6 +313,7 @@ function marcarComoAssistido() {
   // Obtenha o ID do vídeo atualmente em exibição
   let liteEmbedEl = document.querySelector("lite-youtube");
   const videoId = liteEmbedEl.getAttribute('videoid');
+  let mainTitle = document.querySelector(".main-title").innerHTML;
 
   // Obtenha o ID do usuário atualmente autenticado
   const userId = firebase.auth().currentUser.uid;
@@ -327,13 +328,13 @@ function marcarComoAssistido() {
         if (watchedVideos.includes(videoId)) {
           // Se estiver, remova o vídeo da lista
           firebase.firestore().collection('usuario').doc(userId).update({
-            watched: firebase.firestore.FieldValue.arrayRemove(videoId)
+            watched: firebase.firestore.FieldValue.arrayRemove({id: videoId, titulo: mainTitle})
           });
           console.log("Vídeo removido da lista de assistidos");
         } else {
           // Se não estiver, adicione o vídeo à lista
           firebase.firestore().collection('usuario').doc(userId).update({
-            watched: firebase.firestore.FieldValue.arrayUnion(videoId)
+            watched: firebase.firestore.FieldValue.arrayUnion({id: videoId, titulo: mainTitle})
           });
           console.log("Vídeo adicionado à lista de assistidos");
         }

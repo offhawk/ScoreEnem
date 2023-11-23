@@ -471,3 +471,22 @@ th, tr, tbody, .table tbody+tbody, td{
 .accept:hover{
   fill: var(--primary)!important;
 }
+
+#historico-list .friends-info{
+  text-align: center;
+  margin: 0;
+}
+
+#historico-list .friends-username{
+  text-align: center;
+  margin: 0;
+  font-weight: 200;
+}
+
+#historico-list p{
+  margin: 0;
+}
+
+.classificacao{
+  width: 100%;
+}
