@@ -419,3 +419,53 @@ a:hover {
     background-color: var(--primary);
     color: var(--background);
 }
+
+.video {
+    border-radius: 100px;
+}
+
+.thumbnail-video {
+    border-color: 5px, black;
+}
+
+.thumbnail-video{
+    object-fit: cover;
+    height: 135%;
+    width: 100%;
+    object-position: 50% -42px;
+}
+
+.video {
+    background-color: var(--background);
+    width: 35%;
+    border-radius: 10px;
+    border: 2px solid var(--secondary);
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    /* flex: 1 1 auto; */
+}
+
+.video-title-box {
+    font-size: 25px;
+    padding-top: 90px;
+}
+
+#allvideos .col {
+    display: flex;
+    gap: 30px;
+}
+
+.nome-desc {
+    display: flex;
+    padding-top: 40px;
+}
+
+.user-name {
+    padding-top: 10px;
+}
+
+.user-description {
+    display: block;
+    padding-left: 20px;
+    padding-top: 50px;
+}
