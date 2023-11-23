@@ -83,8 +83,6 @@
     border-radius: 0.3em;
   }
   .option-div:disabled {
-    border-color: var(--placeholder);
-    color: var(--placeholder);
     cursor: not-allowed;
   }
   #next-button {
@@ -156,13 +154,13 @@
     display: none;
   }
   .incorrect {
-    background-color: #ffdde0;
-    color: #d32f2f;
-    border-color: #d32f2f;
+    background-color: var(--incorrect);
+    color: var(--text);
+    border-color: var(--incorrect);
   }
   .correct {
-    background-color: #dafff8;
-    color: var(--text);
+    background-color: var(--correct);
+    color: #060e13;
     border-color: var(--primary);
   }
   #user-score {

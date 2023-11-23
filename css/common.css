@@ -45,6 +45,8 @@ body[data-theme="light"] {
     --accent: #ff9eda;
     --accent2: #7830C0;
     --accent3: #2F57C6;
+    --correct: #dafff8;
+    --incorrect: #ffdde0;
 }
 
 body[data-theme="dark"] {
@@ -57,6 +59,8 @@ body[data-theme="dark"] {
     --accent: #ff9eda;
     --accent2: #B687FF;
     --accent3: #0E9EE1;
+    --correct: #14EBB1;
+    --incorrect: hsl(355, 30%, 20%);
 }
 
 body::-webkit-scrollbar {
@@ -167,7 +171,7 @@ body::-webkit-scrollbar-thumb {
 .friends-icon:hover, 
 .friends-icon:hover svg,
 .svg-wrapper:hover,
-.svg-wrapper:hover  svg,
+.svg-wrapper:hover svg,
 #friends-search svg:hover{
     cursor: pointer;
     fill: var(--primary);
@@ -276,7 +280,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .hidden{
-    display: none;
+    display: none!important;
 }
 
 .friends-info-p{

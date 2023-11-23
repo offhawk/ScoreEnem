@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="../css/lite-yt-embed.css">
     <link rel="stylesheet" href="../css/menu-lateral.css">
     <link rel="stylesheet" href="../css/dashboard.css">
-    <link rel="stylesheet" href="../css/profile.css">
+    <link rel="stylesheet" href="../css/editprof.css">
     <link rel="shortcut icon" href="../imgs/clip.ico" type="image/x-icon">
-    <title>Perfil - ScoreEnem</title>
+    <title>Editar Perfil - ScoreEnem</title>
 </head>
 
 <body data-theme="light">
@@ -39,92 +39,52 @@
                 <?xml version="1.0" ?><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><g id="Left"><path d="M21,11H5.14L8.77,6.64A1,1,0,1,0,7.23,5.36l-5,6a1.19,1.19,0,0,0-.09.15c0,.05-.05.08-.07.13A1,1,0,0,0,2,12H2a1,1,0,0,0,.07.36c0,.05.05.08.07.13a1.19,1.19,0,0,0,.09.15l5,6A1,1,0,0,0,8,19a1,1,0,0,0,.64-.23,1,1,0,0,0,.13-1.41L5.14,13H21a1,1,0,0,0,0-2Z"/></g></svg>
                 <p style="margin: 0;">Voltar</p>
             </div>
-            <h1 class="readable">Seu Perfil</h1>
-            <p class="readable">Atualize o seu perfil por aqui!</p>
-            <div class="container-fluid">
-                <div class="container px-4 text-center">
-                    <div class="row gx-5">
-                        <div class="col">
-                            <div class="background">
-                                <div class="nome-imagem">
+            <div class="seu-perfil">
+            <h1 class="mb-3 readable">Edite seu perfil!</h1>
+            <p>Deixe a sua cara!</p>
+        </div>
+        <div class="rounded p-4 filtro-container">
+                <form>
+                <!-- columns -->
+                <div class="form-group">
+                <div class="form-row align-items-center">
+                    <div class="col-md-12 mb-3">
+                        <div class="nome-imagem">
                                     <div class="img-avatar">
                                         <img src="https://icon-library.com/images/default-profile-icon/default-profile-icon-24.jpg" class="avatar" id="profile-pic">
                                         <input type="file" name="picture__input" id="picture__input" title=" ">
                                     </div>
                                     <span class="user-name">Nome</span>
                                 </div>
-                                <div>
-                                    <span class="user-description">Sua descrição</span>
-                                </div>
-                                <div>
-<<<<<<< Updated upstream
-                                    <label class="picture" for="picture__input" tabIndex="0">
-                                        <span class="picture__image"></span>
-                                    </label>
-                                   
-=======
-                                        <a href="editprof.html"><button class="btn btn-cancel">Editar Perfil</button></a>
->>>>>>> Stashed changes
-                                </div>
-                            </div>
-                        </div>
+                        <div class="form-group">
+                            <p>Nome do Perfil</p>
+                        </div>               
                     </div>
                 </div>
+                <div id="edit-box">
+                    <div class="edit-profile" id="edit-name">
+                        <input type="text" placeholder="Seu nome">
+                    </div>
+                </div>
+                <div class="edit-box">
+                    <div class="form-row align-items-center">
+                        <div class="col-md-12 mb-3">
+                                <p>Descrição</p>
+                                <div id="edit-box">
+                                    <div class="edit-profile" id="edit-desc">
+                                        <input type="text" placeholder="Seu nome">
+                                    </div>
+                                </div>           
+                        </div>
+                    </div>
+                <div id="filtro">
+                    <button type="button" class="responder-button readable" name="button_id_2" id="btn-filtro">Cancelar</button>
+                    <button type="button" class="responder-button readable" name="button_id_2" id="btn-filtro">Salvar</button>
+                </div>
+                </div>
+                
+                </form>
             </div>
-            <h1 class="readable">Histórico de Vídeos</h1>
-            <p class="readable">Seus Vídeos Assistidos!</p>
-            <div class="container-fluid">
-                <div class="container px-4 text-center">
-                    <div class="column gx-5">
-                        <div class="col" id="last-watched-videos">
-                            <a class="p-3" href="videos.html?mat=cienat">
-                                <p class="readable"></p>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a class="p-3" href="videos.html?mat=ciehum">
-                                <p class="readable"></p>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a class="p-3" href="videos.html?mat=ling">
-                                <p class="readable"></p>
-                            </a>
-                        </div>
-                        <div class="col">
-                            <a href="videos.html?mat=mat" class="p-3">
-                                <p class="readable"></p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="friends-container">
-            <h1 class="readable">Amigos</h1>
-            <p class="readable">Que vença o melhor!</p>
-            <div>
-                <div id="friends-header">
-                    <div class="friends-icon" id="friends-icon-add"> 
-                        <?xml version="1.0" ?><svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M3.5 14L13.5 14.001C14.2793 14.001 14.9204 14.5963 14.9931 15.3566L15 15.501V17.5C14.999 21 11.284 22 8.5 22C5.77787 22 2.1647 21.044 2.00545 17.7296L2 17.5V15.5C2 14.7207 2.59527 14.0796 3.35561 14.0069L3.5 14ZM15.488 14H20.5C21.2793 14 21.9204 14.5944 21.9931 15.3555L22 15.5V17C21.999 20.062 19.142 21 17 21C16.32 21 15.569 20.904 14.86 20.678C15.5128 19.9277 15.9362 18.9748 15.9934 17.78L16 17.5V15.5C16 15.0056 15.8507 14.5488 15.601 14.1616L15.488 14H20.5H15.488ZM8.5 3C10.985 3 13 5.015 13 7.5C13 9.985 10.985 12 8.5 12C6.015 12 4 9.985 4 7.5C4 5.015 6.015 3 8.5 3ZM17.5 5C19.433 5 21 6.567 21 8.5C21 10.433 19.433 12 17.5 12C15.567 12 14 10.433 14 8.5C14 6.567 15.567 5 17.5 5Z"></path></svg>
-                    </div>
-                    <div id="friends-search">
-                        <input type="text" placeholder="Pesquisar" name="search-friends" id="input-search-friends">
-                        <span onclick="pesquisaAmigo" id="friends-icon-search"><?xml version="1.0" ?><svg height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M10 2.5C14.1421 2.5 17.5 5.85786 17.5 10C17.5 11.7101 16.9276 13.2866 15.964 14.5483L20.7071 19.2929C21.0976 19.6834 21.0976 20.3166 20.7071 20.7071C20.3466 21.0676 19.7794 21.0953 19.3871 20.7903L19.2929 20.7071L14.5483 15.964C13.2866 16.9276 11.7101 17.5 10 17.5C5.85786 17.5 2.5 14.1421 2.5 10C2.5 5.85786 5.85786 2.5 10 2.5ZM10 4.5C6.96243 4.5 4.5 6.96243 4.5 10C4.5 13.0376 6.96243 15.5 10 15.5C13.0376 15.5 15.5 13.0376 15.5 10C15.5 6.96243 13.0376 4.5 10 4.5Z"/></svg></span>
-                    </div>
-                </div>
-                <div class="friends-list" id="friends-list">
-                    <ul id="friends-ul">
-                        
-                    </ul>
-                </div>
-                <div class="friends-list hidden" id="search-list">
-                    <ul id="search-ul">
-                        
-                    </ul>
-                </div>
-            </div>
-        </div>
     </div>
     <div vw class="enabled">
         <div vw-access-button class="active"></div>
